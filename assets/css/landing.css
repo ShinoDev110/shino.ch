@@ -1,0 +1,204 @@
+:root {
+    --bg1: #0a0b12;
+    --bg2: #16192b;
+    --line: #2a2f55;
+    --text: #e6e9ff;
+    --muted: #9aa0c7;
+    --accent: #77f3d2;
+    --accent2: #6db0ff;
+}
+
+* {
+    box-sizing: border-box
+}
+
+html, body {
+    height: 100%
+}
+
+body {
+    margin: 0;
+    color: var(--text);
+    background: radial-gradient(800px 800px at 10% 10%, #1b1f3a55 0%, transparent 40%),
+    radial-gradient(900px 900px at 85% 25%, #3aaaff26 0%, transparent 45%),
+    linear-gradient(135deg, var(--bg1), var(--bg2));
+    font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.wrap {
+    height: 100%;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    padding: 24px;
+    position: relative;
+    z-index: 1;
+}
+
+/* subtle grid backdrop */
+.grid {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background-image: linear-gradient(to right, var(--line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--line) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(1200px 1200px at 50% 50%, #000 30%, transparent 90%);
+    opacity: .25;
+    animation: drift 18s ease-in-out infinite;
+}
+
+/* headline with light glitch */
+.headline {
+    margin: 0 0 .2em;
+    line-height: 1;
+    font-family: "Space Grotesk", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    font-weight: 700;
+    letter-spacing: .06em;
+    font-size: clamp(28px, 8vw, 88px);
+    text-transform: uppercase;
+    filter: drop-shadow(0 10px 28px rgba(0, 0, 0, .45));
+}
+
+.glitch {
+    position: relative;
+    display: inline-block;
+    background: linear-gradient(90deg, var(--text), var(--accent), var(--accent2), var(--text));
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: shimmer 6s ease-in-out infinite;
+}
+
+.glitch::before, .glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    top: 0;
+    clip-path: inset(0 0 0 0);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    background: inherit;
+    mix-blend-mode: screen;
+    opacity: .6;
+}
+
+.glitch::before {
+    transform: translate(1px, 0);
+    filter: drop-shadow(0 0 0 var(--accent));
+}
+
+.glitch::after {
+    transform: translate(-1px, 0);
+    filter: drop-shadow(0 0 0 var(--accent2));
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .glitch::before {
+        animation: glitchX 2.2s infinite steps(2, end);
+    }
+
+    .glitch::after {
+        animation: glitchY 1.8s infinite steps(2, end);
+    }
+}
+
+/* sub copy */
+.sub {
+    margin: .2em 0 1.6em;
+    max-width: 860px;
+    color: var(--muted);
+    font-size: clamp(14px, 2.6vw, 20px);
+}
+
+/* status line */
+.status {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    border-radius: 12px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, .08), rgba(255, 255, 255, .03));
+    border: 1px solid rgba(255, 255, 255, .12);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .12), 0 12px 28px rgba(0, 0, 0, .28);
+    font-weight: 600;
+    letter-spacing: .04em;
+}
+
+.status .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, #fff, var(--accent));
+    box-shadow: 0 0 12px var(--accent);
+    animation: pulse 1.6s ease-in-out infinite;
+}
+
+.status .cursor {
+    animation: blink 1.2s steps(2, end) infinite;
+    opacity: .9;
+}
+
+/* animations */
+@keyframes shimmer {
+    0%, 100% {
+        background-position: 0 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+@keyframes blink {
+    0%, 49% {
+        opacity: 0
+    }
+    50%, 100% {
+        opacity: 1
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 10px var(--accent);
+    }
+    50% {
+        transform: scale(1.15);
+        box-shadow: 0 0 18px var(--accent);
+    }
+}
+
+@keyframes drift {
+    0%, 100% {
+        transform: translateY(0)
+    }
+    50% {
+        transform: translateY(-14px)
+    }
+}
+
+/* motion-safe */
+@media (prefers-reduced-motion: reduce) {
+    .grid {
+        animation: none;
+    }
+
+    .glitch::before, .glitch::after {
+        animation: none;
+    }
+
+    .status .dot {
+        animation: none;
+    }
+
+    .status .cursor {
+        animation: none;
+    }
+}
