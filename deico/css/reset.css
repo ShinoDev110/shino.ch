@@ -44,6 +44,14 @@ canvas {
   max-width: 100%;
 }
 
+/* The width and height attributes on an <img> map to a presentational height.
+   A height that is not auto makes aspect-ratio inert, so every ratio set in a
+   component would be silently ignored. Keeping the attributes matters for
+   reserving layout space, so the height is released here instead. */
+img {
+  height: auto;
+}
+
 input,
 button,
 textarea,

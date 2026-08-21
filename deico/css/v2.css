@@ -1,0 +1,757 @@
+/* ==========================================================================
+   v2.css - redesign: "Datenblatt und Werkstatt"
+
+   A light, tightly gridded base carrying engineering-drawing language
+   (hairline rules, numbered indices, monospace figures) broken by full-bleed
+   dark photographic bands where the metal close-ups can dominate.
+
+   Standalone on purpose. Loaded instead of tokens.css + main.css, not on top,
+   so there are no specificity fights while the direction is under review.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   0. Fonts
+
+   Self-hosted, latin subset. No third-party request, so the site keeps its
+   zero-external-hosts property. Plex Sans is one variable file covering the
+   whole 400 to 600 range; Plex Mono ships as two static weights.
+   -------------------------------------------------------------------------- */
+
+@font-face {
+  font-family: "IBM Plex Sans";
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url("../assets/fonts/ibm-plex-sans-latin.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "IBM Plex Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../assets/fonts/ibm-plex-mono-400-latin.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "IBM Plex Mono";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("../assets/fonts/ibm-plex-mono-500-latin.woff2") format("woff2");
+}
+
+/* --------------------------------------------------------------------------
+   1. Tokens
+   -------------------------------------------------------------------------- */
+
+:root {
+  --brand:      #5E61ED;
+  --brand-deep: #1B1D99;
+  --brand-tint: #EEEFFD;
+
+  /* Cool near-black. Machined aluminium and steel photograph badly against a
+     warm black and well against a slightly blue one. */
+  --ink-900: #0B0B0F;
+  --ink-800: #15151B;
+  --ink-700: #23232C;
+  --ink-600: #3A3A46;
+  --ink-500: #6C6C7A;
+  --ink-400: #9797A4;
+  --ink-300: #C2C2CC;
+  --ink-200: #E0E0E7;
+  --ink-100: #EFEFF3;
+  --ink-50:  #F7F7F9;
+  --paper:   #FFFFFF;
+
+  --bg:        var(--paper);
+  --bg-subtle: var(--ink-50);
+  --text:      var(--ink-900);
+  --text-mid:  var(--ink-500);
+  --line:      var(--ink-200);
+  --line-soft: var(--ink-100);
+
+  --font-sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Consolas, monospace;
+
+  /* Display sizes run much larger than v1. A confident headline is most of
+     what separates a designed page from a templated one. */
+  --fs-display: clamp(2.25rem, 1.5rem + 3.2vw, 4.25rem);
+  --fs-h2:      clamp(1.625rem, 1.3rem + 1.4vw, 2.5rem);
+  --fs-h3:      clamp(1.1875rem, 1.1rem + 0.4vw, 1.5rem);
+  --fs-lede:    clamp(1.0625rem, 1rem + 0.4vw, 1.25rem);
+  --fs-body:    1.0625rem;
+  --fs-sm:      0.9375rem;
+  --fs-mono:    0.8125rem;
+  --fs-mono-sm: 0.6875rem;
+  --fs-figure:  clamp(1.375rem, 1.15rem + 1vw, 1.875rem);
+
+  --track-display: -0.025em;
+  --track-mono:    0.09em;
+
+  --sp-2xs: 0.25rem;
+  --sp-xs:  0.5rem;
+  --sp-sm:  0.75rem;
+  --sp-md:  1rem;
+  --sp-lg:  1.5rem;
+  --sp-xl:  2rem;
+  --sp-2xl: 3rem;
+  --sp-3xl: 4.5rem;
+  --sp-4xl: 7rem;
+
+  --container: 78rem;
+  --gutter: clamp(1.25rem, 4vw, 3rem);
+  --header-h: 3.75rem;
+  --logo-h: 1.625rem;
+  --tap: 2.75rem;
+
+  /* Square by default. Precision engineering, not a consumer app. */
+  --radius: 0px;
+  --radius-img: 2px;
+
+  --transition: 160ms cubic-bezier(0.2, 0, 0, 1);
+
+  --z-header: 100;
+  --z-skip: 200;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root { --transition: 0ms; }
+}
+
+@media (min-width: 1024px) {
+  :root { --header-h: 4.5rem; --logo-h: 2rem; }
+}
+
+/* --------------------------------------------------------------------------
+   2. Base
+   -------------------------------------------------------------------------- */
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+main { flex: 1 0 auto; }
+
+[id]:target { scroll-margin-top: calc(var(--header-h) + var(--sp-lg)); }
+
+h1, h2, h3 {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  line-height: 1.04;
+  letter-spacing: var(--track-display);
+  text-wrap: balance;
+}
+
+h1 { font-size: var(--fs-display); }
+h2 { font-size: var(--fs-h2); }
+h3 { font-size: var(--fs-h3); line-height: 1.15; }
+
+p { text-wrap: pretty; }
+
+a { color: var(--brand-deep); text-underline-offset: 0.22em; text-decoration-thickness: 1px; transition: color var(--transition); }
+a:hover { color: var(--brand); }
+
+:focus-visible { outline: 2px solid var(--brand); outline-offset: 3px; }
+
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* --------------------------------------------------------------------------
+   3. Monospace utilities
+
+   Every number on this site is a specification, so figures are tabular and
+   set in mono. That single decision does most of the technical character.
+   -------------------------------------------------------------------------- */
+
+.mono {
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: var(--track-mono);
+  text-transform: uppercase;
+}
+
+.figure-num {
+  font-family: var(--font-mono);
+  font-size: var(--fs-figure);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+  text-transform: none;
+  line-height: 1.1;
+}
+
+/* Label with a rule running to the end of its column, like a drawing callout. */
+.rule-label {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-md);
+  color: var(--brand-deep);
+}
+
+.rule-label::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+}
+
+/* --------------------------------------------------------------------------
+   4. Skip link
+   -------------------------------------------------------------------------- */
+
+.skip-link {
+  position: absolute;
+  top: var(--sp-md);
+  left: var(--sp-md);
+  z-index: var(--z-skip);
+  padding: var(--sp-xs) var(--sp-md);
+  background: var(--ink-900);
+  color: var(--paper);
+  text-decoration: none;
+  transform: translateY(-250%);
+  transition: transform var(--transition);
+}
+
+.skip-link:focus { transform: translateY(0); color: var(--paper); }
+
+/* --------------------------------------------------------------------------
+   5. Header
+   -------------------------------------------------------------------------- */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-header);
+  background: rgb(255 255 255 / 0.92);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-md);
+  min-height: var(--header-h);
+}
+
+.logo { margin-inline-end: auto; text-decoration: none; }
+.logo img { width: auto; height: var(--logo-h); }
+
+.site-nav ul { display: flex; margin: 0; padding: 0; list-style: none; }
+
+.site-nav a {
+  display: block;
+  padding-block: var(--sp-sm);
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono);
+  letter-spacing: var(--track-mono);
+  text-transform: uppercase;
+  color: var(--ink-700);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+.site-nav a:hover { color: var(--ink-900); }
+
+.site-nav a[aria-current="page"] { color: var(--brand-deep); }
+
+/* The current page marker is a drawn rule rather than an underline, which
+   keeps it aligned with the hairline language used everywhere else. */
+.site-nav a[aria-current="page"]::after {
+  content: "";
+  display: block;
+  height: 2px;
+  margin-top: 3px;
+  background: var(--brand);
+}
+
+.js .site-nav {
+  display: none;
+  position: absolute;
+  inset-inline: 0;
+  top: 100%;
+  padding: var(--sp-xs) var(--gutter) var(--sp-lg);
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+}
+
+.js .site-nav.is-open { display: block; }
+.js .site-nav.is-open ul { display: block; }
+.js .site-nav.is-open a { padding-block: var(--sp-md); border-top: 1px solid var(--line-soft); }
+
+.nav-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--tap);
+  height: var(--tap);
+  padding: 0;
+  background: none;
+  border: 1px solid var(--line);
+  color: var(--ink-900);
+  cursor: pointer;
+  transition: border-color var(--transition);
+}
+
+.nav-toggle:hover { border-color: var(--ink-400); }
+.no-js .nav-toggle { display: none; }
+
+.nav-toggle-bars { position: relative; }
+
+.nav-toggle-bars,
+.nav-toggle-bars::before,
+.nav-toggle-bars::after {
+  display: block;
+  width: 17px;
+  height: 1.5px;
+  background: currentColor;
+  transition: transform var(--transition), background-color var(--transition);
+}
+
+.nav-toggle-bars::before,
+.nav-toggle-bars::after { content: ""; position: absolute; left: 0; }
+.nav-toggle-bars::before { top: -5px; }
+.nav-toggle-bars::after { top: 5px; }
+
+.nav-toggle[aria-expanded="true"] .nav-toggle-bars { background: transparent; }
+.nav-toggle[aria-expanded="true"] .nav-toggle-bars::before { transform: translateY(5px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] .nav-toggle-bars::after { transform: translateY(-5px) rotate(-45deg); }
+
+/* --------------------------------------------------------------------------
+   6. Language switcher
+   -------------------------------------------------------------------------- */
+
+.lang { position: relative; }
+
+.lang summary {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2xs);
+  min-height: var(--tap);
+  padding-inline: var(--sp-sm);
+  border: 1px solid var(--line);
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono);
+  letter-spacing: var(--track-mono);
+  list-style: none;
+  cursor: pointer;
+  transition: border-color var(--transition);
+}
+
+.lang summary::-webkit-details-marker { display: none; }
+.lang summary:hover { border-color: var(--ink-400); }
+
+.lang summary::after {
+  content: "";
+  width: 0.35em;
+  height: 0.35em;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: translateY(-0.15em) rotate(45deg);
+  transition: transform var(--transition);
+}
+
+.lang[open] summary::after { transform: translateY(0.05em) rotate(-135deg); }
+
+.lang-list {
+  position: absolute;
+  top: calc(100% - 1px);
+  right: 0;
+  min-width: 11rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  background: var(--paper);
+  border: 1px solid var(--line);
+}
+
+.lang-list a {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--sp-sm);
+  padding: var(--sp-sm) var(--sp-md);
+  color: var(--ink-700);
+  font-size: var(--fs-sm);
+  text-decoration: none;
+}
+
+.lang-list li + li a { border-top: 1px solid var(--line-soft); }
+.lang-list a:hover { background: var(--ink-50); color: var(--ink-900); }
+.lang-list a[aria-current="true"] { color: var(--brand-deep); font-weight: 500; }
+
+.lang-code { font-family: var(--font-mono); font-size: var(--fs-mono-sm); color: var(--ink-400); text-transform: uppercase; }
+
+/* --------------------------------------------------------------------------
+   7. Buttons
+   -------------------------------------------------------------------------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-sm);
+  min-height: var(--tap);
+  padding: var(--sp-sm) var(--sp-lg);
+  border: 1px solid transparent;
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono);
+  letter-spacing: var(--track-mono);
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color var(--transition), border-color var(--transition), color var(--transition);
+}
+
+.btn--primary { background: var(--ink-900); color: var(--paper); }
+.btn--primary:hover { background: var(--brand-deep); color: var(--paper); }
+
+.btn--ghost { border-color: var(--ink-300); color: var(--ink-900); }
+.btn--ghost:hover { border-color: var(--ink-900); color: var(--ink-900); }
+
+.btn--light { background: var(--paper); color: var(--ink-900); }
+.btn--light:hover { background: var(--brand-tint); color: var(--brand-deep); }
+
+/* An arrow that steps forward on hover. The only motion on the page. */
+.btn__arrow { transition: transform var(--transition); }
+.btn:hover .btn__arrow { transform: translateX(3px); }
+
+/* --------------------------------------------------------------------------
+   8. Hero
+   -------------------------------------------------------------------------- */
+
+.hero { padding-block: var(--sp-3xl) 0; }
+
+/* ch resolves against the element it is set on. Putting the measure on the
+   wrapper would resolve it at body size and crush the display type. */
+.hero-head { max-width: none; }
+.hero h1 { max-width: 20ch; }
+
+.hero h1 { margin-block: var(--sp-lg) 0; }
+
+.hero-lede {
+  max-width: 52ch;
+  margin-top: var(--sp-lg);
+  font-size: var(--fs-lede);
+  color: var(--ink-600);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-sm);
+  margin-top: var(--sp-xl);
+}
+
+/* Four hard facts directly under the headline, set as a drawing would set
+   them: monospace figures separated by hairlines. */
+.factstrip {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: var(--sp-3xl);
+  border-top: 1px solid var(--line);
+}
+
+.factstrip > div {
+  padding: var(--sp-lg) var(--sp-lg) var(--sp-lg) 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.factstrip dt {
+  margin-bottom: var(--sp-xs);
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono-sm);
+  letter-spacing: var(--track-mono);
+  text-transform: uppercase;
+  color: var(--ink-500);
+}
+
+.factstrip dd { margin: 0; }
+
+/* --------------------------------------------------------------------------
+   9. Full-bleed photographic band
+   -------------------------------------------------------------------------- */
+
+.band {
+  position: relative;
+  margin-top: var(--sp-3xl);
+  background: var(--ink-900);
+}
+
+.band img {
+  width: 100%;
+  height: clamp(18rem, 52vh, 34rem);
+  object-fit: cover;
+  display: block;
+}
+
+.band figcaption {
+  position: absolute;
+  left: var(--gutter);
+  bottom: var(--sp-lg);
+  display: flex;
+  align-items: center;
+  gap: var(--sp-sm);
+  padding: var(--sp-xs) var(--sp-sm);
+  background: rgb(11 11 15 / 0.72);
+  color: var(--ink-200);
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono-sm);
+  letter-spacing: var(--track-mono);
+  text-transform: uppercase;
+}
+
+.band figcaption b { color: var(--brand); font-weight: 500; }
+
+/* --------------------------------------------------------------------------
+   10. Section scaffolding
+   -------------------------------------------------------------------------- */
+
+.section { padding-block: var(--sp-4xl); }
+.section--dark { background: var(--ink-900); color: var(--ink-300); }
+.section--dark h2, .section--dark h3 { color: var(--paper); }
+.section--dark .rule-label { color: var(--brand); }
+.section--dark .rule-label::after { background: var(--ink-700); }
+
+.section-head { margin-bottom: var(--sp-2xl); }
+.section-head h2 { margin-top: var(--sp-lg); max-width: 22ch; }
+.section-head p { max-width: 54ch; margin-top: var(--sp-md); font-size: var(--fs-lede); color: var(--ink-500); }
+.section--dark .section-head p { color: var(--ink-400); }
+
+/* --------------------------------------------------------------------------
+   11. Numbered index
+
+   The three core services as an ordered index rather than three equal cards.
+   The numbering carries the hierarchy that identical cards could not.
+   -------------------------------------------------------------------------- */
+
+.index { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
+
+.index > li {
+  display: grid;
+  gap: var(--sp-lg);
+  padding-block: var(--sp-2xl);
+  border-bottom: 1px solid var(--line);
+}
+
+.index-num {
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: var(--track-mono);
+  color: var(--brand-deep);
+}
+
+.index h3 { margin-bottom: var(--sp-sm); }
+.index p { color: var(--ink-600); max-width: 56ch; }
+
+.index-media img { border-radius: var(--radius-img); }
+
+/* --------------------------------------------------------------------------
+   12. Datasheet grid
+
+   Capability figures presented the way a machine spec sheet presents them.
+   The 1px gap over a line-coloured background draws every cell border once,
+   so no rule is ever doubled.
+   -------------------------------------------------------------------------- */
+
+.datasheet {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  margin: 0;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+
+.datasheet > div { padding: var(--sp-lg); background: var(--paper); }
+
+.section--dark .datasheet { background: var(--ink-700); border-color: var(--ink-700); }
+.section--dark .datasheet > div { background: var(--ink-900); }
+
+.datasheet dt {
+  margin-bottom: var(--sp-sm);
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono-sm);
+  letter-spacing: var(--track-mono);
+  text-transform: uppercase;
+  color: var(--ink-500);
+}
+
+.datasheet dd { margin: 0; }
+.datasheet .figure-num { color: var(--ink-900); }
+.section--dark .datasheet .figure-num { color: var(--paper); }
+.datasheet-note { margin-top: var(--sp-xs); font-size: var(--fs-sm); color: var(--ink-500); }
+
+/* --------------------------------------------------------------------------
+   13. Capability grid
+   -------------------------------------------------------------------------- */
+
+.caps { display: grid; gap: var(--sp-2xl); margin: 0; padding: 0; list-style: none; }
+
+.caps img { margin-bottom: var(--sp-md); border-radius: var(--radius-img); }
+
+.caps h3 { margin-bottom: var(--sp-xs); font-size: var(--fs-h3); }
+.caps p { font-size: var(--fs-sm); color: var(--ink-600); }
+.caps .mono { display: block; margin-bottom: var(--sp-sm); color: var(--ink-400); font-size: var(--fs-mono-sm); }
+
+/* --------------------------------------------------------------------------
+   14. Machine teaser inside the dark section
+   -------------------------------------------------------------------------- */
+
+.teaser { display: grid; gap: var(--sp-2xl); align-items: center; }
+.teaser img { border-radius: var(--radius-img); }
+.teaser-specs { margin: var(--sp-xl) 0 0; }
+.teaser-specs > div { display: flex; justify-content: space-between; gap: var(--sp-md); padding-block: var(--sp-sm); border-top: 1px solid var(--ink-700); }
+.teaser-specs dt { font-family: var(--font-mono); font-size: var(--fs-mono-sm); letter-spacing: var(--track-mono); text-transform: uppercase; color: var(--ink-400); }
+.teaser-specs dd { margin: 0; font-family: var(--font-mono); font-size: var(--fs-mono); font-variant-numeric: tabular-nums; color: var(--paper); }
+
+/* --------------------------------------------------------------------------
+   15. Sector list
+   -------------------------------------------------------------------------- */
+
+.sectors { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
+
+.sectors li {
+  display: flex;
+  align-items: baseline;
+  gap: var(--sp-lg);
+  padding-block: var(--sp-md);
+  border-bottom: 1px solid var(--line);
+  font-size: var(--fs-h3);
+  letter-spacing: -0.02em;
+}
+
+.sectors span {
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono-sm);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: var(--track-mono);
+  color: var(--ink-400);
+}
+
+/* --------------------------------------------------------------------------
+   16. Closing call to action
+   -------------------------------------------------------------------------- */
+
+.cta { padding-block: var(--sp-4xl); background: var(--brand-deep); color: var(--paper); }
+.cta h2 { max-width: 18ch; color: var(--paper); }
+.cta p { max-width: 50ch; margin-top: var(--sp-lg); font-size: var(--fs-lede); color: rgb(255 255 255 / 0.78); }
+.cta .rule-label { color: rgb(255 255 255 / 0.75); }
+.cta .rule-label::after { background: rgb(255 255 255 / 0.25); }
+.cta .btn { margin-top: var(--sp-xl); }
+
+/* --------------------------------------------------------------------------
+   17. Footer
+   -------------------------------------------------------------------------- */
+
+.site-footer { padding-block: var(--sp-3xl) var(--sp-xl); background: var(--ink-900); color: var(--ink-400); }
+.footer-grid { display: grid; gap: var(--sp-2xl); }
+.footer-title { margin-bottom: var(--sp-md); font-family: var(--font-mono); font-size: var(--fs-mono-sm); font-weight: 500; letter-spacing: var(--track-mono); text-transform: uppercase; color: var(--paper); }
+.footer-col ul { margin: 0; padding: 0; list-style: none; }
+.footer-col li + li { margin-top: var(--sp-xs); }
+.site-footer a { color: var(--ink-300); text-decoration: none; }
+.site-footer a:hover { color: var(--paper); text-decoration: underline; }
+.footer-address { font-style: normal; color: var(--ink-300); }
+.footer-bottom { display: flex; flex-wrap: wrap; gap: var(--sp-sm) var(--sp-lg); justify-content: space-between; margin-top: var(--sp-2xl); padding-top: var(--sp-lg); border-top: 1px solid var(--ink-700); font-family: var(--font-mono); font-size: var(--fs-mono-sm); letter-spacing: var(--track-mono); text-transform: uppercase; color: var(--ink-500); }
+.footer-bottom p { margin: 0; }
+
+/* --------------------------------------------------------------------------
+   18. Utilities
+   -------------------------------------------------------------------------- */
+
+.visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* --------------------------------------------------------------------------
+   19. Breakpoints
+   -------------------------------------------------------------------------- */
+
+@media (min-width: 600px) {
+  .caps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (min-width: 768px) {
+  .nav-toggle { display: none; }
+  .site-nav, .js .site-nav { display: block; position: static; padding: 0; background: none; border: 0; }
+  .js .site-nav.is-open ul { display: flex; }
+  .js .site-nav.is-open a { padding-block: var(--sp-sm); border-top: 0; }
+  .site-nav ul { gap: var(--sp-xl); }
+
+  .factstrip { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .factstrip > div { padding-inline: var(--sp-lg) var(--sp-md); border-inline-start: 1px solid var(--line); }
+  .factstrip > div:first-child { padding-inline-start: 0; border-inline-start: 0; }
+
+  .datasheet { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+  .index > li { grid-template-columns: 4rem 1fr 20rem; gap: var(--sp-2xl); align-items: start; }
+
+  .teaser { grid-template-columns: 1fr 1fr; }
+
+  .footer-grid { grid-template-columns: 1.6fr 1fr 1fr; }
+}
+
+@media (min-width: 1024px) {
+  .caps { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .index > li { grid-template-columns: 5rem 1fr 26rem; }
+  .hero { padding-block: var(--sp-4xl) 0; }
+}
+
+/* --------------------------------------------------------------------------
+   20. Small structural helpers
+
+   These exist so the markup carries no inline styles.
+   -------------------------------------------------------------------------- */
+
+/* Two sections that read as one block share a single vertical rhythm rather
+   than stacking their padding. */
+.section--flush { padding-top: 0; }
+
+.teaser p { margin-top: var(--sp-md); max-width: 48ch; color: var(--ink-400); }
+.teaser .btn { margin-top: var(--sp-xl); }
+
+.footer-col address + p { margin-top: var(--sp-md); }
+
+/* --------------------------------------------------------------------------
+   21. Uniform image framing
+
+   One ratio for every photo that can end up beside another photo, so
+   neighbours in a grid always line up. The sources are a mix of 4:3, 16:9 and
+   portrait phone shots, so a shared frame with object-fit is the only way to
+   get even rows without re-cropping every original by hand.
+
+   height:auto is repeated here rather than relied upon from the reset, because
+   the HTML width and height attributes would otherwise pin the height and make
+   aspect-ratio inert.
+   -------------------------------------------------------------------------- */
+
+.caps img,
+.index-media img,
+.teaser img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: center;
+  background: var(--ink-100);
+}
+
+.section--dark .teaser img { background: var(--ink-800); }
