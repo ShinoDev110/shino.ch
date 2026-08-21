@@ -1,0 +1,4 @@
+# shino.ch
+# /deico/ is a private staging mockup for client review and must never be indexed.
+User-agent: *
+Disallow: /deico/
