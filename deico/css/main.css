@@ -592,3 +592,272 @@ a:hover {
     gap: var(--sp-xl);
   }
 }
+
+/* --------------------------------------------------------------------------
+   13. Page sections
+
+   Shared by the homepage and the inner pages. Every image slot fixes an
+   aspect ratio so the layout does not jump while photos load.
+   -------------------------------------------------------------------------- */
+
+.eyebrow {
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--brand-deep);
+}
+
+.section-head {
+  max-width: 54ch;
+  margin-bottom: var(--sp-2xl);
+}
+
+.section-head > * + * {
+  margin-top: var(--sp-md);
+}
+
+/* --- Hero ---------------------------------------------------------------- */
+
+.hero {
+  padding-block: var(--sp-2xl) var(--sp-3xl);
+}
+
+.hero-inner {
+  display: grid;
+  gap: var(--sp-2xl);
+  align-items: center;
+}
+
+.hero-text > * + * {
+  margin-top: var(--sp-lg);
+}
+
+.hero h1 {
+  max-width: 20ch;
+}
+
+.hero .lede {
+  max-width: 50ch;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-sm);
+}
+
+.hero-figure {
+  margin: 0;
+}
+
+.hero-figure img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+}
+
+/* --- Card grid ----------------------------------------------------------- */
+
+.card-grid {
+  display: grid;
+  gap: var(--sp-xl);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+}
+
+.card img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: var(--radius);
+  margin-bottom: var(--sp-md);
+}
+
+.card h3 {
+  margin-bottom: var(--sp-xs);
+}
+
+.card p {
+  color: var(--text-muted);
+}
+
+.card-meta {
+  margin-top: var(--sp-sm);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--brand-deep);
+}
+
+/* --- Feature grid -------------------------------------------------------- */
+
+.feature-grid {
+  display: grid;
+  gap: var(--sp-xl);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.feature img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border-radius: var(--radius);
+  margin-bottom: var(--sp-sm);
+}
+
+.feature h3 {
+  margin-bottom: var(--sp-2xs);
+  font-size: var(--fs-lg);
+}
+
+.feature p {
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+}
+
+/* --- Media row ----------------------------------------------------------- */
+
+.media {
+  display: grid;
+  gap: var(--sp-xl);
+  align-items: center;
+}
+
+.media-text > * + * {
+  margin-top: var(--sp-md);
+}
+
+.media-figure {
+  margin: 0;
+}
+
+.media-figure img {
+  width: 100%;
+  border-radius: var(--radius-lg);
+}
+
+/* --- Definition list used for the CAD, FEM and CAM stack ----------------- */
+
+.spec-list {
+  display: grid;
+  gap: var(--sp-lg);
+  margin: 0;
+  padding: 0;
+}
+
+.spec-list dt {
+  margin-bottom: var(--sp-2xs);
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--brand-deep);
+}
+
+.spec-list dd {
+  margin: 0;
+}
+
+/* The software stack reads as a footnote to the media row above it. */
+.media + .spec-list {
+  margin-top: var(--sp-2xl);
+}
+
+/* --- Tag list ------------------------------------------------------------ */
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-xs);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tag-list li {
+  padding: var(--sp-xs) var(--sp-md);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  background: var(--bg);
+  font-size: var(--fs-sm);
+}
+
+/* --- Call to action band ------------------------------------------------- */
+
+.cta-band {
+  padding-block: var(--sp-3xl);
+  background: var(--brand-deep);
+  color: var(--n-0);
+  text-align: center;
+}
+
+.cta-band h2 {
+  color: var(--n-0);
+}
+
+.cta-band p {
+  max-width: 54ch;
+  margin-inline: auto;
+  margin-top: var(--sp-md);
+  color: var(--n-200);
+}
+
+.cta-band .btn {
+  margin-top: var(--sp-xl);
+  background: var(--n-0);
+  color: var(--brand-deep);
+}
+
+.cta-band .btn:hover {
+  background: var(--brand-tint);
+  color: var(--brand-deep);
+}
+
+/* --- Section breakpoints ------------------------------------------------- */
+
+@media (min-width: 480px) {
+  .feature-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .spec-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 768px) {
+  .card-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .media {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--sp-2xl);
+  }
+
+  /* Puts the picture first without moving it in the document, so the reading
+     order for a screen reader stays text then image on every row. */
+  .media--reverse .media-figure {
+    order: -1;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-inner {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--sp-3xl);
+  }
+
+  .feature-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
