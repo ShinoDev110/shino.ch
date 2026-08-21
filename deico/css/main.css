@@ -861,3 +861,236 @@ a:hover {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
+
+/* --------------------------------------------------------------------------
+   14. Showroom gallery
+   -------------------------------------------------------------------------- */
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--sp-sm);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* A fixed square keeps the grid even despite the mix of portrait and
+   landscape originals. object-fit stops anything being distorted. */
+.gallery img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: var(--radius);
+  background: var(--bg-subtle);
+}
+
+/* --------------------------------------------------------------------------
+   15. Machine park
+   -------------------------------------------------------------------------- */
+
+.machine-list {
+  display: grid;
+  gap: var(--sp-3xl);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.machine h2 {
+  margin-bottom: var(--sp-md);
+  font-size: var(--fs-xl);
+}
+
+.machine-specs {
+  display: grid;
+  gap: var(--sp-xs);
+  margin: 0;
+}
+
+.machine-specs > div {
+  display: grid;
+  gap: var(--sp-2xs);
+  padding-block: var(--sp-xs);
+  border-top: 1px solid var(--border);
+}
+
+.machine-specs dt {
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+}
+
+.machine-specs dd {
+  margin: 0;
+  font-weight: 500;
+}
+
+.cax-head {
+  margin-top: var(--sp-4xl);
+  margin-bottom: var(--sp-lg);
+  font-size: var(--fs-xl);
+}
+
+/* --------------------------------------------------------------------------
+   16. Contact
+   -------------------------------------------------------------------------- */
+
+.contact-grid {
+  display: grid;
+  gap: var(--sp-3xl);
+}
+
+.contact-col h2 {
+  margin-bottom: var(--sp-md);
+  font-size: var(--fs-lg);
+}
+
+.contact-col h2 + * {
+  margin-bottom: var(--sp-2xl);
+}
+
+.people {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.people li + li {
+  margin-top: var(--sp-md);
+}
+
+.muted {
+  color: var(--text-muted);
+}
+
+.contact-dl {
+  margin: 0;
+}
+
+.contact-dl > div {
+  padding-block: var(--sp-sm);
+  border-top: 1px solid var(--border);
+}
+
+.contact-dl dt {
+  margin-bottom: var(--sp-2xs);
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+}
+
+.contact-dl dd {
+  margin: 0;
+}
+
+.contact-dl address {
+  font-style: normal;
+}
+
+/* --- Contact form -------------------------------------------------------- */
+
+.contact-form .field {
+  margin-bottom: var(--sp-md);
+}
+
+.contact-form label {
+  display: block;
+  margin-bottom: var(--sp-2xs);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: var(--sp-sm);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  background: var(--surface);
+  transition: border-color var(--transition);
+}
+
+.contact-form input:hover,
+.contact-form textarea:hover {
+  border-color: var(--n-400);
+}
+
+.contact-form textarea {
+  resize: vertical;
+  min-height: 8rem;
+}
+
+.req {
+  color: var(--brand-deep);
+}
+
+.form-privacy {
+  margin-bottom: var(--sp-lg);
+  font-size: var(--fs-sm);
+}
+
+/* The submit is deliberately inert: this is a visual mockup and must not
+   send. The adjacent notice explains why, so it does not read as a fault. */
+.contact-form button[disabled] {
+  background: var(--n-300);
+  color: var(--n-700);
+  cursor: not-allowed;
+}
+
+.contact-form button[disabled]:hover {
+  background: var(--n-300);
+  color: var(--n-700);
+}
+
+/* --------------------------------------------------------------------------
+   17. Prose, used by the two legal placeholder pages
+   -------------------------------------------------------------------------- */
+
+.prose {
+  max-width: 68ch;
+}
+
+.prose > * + * {
+  margin-top: var(--sp-md);
+}
+
+.prose h1 {
+  margin-bottom: var(--sp-lg);
+}
+
+.checklist {
+  margin: 0;
+  padding-left: var(--sp-lg);
+}
+
+.checklist li + li {
+  margin-top: var(--sp-xs);
+}
+
+/* --------------------------------------------------------------------------
+   18. Inner-page breakpoints
+   -------------------------------------------------------------------------- */
+
+@media (min-width: 600px) {
+  .gallery {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 768px) {
+  .contact-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--sp-3xl);
+  }
+
+  .machine-specs > div {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--sp-md);
+    align-items: baseline;
+  }
+}
+
+@media (min-width: 1024px) {
+  .gallery {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
