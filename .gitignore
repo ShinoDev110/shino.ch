@@ -3,3 +3,9 @@
 /httpRequests/
 /dataSources/
 /dataSources.local.xml
+
+# Client reference mirror (deico.ch wget mirror) - never publish
+/deicold/
+
+# Raw image originals - build input for deico/, must not deploy
+/deico/assets/_src/
