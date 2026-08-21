@@ -1,0 +1,112 @@
+/* ==========================================================================
+   tokens.css - design tokens for the deico AG site
+   Single source of truth for colour, type, spacing and layout.
+   Only custom properties live here. Nothing in this file selects an element.
+   ========================================================================== */
+
+:root {
+
+  /* --- Brand -------------------------------------------------------------
+     Sampled from deico's own A5 print flyers, not from the old website. The
+     old site's accent was a stock Jimdo template default and the logo carries
+     no hue at all, so the flyers were the only deliberate colour choice on
+     record. --brand clears WCAG AA on white at 4.76:1 but has no headroom
+     left, so --brand-deep (12.49:1) carries links and any small text.       */
+  --brand:      #5E61ED;
+  --brand-deep: #1B1D99;
+  --brand-tint: #EEEFFD;
+
+  /* --- Neutral scale ----------------------------------------------------- */
+  --n-0:   #FFFFFF;
+  --n-50:  #F7F7F8;
+  --n-100: #EDEDEF;
+  --n-200: #DCDCE0;
+  --n-300: #BFBFC6;
+  --n-400: #90909A;
+  --n-500: #6B6B75;
+  --n-600: #4E4E57;
+  --n-700: #35353C;
+  --n-800: #222227;
+  --n-900: #121215;
+
+  /* --- Semantic colour ---------------------------------------------------
+     Components reference these, never the raw scale above, so a palette
+     change stays a one-line edit.                                          */
+  --bg:            var(--n-0);
+  --bg-subtle:     var(--n-50);
+  --bg-invert:     var(--n-900);
+  --surface:       var(--n-0);
+  --text:          var(--n-800);
+  --text-muted:    var(--n-500);
+  --text-invert:   var(--n-0);
+  --border:        var(--n-200);
+  --border-strong: var(--n-300);
+  --link:          var(--brand-deep);
+  --link-hover:    var(--brand);
+  --focus:         var(--brand);
+
+  /* --- Type --------------------------------------------------------------
+     System stack for now. The old site used Roboto and Roboto Slab, both
+     Apache 2.0 and free to self-host, but the brief asks for no webfont
+     without a reason. Changing these two lines is the entire swap if the
+     brand turns out to need the exact faces.                               */
+  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-display: var(--font-sans);
+
+  /* Fluid scale. The minimum holds at 320px, the maximum lands near 1280px. */
+  --fs-xs:   0.8125rem;
+  --fs-sm:   0.9375rem;
+  --fs-base: clamp(1rem,     0.97rem + 0.15vw, 1.0625rem);
+  --fs-lg:   clamp(1.125rem, 1.06rem + 0.32vw, 1.25rem);
+  --fs-xl:   clamp(1.375rem, 1.21rem + 0.78vw, 1.75rem);
+  --fs-2xl:  clamp(1.75rem,  1.41rem + 1.70vw, 2.5rem);
+  --fs-3xl:  clamp(2.125rem, 1.60rem + 2.60vw, 3.25rem);
+
+  /* --- Spacing ----------------------------------------------------------- */
+  --sp-2xs: 0.25rem;
+  --sp-xs:  0.5rem;
+  --sp-sm:  0.75rem;
+  --sp-md:  1rem;
+  --sp-lg:  1.5rem;
+  --sp-xl:  2rem;
+  --sp-2xl: 3rem;
+  --sp-3xl: 4rem;
+  --sp-4xl: 6rem;
+
+  /* --- Layout ------------------------------------------------------------ */
+  --container-max: 72rem;
+  --container-pad: clamp(1rem, 4vw, 2rem);
+  --header-h: 3.75rem;
+  --logo-h: 1.75rem;
+  --tap: 2.75rem;               /* 44px, minimum comfortable touch target */
+
+  /* --- Shape and depth ---------------------------------------------------
+     Small radii on purpose. The subject is precision machining, so crisp
+     edges sit closer to the product than pill shapes do.                   */
+  --radius-sm: 2px;
+  --radius:    4px;
+  --radius-lg: 8px;
+  --shadow-md: 0 4px 16px rgb(18 18 21 / 0.10), 0 1px 3px rgb(18 18 21 / 0.06);
+
+  /* --- Motion ------------------------------------------------------------
+     Every transition in the stylesheet reads this token, which lets the
+     query below switch motion off globally without needing !important.     */
+  --transition: 150ms ease;
+
+  /* --- Stacking ---------------------------------------------------------- */
+  --z-header: 100;
+  --z-skip:   200;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --transition: 0ms;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --header-h: 4.5rem;
+    --logo-h: 2.125rem;
+  }
+}
