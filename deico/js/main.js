@@ -50,6 +50,17 @@
     }
   });
 
+  /* The contact form is a visual mockup and must never send. The disabled
+     submit button already blocks clicking and Enter without any script; this
+     also cancels a scripted submit, which would otherwise reload the page with
+     every typed value in the query string and so into history and server logs. */
+  var mockForm = document.querySelector('form[data-mockup]');
+  if (mockForm) {
+    mockForm.addEventListener('submit', function (event) {
+      event.preventDefault();
+    });
+  }
+
   /* A panel left open on a phone would otherwise persist after a rotate or a
      resize past the breakpoint, where the desktop nav is already showing. */
   var wide = window.matchMedia("(min-width: 768px)");
