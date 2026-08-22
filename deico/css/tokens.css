@@ -1,112 +1,144 @@
 /* ==========================================================================
-   tokens.css - design tokens for the deico AG site
-   Single source of truth for colour, type, spacing and layout.
-   Only custom properties live here. Nothing in this file selects an element.
+   tokens.css - design tokens for the "Axis Industrial" language
+
+   Values derived from the TemplateMo #619 reference in _reference/, then
+   adjusted where the original fails our own constraints (WCAG AA, 44px tap
+   targets, Deico's brand colour). Every deviation is commented inline.
+
+   Nothing here selects an element. Change the accent in one place and the
+   whole system follows.
    ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Fonts
+
+   Self-hosted, latin subset. Bunny Fonts and the Google CDN are both avoidable
+   third-party requests, and on a Swiss site the CDN is a DSG annoyance nobody
+   needs. Both faces are variable, so one file covers the whole weight range.
+   Space Grotesk and JetBrains Mono are SIL OFL.
+   -------------------------------------------------------------------------- */
+
+@font-face {
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url("../assets/fonts/space-grotesk-latin.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 100 800;
+  font-display: swap;
+  src: url("../assets/fonts/jetbrains-mono-latin.woff2") format("woff2");
+}
 
 :root {
 
-  /* --- Brand -------------------------------------------------------------
-     Sampled from deico's own A5 print flyers, not from the old website. The
-     old site's accent was a stock Jimdo template default and the logo carries
-     no hue at all, so the flyers were the only deliberate colour choice on
-     record. --brand clears WCAG AA on white at 4.76:1 but has no headroom
-     left, so --brand-deep (12.49:1) carries links and any small text.       */
-  --brand:      #5E61ED;
-  --brand-deep: #1B1D99;
-  --brand-tint: #EEEFFD;
+  /* --- Palette ----------------------------------------------------------
+     Roughly 90 percent neutral, 10 percent accent. The accent is meant to be
+     rationed: a shadow, a hovered nav item, one filled button per screen.    */
 
-  /* --- Neutral scale ----------------------------------------------------- */
-  --n-0:   #FFFFFF;
-  --n-50:  #F7F7F8;
-  --n-100: #EDEDEF;
-  --n-200: #DCDCE0;
-  --n-300: #BFBFC6;
-  --n-400: #90909A;
-  --n-500: #6B6B75;
-  --n-600: #4E4E57;
-  --n-700: #35353C;
-  --n-800: #222227;
-  --n-900: #121215;
+  --base:    #FFFFFF;
+  --ink:     #000000;
+  --surface: #F5F5F0;   /* warm off-white, straight from the reference */
 
-  /* --- Semantic colour ---------------------------------------------------
-     Components reference these, never the raw scale above, so a palette
-     change stays a one-line edit.                                          */
-  --bg:            var(--n-0);
-  --bg-subtle:     var(--n-50);
-  --bg-invert:     var(--n-900);
-  --surface:       var(--n-0);
-  --text:          var(--n-800);
-  --text-muted:    var(--n-500);
-  --text-invert:   var(--n-0);
-  --border:        var(--n-200);
-  --border-strong: var(--n-300);
-  --link:          var(--brand-deep);
-  --link-hover:    var(--brand);
-  --focus:         var(--brand);
+  /* The reference uses #888888 for muted text, which is 3.54:1 on white and
+     fails WCAG AA. Darkened to 5.33:1. */
+  --muted:   #6B6B6B;
 
-  /* --- Type --------------------------------------------------------------
-     System stack for now. The old site used Roboto and Roboto Slab, both
-     Apache 2.0 and free to self-host, but the brief asks for no webfont
-     without a reason. Changing these two lines is the entire swap if the
-     brand turns out to need the exact faces.                               */
-  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --font-display: var(--font-sans);
+  --line:      rgba(0, 0, 0, 0.12);
+  --line-solid: #D8D8D2;
 
-  /* Fluid scale. The minimum holds at 320px, the maximum lands near 1280px. */
-  --fs-xs:   0.8125rem;
-  --fs-sm:   0.9375rem;
-  --fs-base: clamp(1rem,     0.97rem + 0.15vw, 1.0625rem);
-  --fs-lg:   clamp(1.125rem, 1.06rem + 0.32vw, 1.25rem);
-  --fs-xl:   clamp(1.375rem, 1.21rem + 0.78vw, 1.75rem);
-  --fs-2xl:  clamp(1.75rem,  1.41rem + 1.70vw, 2.5rem);
-  --fs-3xl:  clamp(2.125rem, 1.60rem + 2.60vw, 3.25rem);
+  /* --- Accent -----------------------------------------------------------
+     The reference ships safety orange #FF3E00. Swapped for Deico's own
+     colour, sampled in the Phase 0 audit from their A5 print flyers. The
+     logo carries no hue at all and the old site's blue was a stock Jimdo
+     default, so the flyers were the only deliberate colour on record.
 
-  /* --- Spacing ----------------------------------------------------------- */
-  --sp-2xs: 0.25rem;
-  --sp-xs:  0.5rem;
-  --sp-sm:  0.75rem;
-  --sp-md:  1rem;
-  --sp-lg:  1.5rem;
-  --sp-xl:  2rem;
-  --sp-2xl: 3rem;
-  --sp-3xl: 4rem;
-  --sp-4xl: 6rem;
+     --accent is 4.76:1 on white: fine for large type and for white text on
+     top, but too tight for small text, and BLACK on --accent is only 4.41:1
+     and fails. Anything small or dark uses --accent-deep at 12.49:1.        */
 
-  /* --- Layout ------------------------------------------------------------ */
-  --container-max: 72rem;
-  --container-pad: clamp(1rem, 4vw, 2rem);
+  --accent:      #5E61ED;
+  --accent-deep: #1B1D99;
+  --accent-ink:  #FFFFFF;   /* the only text colour allowed on --accent */
+
+  /* --accent on black is 4.41:1 and fails AA for small text, which matters
+     because the footer, the image captions and the viewport widget all sit on
+     --ink. This lighter tint of the same hue reads 6.16:1 on black. Use it for
+     any accent-coloured TEXT on a dark surface; --accent stays correct for
+     fills, borders and shadows, where only 3:1 applies. */
+  --accent-on-dark: #7C7FF1;
+
+  /* --- Borders and shadows ----------------------------------------------
+     Hard edges, hard shadows, zero blur, zero radius. On hover the element
+     lifts up and left while the shadow grows, which is the reference's
+     signature move.                                                         */
+
+  --border:      4px solid var(--ink);
+  --border-thin: 2px solid var(--ink);
+  --border-hair: 1px solid var(--line);
+
+  --shadow:            8px 8px 0 var(--ink);
+  --shadow-lift:      12px 12px 0 var(--ink);
+  --shadow-accent:     8px 8px 0 var(--accent);
+  --shadow-accent-lift: 12px 12px 0 var(--accent);
+  --lift: translate(-4px, -4px);
+
+  --radius: 0;
+
+  /* --- Type -------------------------------------------------------------
+     The reference's --fs-body floor is 0.9rem (14.4px) and its --fs-micro is
+     0.62rem (9.9px). Both are raised here: 10px uppercase mono with 0.12em
+     tracking is unreadable, and body text should not start below 16px.      */
+
+  --font-display: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
+  --font-mono:    "JetBrains Mono", ui-monospace, Consolas, monospace;
+
+  --fs-hero:  clamp(2.75rem, 10vw, 8rem);
+  --fs-h1:    clamp(2.125rem, 5vw, 4.25rem);
+  --fs-h2:    clamp(1.5rem, 3vw, 2.625rem);
+  --fs-h3:    clamp(1.1875rem, 1.6vw, 1.5rem);
+  --fs-h4:    clamp(1.0625rem, 1.2vw, 1.1875rem);
+  --fs-h5:    1rem;
+  --fs-h6:    0.9375rem;
+  --fs-body:  clamp(1rem, 1.1vw, 1.125rem);
+  --fs-lede:  clamp(1.0625rem, 1.5vw, 1.375rem);
+  --fs-small: 0.875rem;
+  --fs-data:  clamp(0.8125rem, 0.9vw, 0.9375rem);
+  --fs-micro: 0.75rem;
+  --fs-stat:  clamp(2.25rem, 5vw, 4rem);
+
+  --track-display: -0.04em;
+  --track-mono:     0.12em;
+  --track-micro:    0.18em;
+
+  --lh-display: 0.98;
+  --lh-body:    1.6;
+
+  /* --- Space and layout -------------------------------------------------- */
+
+  --gap:       clamp(1rem, 2vw, 2rem);
+  --gutter:    clamp(1rem, 4vw, 3rem);
+  --section-y: clamp(3.5rem, 8vw, 7rem);
+  --container: 82rem;
+
+  /* The reference header is 44px tall, which cannot hold a 44px tap target
+     plus its border. Raised so the nav toggle meets the minimum. */
   --header-h: 3.75rem;
-  --logo-h: 1.75rem;
-  --tap: 2.75rem;               /* 44px, minimum comfortable touch target */
+  --tap: 2.75rem;
 
-  /* --- Shape and depth ---------------------------------------------------
-     Small radii on purpose. The subject is precision machining, so crisp
-     edges sit closer to the product than pill shapes do.                   */
-  --radius-sm: 2px;
-  --radius:    4px;
-  --radius-lg: 8px;
-  --shadow-md: 0 4px 16px rgb(18 18 21 / 0.10), 0 1px 3px rgb(18 18 21 / 0.06);
+  /* --- Locked image ratios ----------------------------------------------
+     Fixed so a grid row never goes ragged when photos of different native
+     ratios sit next to each other.                                          */
 
-  /* --- Motion ------------------------------------------------------------
-     Every transition in the stylesheet reads this token, which lets the
-     query below switch motion off globally without needing !important.     */
-  --transition: 150ms ease;
+  --ratio-hero:    16 / 9;
+  --ratio-machine:  4 / 3;
+  --ratio-detail:   1 / 1;
 
-  /* --- Stacking ---------------------------------------------------------- */
   --z-header: 100;
   --z-skip:   200;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  :root {
-    --transition: 0ms;
-  }
-}
-
-@media (min-width: 1024px) {
-  :root {
-    --header-h: 4.5rem;
-    --logo-h: 2.125rem;
-  }
+  --z-widget: 300;
 }

@@ -6,36 +6,43 @@
 <meta name="robots" content="noindex, nofollow">
 <title>Machine park | deico AG Präzisionsmechanik</title>
 <meta name="description" content="The deico AG machine park: CNC milling, CNC turning, grinding, sawing and metrology.">
+
 <link rel="alternate" hreflang="de-CH" href="../../de/maschinenpark/">
 <link rel="alternate" hreflang="fr-CH" href="../../fr/maschinenpark/">
 <link rel="alternate" hreflang="it-CH" href="../../it/maschinenpark/">
 <link rel="alternate" hreflang="en" href="../../en/maschinenpark/">
 <link rel="alternate" hreflang="x-default" href="../../de/maschinenpark/">
+
 <link rel="icon" href="../../favicon.ico" sizes="16x16 32x32 48x48">
 <link rel="icon" type="image/png" sizes="192x192" href="../../assets/icon/icon-192.png">
 <link rel="icon" type="image/png" sizes="512x512" href="../../assets/icon/icon-512.png">
 <link rel="apple-touch-icon" href="../../assets/icon/apple-touch-icon.png">
 <meta name="theme-color" content="#5E61ED">
-<link rel="stylesheet" href="../../css/reset.css">
-<link rel="stylesheet" href="../../css/tokens.css">
-<link rel="stylesheet" href="../../css/main.css">
-<script>document.documentElement.className="js";</script>
+
+<link rel="preload" as="font" type="font/woff2" href="../../assets/fonts/space-grotesk-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="../../assets/fonts/jetbrains-mono-latin.woff2" crossorigin>
+
+<link rel="stylesheet" href="../../css/reset.css?v=2">
+<link rel="stylesheet" href="../../css/tokens.css?v=2">
+<link rel="stylesheet" href="../../css/main.css?v=2">
+<script>document.documentElement.className = "js";</script>
 </head>
 <body>
+
 <a class="skip-link" href="#main">Skip to content</a>
 
-<header class="site-header">
-  <div class="container header-inner">
-    <a class="logo" href="../../en/" aria-label="deico AG Präzisionsmechanik, Home page">
-      <picture><source srcset="../../assets/logo/deico-logo-340.webp 340w, ../../assets/logo/deico-logo-680.webp 680w" sizes="(min-width: 1024px) 96px, 79px" type="image/webp"><img src="../../assets/logo/deico-logo-340.png" srcset="../../assets/logo/deico-logo-340.png 340w, ../../assets/logo/deico-logo-680.png 680w" sizes="(min-width: 1024px) 96px, 79px" width="340" height="120" alt="deico AG Präzisionsmechanik"></picture>
+<header class="head">
+  <div class="wrap head__in">
+    <a class="head__logo" href="../../en/" aria-label="deico AG Präzisionsmechanik, Home page">
+      <picture><source srcset="../../assets/logo/deico-logo-340.webp 340w, ../../assets/logo/deico-logo-680.webp 680w" sizes="(min-width: 1024px) 91px, 79px" type="image/webp"><img src="../../assets/logo/deico-logo-340.png" width="340" height="120" alt="deico AG Präzisionsmechanik"></picture>
     </a>
 
-    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
-      <span class="nav-toggle-bars"></span>
+    <button class="navtoggle" type="button" aria-expanded="false" aria-controls="nav">
+      <span class="navtoggle__bars"></span>
       <span class="visually-hidden">Menu</span>
     </button>
 
-    <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+    <nav class="nav" id="nav" aria-label="Main navigation">
       <ul>
         <li><a href="../../en/">Home</a></li>
         <li><a href="../../en/showroom/">Showroom</a></li>
@@ -58,19 +65,18 @@
 
 <main id="main">
   <section class="section">
-    <div class="container">
-      <div class="section-head">
-        <p class="eyebrow">Machine park</p>
-        <h1>Our machine park</h1>
-        <p class="lede">CNC milling and turning with robot automation, conventional machining, grinding, sawing and metrology under one roof.</p>
-      </div>
+    <div class="wrap">
+      <span class="label">Machine park</span>
+      <h1>Our machine park</h1>
+      <p class="hero__lede">CNC milling and turning with robot automation, conventional machining, grinding, sawing and metrology under one roof.</p>
 
-      <ul class="machine-list">
-        <li class="machine media">
-          <div class="media-text">
-            <h2>CNC 5-axis milling with robot automation</h2>
-            <dl class="machine-specs">
-              <div><dt>Type</dt><dd>Awea FCV-620</dd></div>
+      <ul class="cards mt-gap">
+        <li class="card">
+          <figure class="fig fig--card"><picture><source srcset="../../assets/img/maschine-awea-fcv620-480.webp 480w, ../../assets/img/maschine-awea-fcv620-768.webp 768w" sizes="(min-width: 768px) 30vw, calc(100vw - 2rem)" type="image/webp"><img src="../../assets/img/maschine-awea-fcv620-768.jpg" srcset="../../assets/img/maschine-awea-fcv620-480.jpg 480w, ../../assets/img/maschine-awea-fcv620-768.jpg 768w" sizes="(min-width: 768px) 30vw, calc(100vw - 2rem)" width="480" height="353" alt="Awea FCV-620 CNC 5-axis milling machine"></picture></figure>
+          <div class="card__body">
+            <span class="label">01 / CNC 5-axis milling with robot automation</span>
+            <h3 class="card__name">Awea FCV-620</h3>
+            <dl class="specs">
               <div><dt>Maximum travels (X × Y × Z)</dt><dd>635 x 535 x 460 mm</dd></div>
               <div><dt>Clamping area</dt><dd>Ø 500 / 650 mm</dd></div>
               <div><dt>Tool changer</dt><dd>60 tools</dd></div>
@@ -78,13 +84,13 @@
               <div><dt>Control</dt><dd>Heidenhain iTNC530 with glass scales</dd></div>
             </dl>
           </div>
-          <figure class="media-figure"><picture><source srcset="../../assets/img/maschine-awea-fcv620-480.webp 480w, ../../assets/img/maschine-awea-fcv620-768.webp 768w" sizes="(min-width: 768px) 520px, calc(100vw - 2rem)" type="image/webp"><img src="../../assets/img/maschine-awea-fcv620-480.jpg" srcset="../../assets/img/maschine-awea-fcv620-480.jpg 480w, ../../assets/img/maschine-awea-fcv620-768.jpg 768w" sizes="(min-width: 768px) 520px, calc(100vw - 2rem)" width="480" height="353" alt="Awea FCV-620 CNC 5-axis milling machine"></picture></figure>
         </li>
-        <li class="machine media media--reverse">
-          <div class="media-text">
-            <h2>CNC 3-axis milling with robot automation</h2>
-            <dl class="machine-specs">
-              <div><dt>Type</dt><dd>Emco E350</dd></div>
+        <li class="card">
+          <figure class="fig fig--card"><picture><source srcset="../../assets/img/maschine-emco-e350-480.webp 480w" sizes="(min-width: 768px) 30vw, calc(100vw - 2rem)" type="image/webp"><img src="../../assets/img/maschine-emco-e350-480.jpg" srcset="../../assets/img/maschine-emco-e350-480.jpg 480w" sizes="(min-width: 768px) 30vw, calc(100vw - 2rem)" width="480" height="360" loading="lazy" decoding="async" alt="Emco E350 CNC 3-axis milling machine"></picture></figure>
+          <div class="card__body">
+            <span class="label">02 / CNC 3-axis milling with robot automation</span>
+            <h3 class="card__name">Emco E350</h3>
+            <dl class="specs">
               <div><dt>Maximum travels (X × Y × Z)</dt><dd>350 x 250 x 300 mm</dd></div>
               <div><dt>Clamping area</dt><dd>Ø 520 / 300 mm</dd></div>
               <div><dt>Tool changer</dt><dd>20 tools</dd></div>
@@ -92,13 +98,13 @@
               <div><dt>Control</dt><dd>Siemens</dd></div>
             </dl>
           </div>
-          <figure class="media-figure"><picture><source srcset="../../assets/img/maschine-emco-e350-480.webp 480w" sizes="(min-width: 768px) 520px, calc(100vw - 2rem)" type="image/webp"><img src="../../assets/img/maschine-emco-e350-480.jpg" srcset="../../assets/img/maschine-emco-e350-480.jpg 480w" sizes="(min-width: 768px) 520px, calc(100vw - 2rem)" width="480" height="360" loading="lazy" decoding="async" alt="Emco E350 CNC 3-axis milling machine"></picture></figure>
         </li>
-        <li class="machine media">
-          <div class="media-text">
-            <h2>CNC turning with robot automation</h2>
-            <dl class="machine-specs">
-              <div><dt>Type</dt><dd>Nakamura-Tome AS200LMYS</dd></div>
+        <li class="card">
+          <figure class="fig fig--card"><picture><source srcset="../../assets/img/maschine-nakamura-as200-480.webp 480w, ../../assets/img/maschine-nakamura-as200-768.webp 768w" sizes="(min-width: 768px) 30vw, calc(100vw - 2rem)" type="image/webp"><img src="../../assets/img/maschine-nakamura-as200-768.jpg" srcset="../../assets/img/maschine-nakamura-as200-480.jpg 480w, ../../assets/img/maschine-nakamura-as200-768.jpg 768w" sizes="(min-width: 768px) 30vw, calc(100vw - 2rem)" width="480" height="349" loading="lazy" decoding="async" alt="CAD model of the CNC lathe with robot automation"></picture></figure>
+          <div class="card__body">
+            <span class="label">03 / CNC turning with robot automation</span>
+            <h3 class="card__name">Nakamura-Tome AS200LMYS</h3>
+            <dl class="specs">
               <div><dt>Turning diameter</dt><dd>max. 340 mm</dd></div>
               <div><dt>Bar capacity</dt><dd>65 mm</dd></div>
               <div><dt>Distance between centres</dt><dd>800 mm</dd></div>
@@ -108,106 +114,102 @@
               <div><dt>Special features</dt><dd>Y axis, sub-spindle and driven tools (milling function)</dd></div>
             </dl>
           </div>
-          <figure class="media-figure"><picture><source srcset="../../assets/img/maschine-nakamura-as200-480.webp 480w, ../../assets/img/maschine-nakamura-as200-768.webp 768w" sizes="(min-width: 768px) 520px, calc(100vw - 2rem)" type="image/webp"><img src="../../assets/img/maschine-nakamura-as200-480.jpg" srcset="../../assets/img/maschine-nakamura-as200-480.jpg 480w, ../../assets/img/maschine-nakamura-as200-768.jpg 768w" sizes="(min-width: 768px) 520px, calc(100vw - 2rem)" width="480" height="349" loading="lazy" decoding="async" alt="CAD model of the CNC lathe with robot automation"></picture></figure>
         </li>
-        <li class="machine media media--reverse">
-          <div class="media-text">
-            <h2>CNC turning</h2>
-            <dl class="machine-specs">
-              <div><dt>Type</dt><dd>XYZ Proturn 350</dd></div>
+        <li class="card">
+          <figure class="fig fig--card"><picture><source srcset="../../assets/img/maschine-xyz-proturn-350-480.webp 480w, ../../assets/img/maschine-xyz-proturn-350-768.webp 768w" sizes="(min-width: 768px) 30vw, calc(100vw - 2rem)" type="image/webp"><img src="../../assets/img/maschine-xyz-proturn-350-768.jpg" srcset="../../assets/img/maschine-xyz-proturn-350-480.jpg 480w, ../../assets/img/maschine-xyz-proturn-350-768.jpg 768w" sizes="(min-width: 768px) 30vw, calc(100vw - 2rem)" width="480" height="360" loading="lazy" decoding="async" alt="XYZ Proturn 350 lathe turning a shaft with a steady rest"></picture></figure>
+          <div class="card__body">
+            <span class="label">04 / CNC turning</span>
+            <h3 class="card__name">XYZ Proturn 350</h3>
+            <dl class="specs">
               <div><dt>Turning diameter over the carriage</dt><dd>190 mm</dd></div>
               <div><dt>Turning diameter over the bed</dt><dd>350 mm</dd></div>
               <div><dt>Bar capacity</dt><dd>53 mm</dd></div>
               <div><dt>Distance between centres</dt><dd>1000 mm</dd></div>
             </dl>
           </div>
-          <figure class="media-figure"><picture><source srcset="../../assets/img/maschine-xyz-proturn-350-480.webp 480w, ../../assets/img/maschine-xyz-proturn-350-768.webp 768w" sizes="(min-width: 768px) 520px, calc(100vw - 2rem)" type="image/webp"><img src="../../assets/img/maschine-xyz-proturn-350-480.jpg" srcset="../../assets/img/maschine-xyz-proturn-350-480.jpg 480w, ../../assets/img/maschine-xyz-proturn-350-768.jpg 768w" sizes="(min-width: 768px) 520px, calc(100vw - 2rem)" width="480" height="360" loading="lazy" decoding="async" alt="XYZ Proturn 350 lathe turning a shaft with a steady rest"></picture></figure>
         </li>
-        <li class="machine media">
-          <div class="media-text">
-            <h2>CNC 3-axis milling</h2>
-            <dl class="machine-specs">
-              <div><dt>Type</dt><dd>Mikron WF40C Retrofit</dd></div>
+        <li class="card">
+          <figure class="fig fig--card"><picture><source srcset="../../assets/img/maschine-mikron-wf40c-480.webp 480w, ../../assets/img/maschine-mikron-wf40c-768.webp 768w" sizes="(min-width: 768px) 30vw, calc(100vw - 2rem)" type="image/webp"><img src="../../assets/img/maschine-mikron-wf40c-768.jpg" srcset="../../assets/img/maschine-mikron-wf40c-480.jpg 480w, ../../assets/img/maschine-mikron-wf40c-768.jpg 768w" sizes="(min-width: 768px) 30vw, calc(100vw - 2rem)" width="480" height="356" loading="lazy" decoding="async" alt="Mikron WF40C milling machine in the workshop"></picture></figure>
+          <div class="card__body">
+            <span class="label">05 / CNC 3-axis milling</span>
+            <h3 class="card__name">Mikron WF40C Retrofit</h3>
+            <dl class="specs">
               <div><dt>Maximum travels (X × Y × Z)</dt><dd>585 x 585 x 480 mm</dd></div>
               <div><dt>Clamping area</dt><dd>550 x 900 mm</dd></div>
               <div><dt>Special features</dt><dd>4th axis</dd></div>
             </dl>
           </div>
-          <figure class="media-figure"><picture><source srcset="../../assets/img/maschine-mikron-wf40c-480.webp 480w, ../../assets/img/maschine-mikron-wf40c-768.webp 768w" sizes="(min-width: 768px) 520px, calc(100vw - 2rem)" type="image/webp"><img src="../../assets/img/maschine-mikron-wf40c-480.jpg" srcset="../../assets/img/maschine-mikron-wf40c-480.jpg 480w, ../../assets/img/maschine-mikron-wf40c-768.jpg 768w" sizes="(min-width: 768px) 520px, calc(100vw - 2rem)" width="480" height="356" loading="lazy" decoding="async" alt="Mikron WF40C milling machine in the workshop"></picture></figure>
         </li>
-        <li class="machine media media--reverse">
-          <div class="media-text">
-            <h2>Conventional milling</h2>
-            <dl class="machine-specs">
+        <li class="card">
+          <figure class="fig fig--card"><picture><source srcset="../../assets/img/maschine-fraesen-konventionell-480.webp 480w, ../../assets/img/maschine-fraesen-konventionell-768.webp 768w" sizes="(min-width: 768px) 30vw, calc(100vw - 2rem)" type="image/webp"><img src="../../assets/img/maschine-fraesen-konventionell-768.jpg" srcset="../../assets/img/maschine-fraesen-konventionell-480.jpg 480w, ../../assets/img/maschine-fraesen-konventionell-768.jpg 768w" sizes="(min-width: 768px) 30vw, calc(100vw - 2rem)" width="480" height="386" loading="lazy" decoding="async" alt="Conventional milling machine in the workshop"></picture></figure>
+          <div class="card__body">
+            <span class="label">06 / Conventional milling</span>
+            <h3 class="card__name">Conventional milling</h3>
+            <dl class="specs">
               <div><dt>Maximum travels (X × Y × Z)</dt><dd>250 x 400 x 400 mm</dd></div>
               <div><dt>Clamping area</dt><dd>300 x 600 mm</dd></div>
             </dl>
           </div>
-          <figure class="media-figure"><picture><source srcset="../../assets/img/maschine-fraesen-konventionell-480.webp 480w, ../../assets/img/maschine-fraesen-konventionell-768.webp 768w" sizes="(min-width: 768px) 520px, calc(100vw - 2rem)" type="image/webp"><img src="../../assets/img/maschine-fraesen-konventionell-480.jpg" srcset="../../assets/img/maschine-fraesen-konventionell-480.jpg 480w, ../../assets/img/maschine-fraesen-konventionell-768.jpg 768w" sizes="(min-width: 768px) 520px, calc(100vw - 2rem)" width="480" height="386" loading="lazy" decoding="async" alt="Conventional milling machine in the workshop"></picture></figure>
         </li>
-        <li class="machine media">
-          <div class="media-text">
-            <h2>Conventional surface grinding</h2>
-            <dl class="machine-specs">
+        <li class="card">
+          <figure class="fig fig--card"><picture><source srcset="../../assets/img/maschine-flachschleifen-480.webp 480w, ../../assets/img/maschine-flachschleifen-768.webp 768w" sizes="(min-width: 768px) 30vw, calc(100vw - 2rem)" type="image/webp"><img src="../../assets/img/maschine-flachschleifen-768.jpg" srcset="../../assets/img/maschine-flachschleifen-480.jpg 480w, ../../assets/img/maschine-flachschleifen-768.jpg 768w" sizes="(min-width: 768px) 30vw, calc(100vw - 2rem)" width="480" height="482" loading="lazy" decoding="async" alt="Conventional surface grinding machine"></picture></figure>
+          <div class="card__body">
+            <span class="label">07 / Conventional surface grinding</span>
+            <h3 class="card__name">Conventional surface grinding</h3>
+            <dl class="specs">
               <div><dt>Working area with magnetic chuck</dt><dd>300 x 150 mm</dd></div>
               <div><dt>Maximum travels (X × Y × Z)</dt><dd>X = 400 mm, Y = 160 mm</dd></div>
               <div><dt>Maximum distance between table and grinding spindle</dt><dd>400 mm</dd></div>
               <div><dt>Maximum workpiece weight</dt><dd>45 kg</dd></div>
             </dl>
           </div>
-          <figure class="media-figure"><picture><source srcset="../../assets/img/maschine-flachschleifen-480.webp 480w, ../../assets/img/maschine-flachschleifen-768.webp 768w" sizes="(min-width: 768px) 520px, calc(100vw - 2rem)" type="image/webp"><img src="../../assets/img/maschine-flachschleifen-480.jpg" srcset="../../assets/img/maschine-flachschleifen-480.jpg 480w, ../../assets/img/maschine-flachschleifen-768.jpg 768w" sizes="(min-width: 768px) 520px, calc(100vw - 2rem)" width="480" height="482" loading="lazy" decoding="async" alt="Conventional surface grinding machine"></picture></figure>
         </li>
-        <li class="machine media media--reverse">
-          <div class="media-text">
-            <h2>Sawing</h2>
-            <dl class="machine-specs">
+        <li class="card">
+          <figure class="fig fig--card"><picture><source srcset="../../assets/img/maschine-saege-480.webp 480w, ../../assets/img/maschine-saege-768.webp 768w" sizes="(min-width: 768px) 30vw, calc(100vw - 2rem)" type="image/webp"><img src="../../assets/img/maschine-saege-768.jpg" srcset="../../assets/img/maschine-saege-480.jpg 480w, ../../assets/img/maschine-saege-768.jpg 768w" sizes="(min-width: 768px) 30vw, calc(100vw - 2rem)" width="480" height="320" loading="lazy" decoding="async" alt="Saw cutting bar stock"></picture></figure>
+          <div class="card__body">
+            <span class="label">08 / Sawing</span>
+            <h3 class="card__name">Sawing</h3>
+            <dl class="specs">
               <div><dt>Round</dt><dd>270 mm</dd></div>
               <div><dt>Square</dt><dd>270 x 270 mm</dd></div>
               <div><dt>Rectangular</dt><dd>300 x 250 mm</dd></div>
             </dl>
           </div>
-          <figure class="media-figure"><picture><source srcset="../../assets/img/maschine-saege-480.webp 480w, ../../assets/img/maschine-saege-768.webp 768w" sizes="(min-width: 768px) 520px, calc(100vw - 2rem)" type="image/webp"><img src="../../assets/img/maschine-saege-480.jpg" srcset="../../assets/img/maschine-saege-480.jpg 480w, ../../assets/img/maschine-saege-768.jpg 768w" sizes="(min-width: 768px) 520px, calc(100vw - 2rem)" width="480" height="320" loading="lazy" decoding="async" alt="Saw cutting bar stock"></picture></figure>
         </li>
-        <li class="machine media">
-          <div class="media-text">
-            <h2>Measuring station with height gauge</h2>
-            <dl class="machine-specs">
-              <div><dt>Type</dt><dd>2D</dd></div>
+        <li class="card">
+          <figure class="fig fig--card"><picture><source srcset="../../assets/img/maschine-messplatz-micro-hite-480.webp 480w, ../../assets/img/maschine-messplatz-micro-hite-768.webp 768w" sizes="(min-width: 768px) 30vw, calc(100vw - 2rem)" type="image/webp"><img src="../../assets/img/maschine-messplatz-micro-hite-768.jpg" srcset="../../assets/img/maschine-messplatz-micro-hite-480.jpg 480w, ../../assets/img/maschine-messplatz-micro-hite-768.jpg 768w" sizes="(min-width: 768px) 30vw, calc(100vw - 2rem)" width="480" height="433" loading="lazy" decoding="async" alt="Micro-Hite height gauge measuring a shaft"></picture></figure>
+          <div class="card__body">
+            <span class="label">09 / Measuring station with height gauge</span>
+            <h3 class="card__name">2D</h3>
+            <dl class="specs">
               <div><dt>Measuring range</dt><dd>770 mm</dd></div>
               <div><dt>Maximum permissible error</dt><dd>2 + 2L/1000 µm</dd></div>
               <div><dt>Repeatability</dt><dd>≤ 1 µm</dd></div>
             </dl>
           </div>
-          <figure class="media-figure"><picture><source srcset="../../assets/img/maschine-messplatz-micro-hite-480.webp 480w, ../../assets/img/maschine-messplatz-micro-hite-768.webp 768w" sizes="(min-width: 768px) 520px, calc(100vw - 2rem)" type="image/webp"><img src="../../assets/img/maschine-messplatz-micro-hite-480.jpg" srcset="../../assets/img/maschine-messplatz-micro-hite-480.jpg 480w, ../../assets/img/maschine-messplatz-micro-hite-768.jpg 768w" sizes="(min-width: 768px) 520px, calc(100vw - 2rem)" width="480" height="433" loading="lazy" decoding="async" alt="Micro-Hite height gauge measuring a shaft"></picture></figure>
         </li>
       </ul>
 
-      <h2 class="cax-head">CAD, CAM and FEM</h2>
-      <dl class="spec-list">
-        <div><dt>CAD</dt><dd>Autodesk Inventor</dd></div>
-        <div><dt>FEM</dt><dd>Autodesk Inventor Nastran</dd></div>
-        <div><dt>CAM</dt><dd>Autodesk Inventor HSM</dd></div>
-      </dl>
+      <h2 class="mt-gap">CAD, CAM and FEM</h2>
+      <div class="bento mt-gap">
+        <div class="bento__item bento__item--w4"><span class="label">CAD</span><p class="data data--body">Autodesk Inventor</p></div>
+        <div class="bento__item bento__item--w4"><span class="label">FEM</span><p class="data data--body">Autodesk Inventor Nastran</p></div>
+        <div class="bento__item bento__item--w4"><span class="label">CAM</span><p class="data data--body">Autodesk Inventor HSM</p></div>
+      </div>
     </div>
   </section>
 </main>
 
-<footer class="site-footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-col">
-        <h2 class="footer-title">deico AG</h2>
-        <address class="footer-address">
-          Huebstrasse 24<br>
-          8636 Wald<br>
-          Switzerland
-        </address>
-        <p><a href="tel:+41555355550">+41 55 535 55 50</a><br>
-           <a href="mailto:mail@deico.ch">mail@deico.ch</a></p>
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__grid">
+      <div>
+        <p class="foot__title">deico AG</p>
+        <address>Huebstrasse 24<br>8636 Wald<br>Switzerland</address>
+        <p class="mt-1"><a href="tel:+41555355550">+41 55 535 55 50</a><br><a href="mailto:mail@deico.ch">mail@deico.ch</a></p>
       </div>
-
-      <nav class="footer-col" aria-label="Navigation">
-        <h2 class="footer-title">Navigation</h2>
+      <nav aria-label="Navigation">
+        <p class="foot__title">Navigation</p>
         <ul>
           <li><a href="../../en/">Home</a></li>
           <li><a href="../../en/showroom/">Showroom</a></li>
@@ -215,23 +217,21 @@
           <li><a href="../../en/kontakt/">Contact</a></li>
         </ul>
       </nav>
-
-      <nav class="footer-col" aria-label="Legal">
-        <h2 class="footer-title">Legal</h2>
+      <nav aria-label="Legal">
+        <p class="foot__title">Legal</p>
         <ul>
           <li><a href="../../en/impressum/">Legal notice</a></li>
           <li><a href="../../en/datenschutz/">Privacy policy</a></li>
         </ul>
       </nav>
     </div>
-
-    <div class="footer-bottom">
+    <div class="foot__bottom">
       <p>&copy; 2026 deico AG</p>
       <p>Preview. Not the official deico AG website.</p>
     </div>
   </div>
 </footer>
 
-<script src="../../js/main.js" defer></script>
+<script src="../../js/main.js?v=2" defer></script>
 </body>
 </html>

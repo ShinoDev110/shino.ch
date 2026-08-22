@@ -6,36 +6,43 @@
 <meta name="robots" content="noindex, nofollow">
 <title>Contact | deico AG Präzisionsmechanik</title>
 <meta name="description" content="Contact deico AG mécanique de précision à Wald, Oberland zurichois.">
+
 <link rel="alternate" hreflang="de-CH" href="../../de/kontakt/">
 <link rel="alternate" hreflang="fr-CH" href="../../fr/kontakt/">
 <link rel="alternate" hreflang="it-CH" href="../../it/kontakt/">
 <link rel="alternate" hreflang="en" href="../../en/kontakt/">
 <link rel="alternate" hreflang="x-default" href="../../de/kontakt/">
+
 <link rel="icon" href="../../favicon.ico" sizes="16x16 32x32 48x48">
 <link rel="icon" type="image/png" sizes="192x192" href="../../assets/icon/icon-192.png">
 <link rel="icon" type="image/png" sizes="512x512" href="../../assets/icon/icon-512.png">
 <link rel="apple-touch-icon" href="../../assets/icon/apple-touch-icon.png">
 <meta name="theme-color" content="#5E61ED">
-<link rel="stylesheet" href="../../css/reset.css">
-<link rel="stylesheet" href="../../css/tokens.css">
-<link rel="stylesheet" href="../../css/main.css">
-<script>document.documentElement.className="js";</script>
+
+<link rel="preload" as="font" type="font/woff2" href="../../assets/fonts/space-grotesk-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="../../assets/fonts/jetbrains-mono-latin.woff2" crossorigin>
+
+<link rel="stylesheet" href="../../css/reset.css?v=2">
+<link rel="stylesheet" href="../../css/tokens.css?v=2">
+<link rel="stylesheet" href="../../css/main.css?v=2">
+<script>document.documentElement.className = "js";</script>
 </head>
 <body>
+
 <a class="skip-link" href="#main">Aller au contenu</a>
 
-<header class="site-header">
-  <div class="container header-inner">
-    <a class="logo" href="../../fr/" aria-label="deico AG Präzisionsmechanik, Page d'accueil">
-      <picture><source srcset="../../assets/logo/deico-logo-340.webp 340w, ../../assets/logo/deico-logo-680.webp 680w" sizes="(min-width: 1024px) 96px, 79px" type="image/webp"><img src="../../assets/logo/deico-logo-340.png" srcset="../../assets/logo/deico-logo-340.png 340w, ../../assets/logo/deico-logo-680.png 680w" sizes="(min-width: 1024px) 96px, 79px" width="340" height="120" alt="deico AG Präzisionsmechanik"></picture>
+<header class="head">
+  <div class="wrap head__in">
+    <a class="head__logo" href="../../fr/" aria-label="deico AG Präzisionsmechanik, Page d'accueil">
+      <picture><source srcset="../../assets/logo/deico-logo-340.webp 340w, ../../assets/logo/deico-logo-680.webp 680w" sizes="(min-width: 1024px) 91px, 79px" type="image/webp"><img src="../../assets/logo/deico-logo-340.png" width="340" height="120" alt="deico AG Präzisionsmechanik"></picture>
     </a>
 
-    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
-      <span class="nav-toggle-bars"></span>
+    <button class="navtoggle" type="button" aria-expanded="false" aria-controls="nav">
+      <span class="navtoggle__bars"></span>
       <span class="visually-hidden">Menu</span>
     </button>
 
-    <nav class="site-nav" id="site-nav" aria-label="Navigation principale">
+    <nav class="nav" id="nav" aria-label="Navigation principale">
       <ul>
         <li><a href="../../fr/">Accueil</a></li>
         <li><a href="../../fr/showroom/">Showroom</a></li>
@@ -58,80 +65,65 @@
 
 <main id="main">
   <section class="section">
-    <div class="container">
-      <div class="section-head">
-        <p class="eyebrow">Contact</p>
-        <h1>Nous nous réjouissons de votre demande</h1>
-        <p class="lede">Envoyez-nous vos données 3D ou votre plan et nous vous établirons une offre sans engagement.</p>
-      </div>
+    <div class="wrap">
+      <span class="label">Contact</span>
+      <h1>Nous nous réjouissons de votre demande</h1>
+      <p class="hero__lede">Envoyez-nous vos données 3D ou votre plan et nous vous établirons une offre sans engagement.</p>
 
-      <div class="contact-grid">
-        <div class="contact-col">
-          <h2>Interlocuteurs</h2>
-          <ul class="people">
-            <li><strong>Daniel Eicher</strong><br><span class="muted">Dipl. Ing. FH, directeur</span></li>
-            <li><strong>Matthias Eicher</strong><br><span class="muted">Dipl. Ing. FH, directeur adjoint</span></li>
-          </ul>
-
-          <h2>Comment nous joindre</h2>
-          <dl class="contact-dl">
-            <div><dt>Téléphone</dt><dd><a href="tel:+41555355550">+41 55 535 55 50</a> <span class="muted">(allemand et anglais)</span></dd></div>
-            <div><dt>E-mail</dt><dd><a href="mailto:mail@deico.ch">mail@deico.ch</a> <span class="muted">(allemand et anglais)</span></dd></div>
-          </dl>
-
-          <h2>Adresses</h2>
-          <dl class="contact-dl">
-            <div><dt>Adresse de livraison et atelier</dt><dd><address>deico AG<br>Huebstrasse 25<br>CH-8636 Wald</address></dd></div>
-            <div><dt>Adresse de facturation</dt><dd><address>deico AG<br>Huebstrasse 24<br>CH-8636 Wald</address></dd></div>
-            <div><dt>Numéro de TVA</dt><dd>CHE-432.738.804 MWST</dd></div>
-          </dl>
+      <div class="contact mt-gap">
+        <div class="contact__col">
+          <dl class="contact__row"><dt>Adresse de facturation</dt><dd><address>deico AG<br>Huebstrasse 24<br>CH-8636 Wald</address></dd></dl>
+          <dl class="contact__row"><dt>Adresse de livraison et atelier</dt><dd><address>deico AG<br>Huebstrasse 25<br>CH-8636 Wald</address></dd></dl>
+          <dl class="contact__row"><dt>Numéro de TVA</dt><dd>CHE-432.738.804 MWST</dd></dl>
         </div>
-
-        <div class="contact-col">
-          <h2>Formulaire de contact</h2>
-          <p class="notice" id="form-note">Ce formulaire est une maquette destinée à la validation et n'envoie rien. Merci d'utiliser le téléphone ou l'e-mail en attendant.</p>
-          <form class="contact-form" data-mockup="true" aria-describedby="form-note">
-            <div class="field">
-              <label for="f-company">Entreprise <span class="req" title="Champ obligatoire">*</span></label>
-              <input id="f-company" name="company" type="text" autocomplete="organization" required>
-            </div>
-            <div class="field">
-              <label for="f-name">Nom <span class="req" title="Champ obligatoire">*</span></label>
-              <input id="f-name" name="name" type="text" autocomplete="name" required>
-            </div>
-            <div class="field">
-              <label for="f-email">E-mail <span class="req" title="Champ obligatoire">*</span></label>
-              <input id="f-email" name="email" type="email" autocomplete="email" required>
-            </div>
-            <div class="field">
-              <label for="f-message">Message <span class="req" title="Champ obligatoire">*</span></label>
-              <textarea id="f-message" name="message" rows="6" required></textarea>
-            </div>
-            <p class="form-privacy"><a href="../../fr/datenschutz/">La politique de confidentialité s'applique.</a></p>
-            <button class="btn btn--primary" type="submit" disabled>Envoyer le message</button>
-          </form>
+        <div class="contact__col">
+          <dl class="contact__row"><dt>Téléphone (allemand et anglais)</dt><dd><a href="tel:+41555355550">+41 55 535 55 50</a></dd></dl>
+          <dl class="contact__row"><dt>E-mail</dt><dd><a href="mailto:mail@deico.ch">mail@deico.ch</a></dd></dl>
+          <dl class="contact__row"><dt>Interlocuteurs</dt><dd>
+            <ul class="people">
+              <li><strong>Daniel Eicher</strong><br><span class="data">Dipl. Ing. FH, directeur</span></li>
+              <li><strong>Matthias Eicher</strong><br><span class="data">Dipl. Ing. FH, directeur adjoint</span></li>
+            </ul>
+          </dd></dl>
         </div>
       </div>
+
+      <h2 class="mt-gap">Formulaire de contact</h2>
+      <p class="notice mt-gap" id="form-note">Ce formulaire est une maquette destinée à la validation et n'envoie rien. Merci d'utiliser le téléphone ou l'e-mail en attendant.</p>
+      <form class="form mt-gap" data-mockup="true" aria-describedby="form-note">
+        <div class="form__field">
+          <label for="f-company">Entreprise <span class="form__req" title="Champ obligatoire">*</span></label>
+          <input id="f-company" name="company" type="text" autocomplete="organization" required>
+        </div>
+        <div class="form__field">
+          <label for="f-name">Nom <span class="form__req" title="Champ obligatoire">*</span></label>
+          <input id="f-name" name="name" type="text" autocomplete="name" required>
+        </div>
+        <div class="form__field">
+          <label for="f-email">E-mail <span class="form__req" title="Champ obligatoire">*</span></label>
+          <input id="f-email" name="email" type="email" autocomplete="email" required>
+        </div>
+        <div class="form__field">
+          <label for="f-message">Message <span class="form__req" title="Champ obligatoire">*</span></label>
+          <textarea id="f-message" name="message" rows="6" required></textarea>
+        </div>
+        <p class="form__privacy"><a href="../../fr/datenschutz/">La politique de confidentialité s'applique.</a></p>
+        <button class="btn btn--primary" type="submit" disabled>Envoyer le message</button>
+      </form>
     </div>
   </section>
 </main>
 
-<footer class="site-footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-col">
-        <h2 class="footer-title">deico AG</h2>
-        <address class="footer-address">
-          Huebstrasse 24<br>
-          8636 Wald<br>
-          Suisse
-        </address>
-        <p><a href="tel:+41555355550">+41 55 535 55 50</a><br>
-           <a href="mailto:mail@deico.ch">mail@deico.ch</a></p>
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__grid">
+      <div>
+        <p class="foot__title">deico AG</p>
+        <address>Huebstrasse 24<br>8636 Wald<br>Suisse</address>
+        <p class="mt-1"><a href="tel:+41555355550">+41 55 535 55 50</a><br><a href="mailto:mail@deico.ch">mail@deico.ch</a></p>
       </div>
-
-      <nav class="footer-col" aria-label="Navigation">
-        <h2 class="footer-title">Navigation</h2>
+      <nav aria-label="Navigation">
+        <p class="foot__title">Navigation</p>
         <ul>
           <li><a href="../../fr/">Accueil</a></li>
           <li><a href="../../fr/showroom/">Showroom</a></li>
@@ -139,23 +131,21 @@
           <li><a href="../../fr/kontakt/">Contact</a></li>
         </ul>
       </nav>
-
-      <nav class="footer-col" aria-label="Informations légales">
-        <h2 class="footer-title">Informations légales</h2>
+      <nav aria-label="Informations légales">
+        <p class="foot__title">Informations légales</p>
         <ul>
           <li><a href="../../fr/impressum/">Mentions légales</a></li>
           <li><a href="../../fr/datenschutz/">Politique de confidentialité</a></li>
         </ul>
       </nav>
     </div>
-
-    <div class="footer-bottom">
+    <div class="foot__bottom">
       <p>&copy; 2026 deico AG</p>
       <p>Aperçu. Ceci n'est pas le site officiel de deico AG.</p>
     </div>
   </div>
 </footer>
 
-<script src="../../js/main.js" defer></script>
+<script src="../../js/main.js?v=2" defer></script>
 </body>
 </html>

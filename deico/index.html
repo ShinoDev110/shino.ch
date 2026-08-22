@@ -23,34 +23,35 @@
 <link rel="apple-touch-icon" href="./assets/icon/apple-touch-icon.png">
 <meta name="theme-color" content="#5E61ED">
 
-<link rel="stylesheet" href="./css/reset.css">
-<link rel="stylesheet" href="./css/tokens.css">
-<link rel="stylesheet" href="./css/main.css">
-<script>document.documentElement.className="js";</script>
+<link rel="preload" as="font" type="font/woff2" href="./assets/fonts/space-grotesk-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="./assets/fonts/jetbrains-mono-latin.woff2" crossorigin>
+
+<link rel="stylesheet" href="./css/reset.css?v=2">
+<link rel="stylesheet" href="./css/tokens.css?v=2">
+<link rel="stylesheet" href="./css/main.css?v=2">
+<script>document.documentElement.className = "js";</script>
 </head>
 <body>
 
 <main id="main" class="section">
-  <div class="container">
-    <div class="gate stack-lg">
+  <div class="wrap">
+    <div class="gate">
 
       <picture>
         <source srcset="./assets/logo/deico-logo-340.webp 340w, ./assets/logo/deico-logo-680.webp 680w" sizes="125px" type="image/webp">
-        <img class="gate-logo" src="./assets/logo/deico-logo-340.png" srcset="./assets/logo/deico-logo-340.png 340w, ./assets/logo/deico-logo-680.png 680w" sizes="125px" width="340" height="120" alt="deico AG Präzisionsmechanik">
+        <img class="gate__logo" src="./assets/logo/deico-logo-340.png" width="340" height="120" alt="deico AG Präzisionsmechanik">
       </picture>
 
       <h1>deico AG Präzisionsmechanik</h1>
 
-      <p class="lede">
-        Sprache wählen<span aria-hidden="true"> · </span>Choisir la langue<span aria-hidden="true"> · </span>Scegli la lingua<span aria-hidden="true"> · </span>Choose your language
-      </p>
+      <p class="label label--ink">Sprache wählen<span aria-hidden="true"> &middot; </span>Choisir la langue<span aria-hidden="true"> &middot; </span>Scegli la lingua<span aria-hidden="true"> &middot; </span>Choose your language</p>
 
       <nav aria-label="Sprache wählen">
-        <ul class="choice-list">
-          <li><a class="btn btn--ghost" href="./de/" hreflang="de-CH" lang="de-CH">Deutsch</a></li>
-          <li><a class="btn btn--ghost" href="./fr/" hreflang="fr-CH" lang="fr-CH">Français</a></li>
-          <li><a class="btn btn--ghost" href="./it/" hreflang="it-CH" lang="it-CH">Italiano</a></li>
-          <li><a class="btn btn--ghost" href="./en/" hreflang="en" lang="en">English</a></li>
+        <ul class="gate__list">
+          <li><a class="btn btn--secondary" href="./de/" hreflang="de-CH" lang="de-CH">Deutsch</a></li>
+          <li><a class="btn btn--secondary" href="./fr/" hreflang="fr-CH" lang="fr-CH">Français</a></li>
+          <li><a class="btn btn--secondary" href="./it/" hreflang="it-CH" lang="it-CH">Italiano</a></li>
+          <li><a class="btn btn--secondary" href="./en/" hreflang="en" lang="en">English</a></li>
         </ul>
       </nav>
 

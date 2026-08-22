@@ -1,6 +1,10 @@
 /* ==========================================================================
-   main.css - base layout, header, navigation and footer for deico AG
-   Mobile-first. Section order follows the document order of a page.
+   main.css - components for the "Axis Industrial" language
+
+   Written from scratch against the reference's design system. None of the
+   template's CSS, markup, class names or JS is copied.
+
+   Loaded after reset.css and tokens.css.
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
@@ -11,476 +15,856 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  font-family: var(--font-sans);
-  font-size: var(--fs-base);
-  color: var(--text);
-  background: var(--bg);
-}
-
-/* Holds the footer at the bottom on pages too short to fill the viewport. */
-main {
-  flex: 1 0 auto;
-}
-
-/* The header is sticky, so an in-page jump would otherwise land underneath it. */
-main:target,
-[id]:target {
-  scroll-margin-top: calc(var(--header-h) + var(--sp-md));
-}
-
-h1, h2, h3, h4 {
   font-family: var(--font-display);
-  font-weight: 600;
-  line-height: 1.15;
-  letter-spacing: -0.015em;
-  color: var(--n-900);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--ink);
+  background: var(--base);
+  -webkit-font-smoothing: antialiased;
+}
+
+main { flex: 1 0 auto; }
+
+[id]:target { scroll-margin-top: calc(var(--header-h) + var(--gap)); }
+
+/* The .t-* aliases exist so the styleguide can show each heading level without
+   emitting a second <h1> into the document outline. They are declared on the
+   same rules as the elements so the two can never drift apart. */
+h1, h2, h3, h4, h5, h6,
+.t-h1, .t-h2, .t-h3, .t-h4, .t-h5, .t-h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: var(--lh-display);
+  letter-spacing: var(--track-display);
   text-wrap: balance;
 }
 
-h1 { font-size: var(--fs-3xl); }
-h2 { font-size: var(--fs-2xl); }
-h3 { font-size: var(--fs-xl); }
-h4 { font-size: var(--fs-lg); }
+h1, .t-h1 { font-size: var(--fs-h1); }
+h2, .t-h2 { font-size: var(--fs-h2); }
+h3, .t-h3 { font-size: var(--fs-h3); }
+h4, .t-h4 { font-size: var(--fs-h4); }
+h5, .t-h5 { font-size: var(--fs-h5); }
+h6, .t-h6 { font-size: var(--fs-h6); letter-spacing: 0; }
 
-p {
-  text-wrap: pretty;
-}
+p { text-wrap: pretty; }
 
+/* Prose links use --accent-deep at 12.49:1, because --accent is only 4.76:1
+   and leaves nothing spare at body size. On hover they thicken and darken;
+   the full block inversion is reserved for navigation and controls, which is
+   how the reference rations it. */
 a {
-  color: var(--link);
-  text-decoration-thickness: 1px;
+  color: var(--accent-deep);
   text-underline-offset: 0.2em;
-  transition: color var(--transition);
+  text-decoration-thickness: 2px;
+  transition: none;
 }
 
 a:hover {
-  color: var(--link-hover);
+  color: var(--ink);
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 3px;
+}
+
+/* The focus ring cannot be the accent: the primary button turns accent when
+   focused, so an accent ring would sit next to its own colour. Ink on light
+   surfaces is 21:1; dark blocks flip the token to paper, also 21:1. Custom
+   properties inherit, so any control inside a dark scope picks it up. */
+:root { --focus-ring: var(--ink); }
+
+/* Only scopes whose own background is dark. The ring is drawn outside the
+   control, so what matters is the surface behind it, not the control's own
+   fill. A focused primary button turns accent but still sits on the light
+   page, so it keeps the ink ring. */
+.section--ink,
+.foot,
+.band,
+.bento__item--ink,
+.bento__item--accent {
+  --focus-ring: var(--base);
 }
 
 :focus-visible {
-  outline: 2px solid var(--focus);
-  outline-offset: 2px;
-  border-radius: var(--radius-sm);
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 3px;
 }
 
 /* --------------------------------------------------------------------------
-   2. Layout primitives
+   2. Layout
    -------------------------------------------------------------------------- */
 
-.container {
+.wrap {
   width: 100%;
-  max-width: var(--container-max);
+  max-width: var(--container);
   margin-inline: auto;
-  padding-inline: var(--container-pad);
+  padding-inline: var(--gutter);
 }
 
-.section {
-  padding-block: var(--sp-3xl);
+.section { padding-block: var(--section-y); }
+.section--surface { background: var(--surface); }
+.section--ink { background: var(--ink); color: var(--base); }
+.section--ink h1, .section--ink h2, .section--ink h3 { color: var(--base); }
+
+/* A rule that runs the full width, used to separate blocks the way a drawing
+   sheet is divided. */
+.section + .section { border-top: var(--border-thin); }
+
+.stack > * + * { margin-top: var(--gap); }
+
+/* --------------------------------------------------------------------------
+   3. Mono utilities
+
+   Every number, label, spec and caption on this site is monospace. That one
+   decision carries most of the technical character.
+   -------------------------------------------------------------------------- */
+
+.mono {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
 }
 
-.section--tight {
-  padding-block: var(--sp-2xl);
+.label {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  font-weight: 500;
+  letter-spacing: var(--track-micro);
+  text-transform: uppercase;
+  color: var(--accent-deep);
 }
 
-.section--subtle {
-  background: var(--bg-subtle);
+.label--ink { color: var(--ink); }
+.label--invert { color: var(--base); }
+
+/* A label set as a solid block, the way the reference tags its sections. */
+.tag {
+  display: inline-block;
+  padding: 0.35rem 0.6rem;
+  background: var(--ink);
+  color: var(--base);
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  font-weight: 500;
+  letter-spacing: var(--track-micro);
+  text-transform: uppercase;
 }
 
-.lede {
-  max-width: 46ch;
-  font-size: var(--fs-lg);
-  color: var(--text-muted);
+.tag--accent { background: var(--accent); color: var(--accent-ink); }
+
+.data {
+  font-family: var(--font-mono);
+  font-size: var(--fs-data);
+  font-variant-numeric: tabular-nums;
+}
+
+.stat {
+  font-family: var(--font-mono);
+  font-size: var(--fs-stat);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.03em;
+  line-height: 1;
 }
 
 /* --------------------------------------------------------------------------
-   3. Skip link
+   4. Skip link
    -------------------------------------------------------------------------- */
 
 .skip-link {
   position: absolute;
-  top: var(--sp-md);
-  left: var(--sp-md);
+  top: var(--gap);
+  left: var(--gap);
   z-index: var(--z-skip);
-  padding: var(--sp-xs) var(--sp-md);
-  background: var(--brand-deep);
-  color: var(--text-invert);
-  border-radius: var(--radius);
+  padding: 0.75rem 1rem;
+  background: var(--accent);
+  color: var(--accent-ink);
+  border: var(--border);
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  letter-spacing: var(--track-micro);
+  text-transform: uppercase;
   text-decoration: none;
   transform: translateY(-250%);
-  transition: transform var(--transition);
 }
 
 .skip-link:focus {
-  color: var(--text-invert);
   transform: translateY(0);
+  color: var(--accent-ink);
+  background: var(--accent);
 }
 
 /* --------------------------------------------------------------------------
-   4. Header shell
+   5. Header and navigation
    -------------------------------------------------------------------------- */
 
-.site-header {
+.head {
   position: sticky;
   top: 0;
   z-index: var(--z-header);
-  background: var(--bg);
-  border-bottom: 1px solid var(--border);
+  background: var(--base);
+  border-bottom: var(--border);
 }
 
-.header-inner {
+.head__in {
   display: flex;
   align-items: center;
-  gap: var(--sp-sm);
+  gap: var(--gap);
   min-height: var(--header-h);
 }
 
-/* Pushes the nav, switcher and toggle to the far edge at every width. */
-.logo {
-  margin-inline-end: auto;
-  text-decoration: none;
-}
+.head__logo { margin-inline-end: auto; display: block; }
+.head__logo img { width: auto; height: 1.75rem; }
 
-.logo img {
-  width: auto;
-  height: var(--logo-h);
-}
-
-/* --------------------------------------------------------------------------
-   5. Primary navigation
-
-   Without JavaScript the nav renders as a plain stacked list and every page
-   stays reachable. The .js class, set inline in <head> before first paint, is
-   what opts into the collapsible panel, so nothing is ever hidden from a
-   visitor who cannot run the script.
-   -------------------------------------------------------------------------- */
-
-.site-nav ul {
+.nav ul {
+  display: flex;
+  gap: 0;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-.site-nav a {
+.nav a {
   display: block;
-  padding-block: var(--sp-sm);
-  color: var(--text);
+  padding: 0.75rem 1rem;
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
   font-weight: 500;
+  letter-spacing: var(--track-micro);
+  text-transform: uppercase;
+  color: var(--ink);
   text-decoration: none;
+  /* Instant inversion. Mechanical, switch-like, no easing. */
+  transition: none;
 }
 
-.site-nav a:hover {
-  color: var(--brand-deep);
+.nav a:hover,
+.nav a:focus-visible {
+  background: var(--accent);
+  color: var(--accent-ink);
 }
 
-.site-nav a[aria-current="page"] {
-  color: var(--brand-deep);
-  text-decoration: underline;
-  text-decoration-color: var(--brand);
-  text-decoration-thickness: 2px;
-  text-underline-offset: 0.35em;
+.nav a[aria-current="page"] {
+  background: var(--ink);
+  color: var(--base);
 }
 
-.js .site-nav {
+.nav a[aria-current="page"]:hover {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+/* Without JavaScript the nav is a plain visible list and every page stays
+   reachable. The .js class, set inline in <head>, opts into the panel. */
+.js .nav {
   display: none;
   position: absolute;
+  inset-inline: 0;
   top: 100%;
-  right: 0;
-  left: 0;
-  padding: var(--sp-xs) var(--container-pad) var(--sp-lg);
-  background: var(--bg);
-  border-bottom: 1px solid var(--border);
-  box-shadow: var(--shadow-md);
+  background: var(--base);
+  border-bottom: var(--border);
 }
 
-.js .site-nav.is-open {
-  display: block;
-}
+.js .nav.is-open { display: block; }
+.js .nav.is-open ul { display: block; }
+.js .nav.is-open a { border-top: var(--border-hair); }
 
-/* --------------------------------------------------------------------------
-   6. Navigation toggle
-   -------------------------------------------------------------------------- */
-
-.nav-toggle {
+.navtoggle {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: var(--tap);
+  gap: 0.5rem;
+  min-width: var(--tap);
   height: var(--tap);
-  padding: 0;
-  background: none;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  color: var(--text);
+  padding-inline: 0.75rem;
+  background: var(--base);
+  border: var(--border-thin);
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  font-weight: 500;
+  letter-spacing: var(--track-micro);
+  text-transform: uppercase;
   cursor: pointer;
-  transition: border-color var(--transition);
+  transition: none;
 }
 
-.nav-toggle:hover {
-  border-color: var(--border-strong);
-}
+.navtoggle:hover { background: var(--ink); color: var(--base); }
+.no-js .navtoggle { display: none; }
 
-/* No script means no collapsible panel, so the control has nothing to do. */
-.no-js .nav-toggle {
-  display: none;
-}
-
-.nav-toggle-bars {
-  position: relative;
-}
-
-.nav-toggle-bars,
-.nav-toggle-bars::before,
-.nav-toggle-bars::after {
+.navtoggle__bars,
+.navtoggle__bars::before,
+.navtoggle__bars::after {
   display: block;
-  width: 18px;
+  width: 16px;
   height: 2px;
   background: currentColor;
-  transition: transform var(--transition), background-color var(--transition);
 }
 
-.nav-toggle-bars::before,
-.nav-toggle-bars::after {
-  content: "";
-  position: absolute;
-  left: 0;
-}
+.navtoggle__bars { position: relative; }
+.navtoggle__bars::before,
+.navtoggle__bars::after { content: ""; position: absolute; left: 0; }
+.navtoggle__bars::before { top: -5px; }
+.navtoggle__bars::after  { top: 5px; }
 
-.nav-toggle-bars::before { top: -6px; }
-.nav-toggle-bars::after  { top: 6px; }
-
-.nav-toggle[aria-expanded="true"] .nav-toggle-bars {
-  background: transparent;
-}
-
-.nav-toggle[aria-expanded="true"] .nav-toggle-bars::before {
-  transform: translateY(6px) rotate(45deg);
-}
-
-.nav-toggle[aria-expanded="true"] .nav-toggle-bars::after {
-  transform: translateY(-6px) rotate(-45deg);
-}
+.navtoggle[aria-expanded="true"] .navtoggle__bars { background: transparent; }
+.navtoggle[aria-expanded="true"] .navtoggle__bars::before { transform: translateY(5px) rotate(45deg); }
+.navtoggle[aria-expanded="true"] .navtoggle__bars::after  { transform: translateY(-5px) rotate(-45deg); }
 
 /* --------------------------------------------------------------------------
-   7. Language switcher
+   6. Buttons
 
-   Built on <details> so it opens by keyboard and pointer with no script at
-   all. main.js only adds Escape-to-close and click-outside-to-close.
-   -------------------------------------------------------------------------- */
-
-.lang {
-  position: relative;
-}
-
-.lang summary {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--sp-2xs);
-  min-height: var(--tap);
-  padding-inline: var(--sp-sm);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  font-size: var(--fs-sm);
-  font-weight: 500;
-  list-style: none;
-  cursor: pointer;
-  transition: border-color var(--transition);
-}
-
-.lang summary::-webkit-details-marker {
-  display: none;
-}
-
-.lang summary:hover {
-  border-color: var(--border-strong);
-}
-
-.lang summary::after {
-  content: "";
-  width: 0.4em;
-  height: 0.4em;
-  border-right: 2px solid currentColor;
-  border-bottom: 2px solid currentColor;
-  transform: translateY(-0.15em) rotate(45deg);
-  transition: transform var(--transition);
-}
-
-.lang[open] summary::after {
-  transform: translateY(0.05em) rotate(-135deg);
-}
-
-.lang-list {
-  position: absolute;
-  top: calc(100% + var(--sp-2xs));
-  right: 0;
-  min-width: 11rem;
-  margin: 0;
-  padding: var(--sp-2xs);
-  list-style: none;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-md);
-}
-
-.lang-list a {
-  display: flex;
-  justify-content: space-between;
-  gap: var(--sp-sm);
-  padding: var(--sp-xs) var(--sp-sm);
-  border-radius: var(--radius-sm);
-  color: var(--text);
-  font-size: var(--fs-sm);
-  text-decoration: none;
-}
-
-.lang-list a:hover {
-  background: var(--brand-tint);
-  color: var(--brand-deep);
-}
-
-.lang-list a[aria-current="true"] {
-  color: var(--brand-deep);
-  font-weight: 600;
-}
-
-.lang-code {
-  color: var(--text-muted);
-  font-variant-numeric: tabular-nums;
-  text-transform: uppercase;
-}
-
-/* --------------------------------------------------------------------------
-   8. Buttons
+   Hover lifts the element up and left while the shadow grows from 8px to
+   12px. No transition: the snap is the point.
    -------------------------------------------------------------------------- */
 
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: var(--sp-xs);
+  gap: 0.6rem;
   min-height: var(--tap);
-  padding: var(--sp-sm) var(--sp-lg);
-  border: 1px solid transparent;
-  border-radius: var(--radius);
-  font-weight: 600;
-  text-align: center;
+  padding: 0.75rem 1.5rem;
+  border: var(--border);
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  font-weight: 700;
+  letter-spacing: var(--track-micro);
+  text-transform: uppercase;
   text-decoration: none;
   cursor: pointer;
-  transition: background-color var(--transition), border-color var(--transition), color var(--transition);
+  transition: none;
 }
 
 .btn--primary {
-  background: var(--brand);
-  color: var(--text-invert);
+  background: var(--ink);
+  color: var(--base);
+  box-shadow: var(--shadow-accent);
 }
 
-.btn--primary:hover {
-  background: var(--brand-deep);
-  color: var(--text-invert);
+.btn--primary:hover,
+.btn--primary:focus-visible {
+  background: var(--accent);
+  color: var(--accent-ink);
+  transform: var(--lift);
+  box-shadow: var(--shadow-accent-lift);
 }
 
-.btn--ghost {
-  background: transparent;
-  border-color: var(--border-strong);
-  color: var(--text);
+.btn--secondary {
+  background: var(--base);
+  color: var(--ink);
+  box-shadow: var(--shadow);
 }
 
-.btn--ghost:hover {
-  border-color: var(--brand);
-  color: var(--brand-deep);
+.btn--secondary:hover,
+.btn--secondary:focus-visible {
+  background: var(--ink);
+  color: var(--base);
+  transform: var(--lift);
+  box-shadow: var(--shadow-lift);
 }
+
+/* Pressing returns the element to the resting plane. */
+.btn--primary:active,
+.btn--secondary:active {
+  transform: translate(4px, 4px);
+  box-shadow: 0 0 0 var(--ink);
+}
+
+/* For dark surfaces. Without a colour of its own the base `a` rule wins and
+   puts --accent-deep on black at 1.68:1, so this must be a real component
+   rather than something only defined inside .cta. The accent shadow is used
+   because an ink shadow is invisible against a dark section. */
+.btn--light {
+  background: var(--base);
+  color: var(--ink);
+  box-shadow: var(--shadow-accent);
+}
+
+.btn--light:hover,
+.btn--light:focus-visible {
+  background: var(--accent);
+  color: var(--accent-ink);
+  transform: var(--lift);
+  box-shadow: var(--shadow-accent-lift);
+}
+
+.btn--light:active { transform: translate(4px, 4px); box-shadow: 0 0 0 var(--ink); }
+
+.btn--text {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: var(--tap);
+  padding: 0;
+  border: 0;
+  background: none;
+  box-shadow: none;
+  color: var(--accent-deep);
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  font-weight: 700;
+  letter-spacing: var(--track-micro);
+  text-transform: uppercase;
+  text-decoration: none;
+  border-bottom: 2px solid var(--accent);
+  transition: none;
+}
+
+.btn--text:hover,
+.btn--text:focus-visible {
+  background: var(--accent);
+  color: var(--accent-ink);
+  border-bottom-color: var(--ink);
+}
+
+.btn--text:active { background: var(--accent-deep); color: var(--accent-ink); }
 
 /* --------------------------------------------------------------------------
-   9. Notice
+   7. Image treatments
 
-   Marks a page whose content is still pending. Removed as each page is built.
+   The reference ships no images at all, so this is our extension of its
+   language. A photo is treated as data: hard frame, hard shadow, locked
+   ratio, mono caption. Desaturated at rest, snapping to full colour on
+   hover with no transition.
    -------------------------------------------------------------------------- */
 
-.notice {
-  padding: var(--sp-md) var(--sp-lg);
-  border-left: 3px solid var(--brand);
-  border-radius: var(--radius);
-  background: var(--brand-tint);
-  color: var(--n-700);
+.fig { margin: 0; }
+
+.fig img {
+  display: block;
+  width: 100%;
+  /* The width and height attributes map to a presentational height. A height
+     that is not auto makes aspect-ratio inert, so it has to be released. */
+  height: auto;
+  object-fit: cover;
+  background: var(--surface);
+  filter: grayscale(1) contrast(1.06);
+  transition: none;
 }
 
-.notice p + p {
-  margin-top: var(--sp-xs);
+.fig--hero img   { aspect-ratio: var(--ratio-hero); }
+.fig--card img   { aspect-ratio: var(--ratio-machine); }
+.fig--detail img { aspect-ratio: var(--ratio-detail); }
+
+/* Framed variant: the default treatment for a photo sitting in a grid. */
+.fig--framed {
+  border: var(--border);
+  box-shadow: var(--shadow);
+  background: var(--base);
+  transition: none;
 }
 
-/* --------------------------------------------------------------------------
-   10. Footer
-   -------------------------------------------------------------------------- */
-
-.site-footer {
-  margin-top: var(--sp-4xl);
-  padding-block: var(--sp-3xl) var(--sp-xl);
-  background: var(--bg-invert);
-  color: var(--n-300);
+.fig--framed:hover,
+.fig--framed:focus-within {
+  transform: var(--lift);
+  box-shadow: var(--shadow-accent-lift);
 }
 
-.footer-grid {
-  display: grid;
-  gap: var(--sp-2xl);
+.fig:hover img,
+.fig:focus-within img { filter: none; }
+
+/* A pointer that cannot hover would leave every photo grey forever, so touch
+   devices get full colour at rest. */
+@media (hover: none) {
+  .fig img { filter: none; }
 }
 
-.footer-title {
-  margin-bottom: var(--sp-md);
-  color: var(--n-0);
-  font-size: var(--fs-sm);
-  font-weight: 600;
-  letter-spacing: 0.08em;
+.fig figcaption {
+  padding: 0.6rem 0.75rem;
+  background: var(--ink);
+  color: var(--base);
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  font-weight: 500;
+  letter-spacing: var(--track-micro);
   text-transform: uppercase;
 }
 
-.footer-col ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
+/* Caption sits on --ink, so the accent text needs the lighter tint. */
+.fig figcaption b { color: var(--accent-on-dark); font-weight: 700; }
+
+/* Overlaid caption: a solid block sitting on the image, never a gradient. */
+.fig--overlay { position: relative; }
+
+.fig--overlay figcaption {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  max-width: 100%;
 }
 
-.footer-col li + li {
-  margin-top: var(--sp-xs);
+/* Full-bleed band. Sits outside .wrap so it can reach both edges. */
+.band {
+  border-block: var(--border);
+  background: var(--ink);
 }
 
-.site-footer a {
-  color: var(--n-300);
-  text-decoration: none;
-}
-
-.site-footer a:hover {
-  color: var(--n-0);
-  text-decoration: underline;
-}
-
-.footer-address {
-  font-style: normal;
-}
-
-.footer-bottom {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--sp-sm) var(--sp-lg);
-  align-items: center;
-  justify-content: space-between;
-  margin-top: var(--sp-2xl);
-  padding-top: var(--sp-lg);
-  border-top: 1px solid var(--n-700);
-  font-size: var(--fs-sm);
-  color: var(--n-400);
-}
-
-.footer-legal {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--sp-sm) var(--sp-lg);
-  margin: 0;
-  padding: 0;
-  list-style: none;
+.band img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: var(--ratio-hero);
+  object-fit: cover;
+  display: block;
 }
 
 /* --------------------------------------------------------------------------
-   11. Utilities
+   8. Machine card
+   -------------------------------------------------------------------------- */
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--gap);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background: var(--base);
+  border: var(--border);
+  box-shadow: var(--shadow);
+  transition: none;
+}
+
+.card:hover,
+.card:focus-within {
+  transform: var(--lift);
+  box-shadow: var(--shadow-accent-lift);
+}
+
+.card > .fig img { border-bottom: var(--border); }
+.card:hover .fig img { filter: none; }
+
+.card__body { padding: var(--gap); }
+.card__name { margin-bottom: 0.75rem; font-size: var(--fs-h3); }
+
+.specs { margin: 0; }
+
+.specs > div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.25rem 1rem;
+  padding-block: 0.5rem;
+  border-top: var(--border-hair);
+}
+
+.specs dt {
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  letter-spacing: var(--track-mono);
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.specs dd {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: var(--fs-data);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+
+/* --------------------------------------------------------------------------
+   9. Bento and spec grid
+   -------------------------------------------------------------------------- */
+
+.bento {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--gap);
+}
+
+.bento__item {
+  grid-column: span 4;
+  padding: var(--gap);
+  background: var(--base);
+  border: var(--border);
+  box-shadow: var(--shadow);
+  transition: none;
+}
+
+.bento__item:hover { transform: var(--lift); box-shadow: var(--shadow-accent-lift); }
+
+.bento__item--ink { background: var(--ink); color: var(--base); }
+.bento__item--ink .stat { color: var(--base); }
+.bento__item--ink:hover { box-shadow: var(--shadow-accent-lift); }
+
+.bento__item--accent { background: var(--accent); color: var(--accent-ink); border-color: var(--ink); }
+.bento__item--accent .stat { color: var(--accent-ink); }
+.bento__item--accent .label { color: var(--accent-ink); }
+
+.bento__item .label { display: block; margin-bottom: 0.75rem; }
+.bento__item p { margin-top: 0.5rem; font-size: var(--fs-small); color: var(--muted); }
+/* Softening the body copy inside a tile works on the black block, where white
+   at 82% still reads 13.75:1. On the accent block the same 82% drops white to
+   3.77:1 and fails AA, so that one stays fully opaque at 4.76:1. */
+.bento__item--ink p { color: inherit; opacity: 0.82; }
+.bento__item--accent p { color: inherit; opacity: 1; }
+
+/* --------------------------------------------------------------------------
+   10. Contact block
+   -------------------------------------------------------------------------- */
+
+.contact {
+  display: grid;
+  gap: var(--gap);
+  padding: var(--gap);
+  border: var(--border);
+  box-shadow: var(--shadow-accent);
+  background: var(--base);
+}
+
+.contact__row dt {
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  letter-spacing: var(--track-micro);
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.35rem;
+}
+
+.contact__row dd { margin: 0; font-family: var(--font-mono); font-size: var(--fs-data); }
+.contact__row address { font-style: normal; }
+.contact__row + .contact__row { margin-top: var(--gap); }
+
+/* --------------------------------------------------------------------------
+   11. Footer
+   -------------------------------------------------------------------------- */
+
+.foot {
+  padding-block: var(--section-y) var(--gap);
+  background: var(--ink);
+  color: var(--base);
+  border-top: var(--border);
+}
+
+.foot__grid { display: grid; gap: var(--gap); }
+.foot__title {
+  margin-bottom: 0.75rem;
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  font-weight: 700;
+  letter-spacing: var(--track-micro);
+  text-transform: uppercase;
+  /* Footer sits on --ink, so the accent text needs the lighter tint. */
+  color: var(--accent-on-dark);
+}
+.foot ul { margin: 0; padding: 0; list-style: none; }
+.foot li + li { margin-top: 0.4rem; }
+.foot a { color: var(--base); text-decoration: none; font-family: var(--font-mono); font-size: var(--fs-data); }
+.foot a:hover { background: var(--accent); color: var(--accent-ink); }
+.foot address { font-style: normal; font-family: var(--font-mono); font-size: var(--fs-data); }
+
+.foot__bottom {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem var(--gap);
+  justify-content: space-between;
+  margin-top: var(--section-y);
+  padding-top: var(--gap);
+  border-top: 2px solid rgb(255 255 255 / 0.25);
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  letter-spacing: var(--track-micro);
+  text-transform: uppercase;
+  color: rgb(255 255 255 / 0.7);
+}
+
+.foot__bottom p { margin: 0; }
+
+/* --------------------------------------------------------------------------
+   12. Documentation components
+
+   Used only by styleguide.html. They stay here rather than in a separate file
+   so the styleguide needs no stylesheet of its own.
+   -------------------------------------------------------------------------- */
+
+.swatches { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--gap); margin: 0; padding: 0; list-style: none; }
+
+.swatch { border: var(--border); background: var(--base); }
+.swatch__chip { height: 5rem; border-bottom: var(--border); }
+.swatch__meta { padding: 0.75rem; }
+.swatch__meta code { display: block; font-family: var(--font-mono); font-size: var(--fs-data); font-weight: 700; }
+.swatch__meta span { display: block; font-family: var(--font-mono); font-size: var(--fs-micro); color: var(--muted); }
+.swatch__use { display: block; margin-top: 0.35rem; font-size: var(--fs-micro); color: var(--muted); }
+
+.specimen { border-top: var(--border-hair); padding-block: var(--gap); }
+.specimen__meta {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  letter-spacing: var(--track-micro);
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.demo-row { display: flex; flex-wrap: wrap; gap: var(--gap) 2.5rem; align-items: flex-start; }
+.demo-cell { display: flex; flex-direction: column; gap: 0.75rem; }
+.demo-note { font-family: var(--font-mono); font-size: var(--fs-micro); letter-spacing: var(--track-mono); text-transform: uppercase; color: var(--muted); }
+
+/* Fixed viewport readout, so breakpoints are obvious while resizing. */
+.vpw {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  z-index: var(--z-widget);
+  padding: 0.5rem 0.75rem;
+  background: var(--ink);
+  color: var(--base);
+  border-top: 4px solid var(--accent);
+  border-left: 4px solid var(--accent);
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  font-weight: 700;
+  letter-spacing: var(--track-mono);
+  text-transform: uppercase;
+  font-variant-numeric: tabular-nums;
+  pointer-events: none;
+}
+
+.vpw b { color: var(--accent-on-dark); }
+
+/* --------------------------------------------------------------------------
+   13. Breakpoints
+   -------------------------------------------------------------------------- */
+
+@media (min-width: 600px) {
+  .swatches { grid-template-columns: repeat(3, 1fr); }
+  .contact { grid-template-columns: 1fr 1fr; }
+}
+
+@media (min-width: 768px) {
+  .navtoggle { display: none; }
+
+  .nav,
+  .js .nav {
+    display: block;
+    position: static;
+    border-bottom: 0;
+    background: none;
+  }
+
+  .js .nav.is-open ul { display: flex; }
+  .js .nav.is-open a { border-top: 0; }
+
+  .cards { grid-template-columns: repeat(3, 1fr); }
+  .bento { grid-template-columns: repeat(12, 1fr); }
+  .bento__item { grid-column: span 3; }
+  .bento__item--w4 { grid-column: span 4; }
+  .bento__item--w6 { grid-column: span 6; }
+  .bento__item--w8 { grid-column: span 8; }
+  .bento__item--w12 { grid-column: span 12; }
+
+  .foot__grid { grid-template-columns: 1.6fr 1fr 1fr; }
+  .swatches { grid-template-columns: repeat(4, 1fr); }
+}
+
+@media (min-width: 1024px) {
+  .head__logo img { height: 2rem; }
+}
+
+/* --------------------------------------------------------------------------
+   14. Reduced motion
+
+   The instant colour inversions and the hover lift are not animations, so
+   they stay. Anything that would animate is switched off here.
+   -------------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 1ms;
+    animation-iteration-count: 1;
+    transition-duration: 1ms;
+    scroll-behavior: auto;
+  }
+
+  /* The lift is a static offset rather than a movement, but under reduced
+     motion even a snap displacement is unwelcome, so only the shadow changes. */
+  .btn--primary:hover, .btn--secondary:hover,
+  .card:hover, .bento__item:hover, .fig--framed:hover {
+    transform: none;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   15. Documentation helpers
+
+   Classes the styleguide needs so its markup carries no inline styles. The
+   styleguide is the reference implementation for the rollout, so anything
+   sloppy here would be copied into the content pages.
+   -------------------------------------------------------------------------- */
+
+.lead { max-width: 60ch; }
+.mt-1 { margin-top: 1rem; }
+.mt-gap { margin-top: var(--gap); }
+.demo-note--block { display: block; margin-block: 1rem 2rem; }
+.section--head-only { padding-bottom: var(--gap); }
+
+.swatch__chip--base        { background: var(--base); }
+.swatch__chip--ink         { background: var(--ink); }
+.swatch__chip--surface     { background: var(--surface); }
+.swatch__chip--muted       { background: var(--muted); }
+.swatch__chip--accent      { background: var(--accent); }
+.swatch__chip--accent-deep { background: var(--accent-deep); }
+
+.specimen__hero {
+  margin: 0;
+  font-size: var(--fs-hero);
+  font-weight: 700;
+  line-height: var(--lh-display);
+  letter-spacing: var(--track-display);
+}
+
+.specimen__body  { max-width: 64ch; }
+.specimen__small { max-width: 64ch; font-size: var(--fs-small); color: var(--muted); }
+
+/* Static rendering of the three nav states side by side. The live nav is in
+   the header; this only documents what each state looks like. */
+.navdemo ul {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border: var(--border-thin);
+}
+
+.navdemo a {
+  display: block;
+  padding: 0.75rem 1rem;
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  letter-spacing: var(--track-micro);
+  text-transform: uppercase;
+  color: var(--ink);
+  text-decoration: none;
+  transition: none;
+}
+
+.navdemo a[aria-current="page"] { background: var(--ink); color: var(--base); }
+.navdemo a:hover { background: var(--accent); color: var(--accent-ink); }
+.navdemo .is-hover { background: var(--accent); color: var(--accent-ink); }
+
+.treatments { display: grid; gap: var(--gap); }
+.treatments__trio { display: grid; gap: var(--gap); grid-template-columns: 1fr; }
+.treat .fig { margin-top: 0.75rem; }
+
+.fig--bare        { border: var(--border); box-shadow: var(--shadow); }
+.fig--bare-accent { border: var(--border); box-shadow: var(--shadow-accent); }
+
+.contact__col > .contact__row + .contact__row { margin-top: var(--gap); }
+.data--body { font-size: var(--fs-body); color: var(--ink); margin-top: 0.25rem; }
+
+@media (min-width: 768px) {
+  .treatments__trio { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* --------------------------------------------------------------------------
+   16. Utilities and remaining states
    -------------------------------------------------------------------------- */
 
 .visually-hidden {
@@ -494,603 +878,334 @@ a:hover {
   white-space: nowrap;
 }
 
-.stack > * + * {
-  margin-top: var(--sp-md);
+/* A disabled control keeps the hard frame but loses the shadow and the lift,
+   so it reads as sitting flat on the page and clearly out of service. */
+.btn[disabled] {
+  background: var(--surface);
+  color: var(--muted);
+  border-color: var(--muted);
+  box-shadow: none;
+  cursor: not-allowed;
 }
 
-.stack-lg > * + * {
-  margin-top: var(--sp-lg);
-}
-
-/* --------------------------------------------------------------------------
-   11b. Language gate
-
-   Only used by /deico/index.html, the entry page that sends a visitor to
-   their language. Full-width targets on a phone, splitting to a row once
-   there is room, so the four choices never wrap unevenly.
-   -------------------------------------------------------------------------- */
-
-.gate {
-  max-width: 40rem;
-  margin-inline: auto;
-  text-align: center;
-}
-
-.gate-logo {
-  height: 2.75rem;
-  width: auto;
-  margin-inline: auto;
-}
-
-/* .lede is width-capped for readability, which leaves it left-aligned inside
-   the centred gate unless the margins are recentred here. */
-.gate .lede {
-  margin-inline: auto;
-}
-
-.choice-list {
-  display: grid;
-  gap: var(--sp-sm);
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.choice-list .btn {
-  width: 100%;
-}
-
-@media (min-width: 480px) {
-  .choice-list {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (min-width: 768px) {
-  .choice-list {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
+.btn[disabled]:hover {
+  background: var(--surface);
+  color: var(--muted);
+  transform: none;
+  box-shadow: none;
 }
 
 /* --------------------------------------------------------------------------
-   12. Breakpoints
+   17. Page components
 
-   768px is where the collapsed nav has room to sit inline beside the logo.
+   Added for the homepage rollout. The styleguide demonstrates the primitives;
+   these compose them into the page-level blocks a homepage needs. Worth
+   backfilling into styleguide.html so it stays the complete reference.
    -------------------------------------------------------------------------- */
-
-@media (min-width: 768px) {
-  .nav-toggle {
-    display: none;
-  }
-
-  .site-nav,
-  .js .site-nav {
-    display: block;
-    position: static;
-    padding: 0;
-    background: none;
-    border: 0;
-    box-shadow: none;
-  }
-
-  .site-nav ul {
-    display: flex;
-    gap: var(--sp-lg);
-  }
-
-  .site-nav a {
-    padding-block: var(--sp-xs);
-  }
-
-  .footer-grid {
-    grid-template-columns: 1.6fr 1fr 1fr;
-  }
-}
-
-@media (min-width: 1024px) {
-  .site-nav ul {
-    gap: var(--sp-xl);
-  }
-}
-
-/* --------------------------------------------------------------------------
-   13. Page sections
-
-   Shared by the homepage and the inner pages. Every image slot fixes an
-   aspect ratio so the layout does not jump while photos load.
-   -------------------------------------------------------------------------- */
-
-.eyebrow {
-  font-size: var(--fs-sm);
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--brand-deep);
-}
-
-.section-head {
-  max-width: 54ch;
-  margin-bottom: var(--sp-2xl);
-}
-
-.section-head > * + * {
-  margin-top: var(--sp-md);
-}
 
 /* --- Hero ---------------------------------------------------------------- */
 
-.hero {
-  padding-block: var(--sp-2xl) var(--sp-3xl);
-}
+.hero { padding-block: var(--section-y) var(--gap); }
 
-.hero-inner {
-  display: grid;
-  gap: var(--sp-2xl);
-  align-items: center;
-}
+/* ch resolves against the element it is set on, so the measure belongs on the
+   heading itself. On a wrapper it would resolve at body size and crush it. */
+.hero__title { margin-top: var(--gap); max-width: 17ch; }
 
-.hero-text > * + * {
-  margin-top: var(--sp-lg);
-}
-
-.hero h1 {
-  max-width: 20ch;
-}
-
-.hero .lede {
-  max-width: 50ch;
-}
-
-.hero-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--sp-sm);
-}
-
-.hero-figure {
-  margin: 0;
-}
-
-.hero-figure img {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-  border-radius: var(--radius-lg);
-}
-
-/* --- Card grid ----------------------------------------------------------- */
-
-.card-grid {
-  display: grid;
-  gap: var(--sp-xl);
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.card {
-  display: flex;
-  flex-direction: column;
-}
-
-.card img {
-  width: 100%;
-  aspect-ratio: 3 / 2;
-  object-fit: cover;
-  border-radius: var(--radius);
-  margin-bottom: var(--sp-md);
-}
-
-.card h3 {
-  margin-bottom: var(--sp-xs);
-}
-
-.card p {
-  color: var(--text-muted);
-}
-
-.card-meta {
-  margin-top: var(--sp-sm);
-  font-size: var(--fs-sm);
-  font-weight: 600;
-  color: var(--brand-deep);
-}
-
-/* --- Feature grid -------------------------------------------------------- */
-
-.feature-grid {
-  display: grid;
-  gap: var(--sp-xl);
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.feature img {
-  width: 100%;
-  aspect-ratio: 16 / 10;
-  object-fit: cover;
-  border-radius: var(--radius);
-  margin-bottom: var(--sp-sm);
-}
-
-.feature h3 {
-  margin-bottom: var(--sp-2xs);
-  font-size: var(--fs-lg);
-}
-
-.feature p {
-  font-size: var(--fs-sm);
-  color: var(--text-muted);
-}
-
-/* --- Media row ----------------------------------------------------------- */
-
-.media {
-  display: grid;
-  gap: var(--sp-xl);
-  align-items: center;
-}
-
-.media-text > * + * {
-  margin-top: var(--sp-md);
-}
-
-.media-figure {
-  margin: 0;
-}
-
-.media-figure img {
-  width: 100%;
-  border-radius: var(--radius-lg);
-}
-
-/* --- Definition list used for the CAD, FEM and CAM stack ----------------- */
-
-.spec-list {
-  display: grid;
-  gap: var(--sp-lg);
-  margin: 0;
-  padding: 0;
-}
-
-.spec-list dt {
-  margin-bottom: var(--sp-2xs);
-  font-size: var(--fs-sm);
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--brand-deep);
-}
-
-.spec-list dd {
-  margin: 0;
-}
-
-/* The software stack reads as a footnote to the media row above it. */
-.media + .spec-list {
-  margin-top: var(--sp-2xl);
-}
-
-/* --- Tag list ------------------------------------------------------------ */
-
-.tag-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--sp-xs);
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.tag-list li {
-  padding: var(--sp-xs) var(--sp-md);
-  border: 1px solid var(--border-strong);
-  border-radius: var(--radius);
-  background: var(--bg);
-  font-size: var(--fs-sm);
-}
-
-/* --- Call to action band ------------------------------------------------- */
-
-.cta-band {
-  padding-block: var(--sp-3xl);
-  background: var(--brand-deep);
-  color: var(--n-0);
-  text-align: center;
-}
-
-.cta-band h2 {
-  color: var(--n-0);
-}
-
-.cta-band p {
+.hero__lede {
   max-width: 54ch;
-  margin-inline: auto;
-  margin-top: var(--sp-md);
-  color: var(--n-200);
+  margin-top: var(--gap);
+  font-size: var(--fs-lede);
+  color: var(--muted);
 }
 
-.cta-band .btn {
-  margin-top: var(--sp-xl);
-  background: var(--n-0);
-  color: var(--brand-deep);
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap);
+  margin-top: calc(var(--gap) * 1.5);
 }
 
-.cta-band .btn:hover {
-  background: var(--brand-tint);
-  color: var(--brand-deep);
+/* --- Fact strip ----------------------------------------------------------
+   Four hard numbers directly under the headline. The 1px gap over an ink
+   background draws every internal rule exactly once. */
+
+.factstrip {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  margin-top: var(--section-y);
+  background: var(--ink);
+  border: var(--border);
 }
 
-/* --- Section breakpoints ------------------------------------------------- */
+.factstrip > div { padding: var(--gap); background: var(--base); }
 
-@media (min-width: 480px) {
-  .feature-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .spec-list {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
+.factstrip dt {
+  margin-bottom: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  letter-spacing: var(--track-micro);
+  text-transform: uppercase;
+  color: var(--muted);
 }
+
+.factstrip dd { margin: 0; }
+.factstrip .stat { font-size: clamp(1.5rem, 3.2vw, 2.25rem); }
+.factstrip__unit { font-family: var(--font-mono); font-size: var(--fs-data); color: var(--muted); }
+
+/* --- Split: text beside an image ------------------------------------------ */
+
+.split { display: grid; gap: var(--gap); align-items: center; }
+.split__text > * + * { margin-top: var(--gap); }
+.split__text p { max-width: 56ch; }
+
+/* --- Sector index --------------------------------------------------------- */
+
+.sectors { margin: 0; padding: 0; list-style: none; border-top: var(--border-thin); }
+
+.sectors li {
+  display: flex;
+  align-items: baseline;
+  gap: var(--gap);
+  padding-block: var(--gap);
+  border-bottom: var(--border-hair);
+  font-size: var(--fs-h3);
+  font-weight: 700;
+  letter-spacing: var(--track-display);
+}
+
+.sectors span {
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: var(--track-micro);
+  color: var(--accent-deep);
+}
+
+/* --- Closing call to action -----------------------------------------------
+   The one place the accent covers a large area. White on --accent is 4.76:1,
+   which clears AA, and the button flips to paper on ink for maximum weight. */
+
+.cta { padding-block: var(--section-y); background: var(--accent); color: var(--accent-ink); }
+.cta h2 { max-width: 18ch; color: var(--accent-ink); }
+.cta p { max-width: 52ch; margin-top: var(--gap); font-size: var(--fs-lede); }
+.cta .label { color: var(--accent-ink); }
+.cta .btn { margin-top: calc(var(--gap) * 1.5); }
+.cta .btn--light { background: var(--base); color: var(--ink); box-shadow: 8px 8px 0 var(--ink); }
+.cta .btn--light:hover { background: var(--ink); color: var(--base); transform: var(--lift); box-shadow: 12px 12px 0 var(--ink); }
+
+/* --- Colour opt-out -------------------------------------------------------
+   Desaturating a FEM plot destroys its meaning: the colour IS the stress
+   data. Any image whose information is carried by hue keeps it. */
+
+.fig--keep-colour img { filter: none; }
 
 @media (min-width: 768px) {
-  .card-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .media {
-    grid-template-columns: 1fr 1fr;
-    gap: var(--sp-2xl);
-  }
-
-  /* Puts the picture first without moving it in the document, so the reading
-     order for a screen reader stays text then image on every row. */
-  .media--reverse .media-figure {
-    order: -1;
-  }
-}
-
-@media (min-width: 1024px) {
-  .hero-inner {
-    grid-template-columns: 1fr 1fr;
-    gap: var(--sp-3xl);
-  }
-
-  .feature-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
+  .factstrip { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .split { grid-template-columns: 1fr 1fr; gap: calc(var(--gap) * 1.5); }
+  .split--reverse .split__media { order: -1; }
 }
 
 /* --------------------------------------------------------------------------
-   14. Showroom gallery
+   18. Language switcher
+
+   Built on <details> so it opens by pointer and keyboard with no script at
+   all. axis.js only adds Escape-to-close and click-outside-to-close.
+   -------------------------------------------------------------------------- */
+
+.lang { position: relative; }
+
+.lang summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: var(--tap);
+  padding-inline: 0.75rem;
+  background: var(--base);
+  border: var(--border-thin);
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  font-weight: 500;
+  letter-spacing: var(--track-micro);
+  text-transform: uppercase;
+  list-style: none;
+  cursor: pointer;
+  transition: none;
+}
+
+.lang summary::-webkit-details-marker { display: none; }
+.lang summary:hover { background: var(--ink); color: var(--base); }
+.lang[open] summary { background: var(--ink); color: var(--base); }
+
+.lang-list {
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  min-width: 12rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  background: var(--base);
+  border: var(--border);
+  box-shadow: var(--shadow);
+}
+
+.lang-list a {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  letter-spacing: var(--track-micro);
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: none;
+}
+
+.lang-list li + li a { border-top: var(--border-hair); }
+.lang-list a[aria-current="true"] { background: var(--surface); font-weight: 700; }
+
+.lang-list a:hover,
+.lang-list a:focus-visible { background: var(--accent); color: var(--accent-ink); }
+
+/* --muted on --accent would drop to about 2:1, so the code inherits the
+   inverted colour rather than keeping its resting grey. */
+.lang-code { color: var(--muted); }
+.lang-list a:hover .lang-code,
+.lang-list a:focus-visible .lang-code { color: inherit; }
+
+/* --------------------------------------------------------------------------
+   19. Showroom gallery
+
+   Seventy tiles in one grid. The full 4px frame plus an 8px shadow on every
+   one reads as noise at that density, so the gallery uses the thin border and
+   no shadow. Hover still snaps: colour returns and the frame goes accent.
    -------------------------------------------------------------------------- */
 
 .gallery {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--sp-sm);
+  gap: var(--gap);
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-/* A fixed square keeps the grid even despite the mix of portrait and
-   landscape originals. object-fit stops anything being distorted. */
+.gallery li {
+  border: var(--border-thin);
+  background: var(--surface);
+  transition: none;
+}
+
+.gallery li:hover,
+.gallery li:focus-within { border-color: var(--accent); }
+
 .gallery img {
   width: 100%;
-  aspect-ratio: 1 / 1;
+  height: auto;
+  aspect-ratio: var(--ratio-detail);
   object-fit: cover;
-  border-radius: var(--radius);
-  background: var(--bg-subtle);
-}
-
-/* --------------------------------------------------------------------------
-   15. Machine park
-   -------------------------------------------------------------------------- */
-
-.machine-list {
-  display: grid;
-  gap: var(--sp-3xl);
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.machine h2 {
-  margin-bottom: var(--sp-md);
-  font-size: var(--fs-xl);
-}
-
-.machine-specs {
-  display: grid;
-  gap: var(--sp-xs);
-  margin: 0;
-}
-
-.machine-specs > div {
-  display: grid;
-  gap: var(--sp-2xs);
-  padding-block: var(--sp-xs);
-  border-top: 1px solid var(--border);
-}
-
-.machine-specs dt {
-  font-size: var(--fs-sm);
-  color: var(--text-muted);
-}
-
-.machine-specs dd {
-  margin: 0;
-  font-weight: 500;
-}
-
-.cax-head {
-  margin-top: var(--sp-4xl);
-  margin-bottom: var(--sp-lg);
-  font-size: var(--fs-xl);
-}
-
-/* --------------------------------------------------------------------------
-   16. Contact
-   -------------------------------------------------------------------------- */
-
-.contact-grid {
-  display: grid;
-  gap: var(--sp-3xl);
-}
-
-.contact-col h2 {
-  margin-bottom: var(--sp-md);
-  font-size: var(--fs-lg);
-}
-
-.contact-col h2 + * {
-  margin-bottom: var(--sp-2xl);
-}
-
-.people {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.people li + li {
-  margin-top: var(--sp-md);
-}
-
-.muted {
-  color: var(--text-muted);
-}
-
-.contact-dl {
-  margin: 0;
-}
-
-.contact-dl > div {
-  padding-block: var(--sp-sm);
-  border-top: 1px solid var(--border);
-}
-
-.contact-dl dt {
-  margin-bottom: var(--sp-2xs);
-  font-size: var(--fs-sm);
-  color: var(--text-muted);
-}
-
-.contact-dl dd {
-  margin: 0;
-}
-
-.contact-dl address {
-  font-style: normal;
-}
-
-/* --- Contact form -------------------------------------------------------- */
-
-.contact-form .field {
-  margin-bottom: var(--sp-md);
-}
-
-.contact-form label {
   display: block;
-  margin-bottom: var(--sp-2xs);
-  font-size: var(--fs-sm);
+  filter: grayscale(1) contrast(1.06);
+  transition: none;
+}
+
+.gallery li:hover img,
+.gallery li:focus-within img { filter: none; }
+
+@media (hover: none) { .gallery img { filter: none; } }
+
+/* --------------------------------------------------------------------------
+   20. Forms
+
+   The contact form is a visual mockup and must never send. Submission is
+   blocked by a disabled submit and by main.js cancelling the submit event.
+   -------------------------------------------------------------------------- */
+
+.form__field { margin-bottom: var(--gap); }
+
+.form label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
   font-weight: 500;
+  letter-spacing: var(--track-micro);
+  text-transform: uppercase;
 }
 
-.contact-form input,
-.contact-form textarea {
+.form input,
+.form textarea {
   width: 100%;
-  padding: var(--sp-sm);
-  border: 1px solid var(--border-strong);
-  border-radius: var(--radius);
+  padding: 0.75rem;
+  background: var(--base);
+  border: var(--border-thin);
+  color: var(--ink);
+  font-family: var(--font-display);
+  /* 16px minimum, otherwise iOS zooms the page when a field takes focus. */
+  font-size: var(--fs-body);
+  transition: none;
+}
+
+.form input:hover,
+.form textarea:hover { border-color: var(--accent); }
+
+.form textarea { min-height: 9rem; resize: vertical; }
+
+.form__req { color: var(--accent-deep); }
+.form__privacy { margin-bottom: var(--gap); font-size: var(--fs-small); }
+
+/* --------------------------------------------------------------------------
+   21. Notice, prose and people
+   -------------------------------------------------------------------------- */
+
+.notice {
+  padding: var(--gap);
   background: var(--surface);
-  transition: border-color var(--transition);
+  border: var(--border-thin);
+  border-left-width: 8px;
+  border-left-color: var(--accent);
 }
 
-.contact-form input:hover,
-.contact-form textarea:hover {
-  border-color: var(--n-400);
-}
+.prose { max-width: 68ch; }
+.prose > * + * { margin-top: var(--gap); }
 
-.contact-form textarea {
-  resize: vertical;
-  min-height: 8rem;
-}
+.checklist { margin: 0; padding-left: 1.25rem; }
+.checklist li + li { margin-top: 0.5rem; }
 
-.req {
-  color: var(--brand-deep);
-}
+.people { margin: 0; padding: 0; list-style: none; }
+.people li { padding-block: var(--gap); border-top: var(--border-hair); }
+.people li:first-child { border-top: 0; }
+.people strong { font-weight: 700; }
 
-.form-privacy {
-  margin-bottom: var(--sp-lg);
-  font-size: var(--fs-sm);
-}
-
-/* The submit is deliberately inert: this is a visual mockup and must not
-   send. The adjacent notice explains why, so it does not read as a fault. */
-.contact-form button[disabled] {
-  background: var(--n-300);
-  color: var(--n-700);
-  cursor: not-allowed;
-}
-
-.contact-form button[disabled]:hover {
-  background: var(--n-300);
-  color: var(--n-700);
-}
+@media (min-width: 600px) { .gallery { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (min-width: 1024px) { .gallery { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
 
 /* --------------------------------------------------------------------------
-   17. Prose, used by the two legal placeholder pages
+   22. Language gate
+
+   Only /deico/index.html uses this: the entry page that sends a visitor to
+   their language. Full-width targets on a phone, a row once there is room.
    -------------------------------------------------------------------------- */
 
-.prose {
-  max-width: 68ch;
+.gate { max-width: 48rem; margin-inline: auto; text-align: center; }
+.gate__logo { height: 2.5rem; width: auto; margin-inline: auto; }
+.gate h1 { margin-top: var(--gap); }
+.gate p { margin-top: var(--gap); }
+
+.gate__list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--gap);
+  margin: calc(var(--gap) * 2) 0 0;
+  padding: 0;
+  list-style: none;
 }
 
-.prose > * + * {
-  margin-top: var(--sp-md);
-}
+.gate__list .btn { width: 100%; }
 
-.prose h1 {
-  margin-bottom: var(--sp-lg);
-}
-
-.checklist {
-  margin: 0;
-  padding-left: var(--sp-lg);
-}
-
-.checklist li + li {
-  margin-top: var(--sp-xs);
-}
-
-/* --------------------------------------------------------------------------
-   18. Inner-page breakpoints
-   -------------------------------------------------------------------------- */
-
-@media (min-width: 600px) {
-  .gallery {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-}
-
-@media (min-width: 768px) {
-  .contact-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: var(--sp-3xl);
-  }
-
-  .machine-specs > div {
-    grid-template-columns: 1fr 1fr;
-    gap: var(--sp-md);
-    align-items: baseline;
-  }
-}
-
-@media (min-width: 1024px) {
-  .gallery {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-}
+@media (min-width: 480px) { .gate__list { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 768px) { .gate__list { grid-template-columns: repeat(4, minmax(0, 1fr)); } }

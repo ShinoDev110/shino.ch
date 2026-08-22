@@ -6,36 +6,43 @@
 <meta name="robots" content="noindex, nofollow">
 <title>deico AG Präzisionsmechanik</title>
 <meta name="description" content="deico AG è un fornitore di meccanica di precisione nell'Oberland zurighese. Tornitura CNC, fresatura CNC a 5 assi, sviluppo e progettazione da un unico partner.">
+
 <link rel="alternate" hreflang="de-CH" href="../de/">
 <link rel="alternate" hreflang="fr-CH" href="../fr/">
 <link rel="alternate" hreflang="it-CH" href="../it/">
 <link rel="alternate" hreflang="en" href="../en/">
 <link rel="alternate" hreflang="x-default" href="../de/">
+
 <link rel="icon" href="../favicon.ico" sizes="16x16 32x32 48x48">
 <link rel="icon" type="image/png" sizes="192x192" href="../assets/icon/icon-192.png">
 <link rel="icon" type="image/png" sizes="512x512" href="../assets/icon/icon-512.png">
 <link rel="apple-touch-icon" href="../assets/icon/apple-touch-icon.png">
 <meta name="theme-color" content="#5E61ED">
-<link rel="stylesheet" href="../css/reset.css">
-<link rel="stylesheet" href="../css/tokens.css">
-<link rel="stylesheet" href="../css/main.css">
-<script>document.documentElement.className="js";</script>
+
+<link rel="preload" as="font" type="font/woff2" href="../assets/fonts/space-grotesk-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="../assets/fonts/jetbrains-mono-latin.woff2" crossorigin>
+
+<link rel="stylesheet" href="../css/reset.css?v=2">
+<link rel="stylesheet" href="../css/tokens.css?v=2">
+<link rel="stylesheet" href="../css/main.css?v=2">
+<script>document.documentElement.className = "js";</script>
 </head>
 <body>
+
 <a class="skip-link" href="#main">Vai al contenuto</a>
 
-<header class="site-header">
-  <div class="container header-inner">
-    <a class="logo" href="../it/" aria-label="deico AG Präzisionsmechanik, Pagina iniziale">
-      <picture><source srcset="../assets/logo/deico-logo-340.webp 340w, ../assets/logo/deico-logo-680.webp 680w" sizes="(min-width: 1024px) 96px, 79px" type="image/webp"><img src="../assets/logo/deico-logo-340.png" srcset="../assets/logo/deico-logo-340.png 340w, ../assets/logo/deico-logo-680.png 680w" sizes="(min-width: 1024px) 96px, 79px" width="340" height="120" alt="deico AG Präzisionsmechanik"></picture>
+<header class="head">
+  <div class="wrap head__in">
+    <a class="head__logo" href="../it/" aria-label="deico AG Präzisionsmechanik, Pagina iniziale">
+      <picture><source srcset="../assets/logo/deico-logo-340.webp 340w, ../assets/logo/deico-logo-680.webp 680w" sizes="(min-width: 1024px) 91px, 79px" type="image/webp"><img src="../assets/logo/deico-logo-340.png" width="340" height="120" alt="deico AG Präzisionsmechanik"></picture>
     </a>
 
-    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
-      <span class="nav-toggle-bars"></span>
+    <button class="navtoggle" type="button" aria-expanded="false" aria-controls="nav">
+      <span class="navtoggle__bars"></span>
       <span class="visually-hidden">Menu</span>
     </button>
 
-    <nav class="site-nav" id="site-nav" aria-label="Navigazione principale">
+    <nav class="nav" id="nav" aria-label="Navigazione principale">
       <ul>
         <li><a href="../it/" aria-current="page">Home</a></li>
         <li><a href="../it/showroom/">Showroom</a></li>
@@ -59,134 +66,224 @@
 <main id="main">
 
   <section class="hero">
-    <div class="container hero-inner">
-      <div class="hero-text">
-        <p class="eyebrow">Sviluppo e produzione</p>
-        <h1>Meccanica di precisione da un unico partner</h1>
-        <p class="lede">deico AG è un fornitore di meccanica di precisione, piccolo ma di qualità, con sede nell'Oberland zurighese. Torniamo, fresiamo e progettiamo secondo le vostre specifiche.</p>
-        <div class="hero-actions">
-          <a class="btn btn--primary" href="../it/kontakt/">Richiedere un'offerta</a>
-          <a class="btn btn--ghost" href="../it/maschinenpark/">Vedere il parco macchine</a>
-        </div>
-      </div>
-      <figure class="hero-figure"><picture><source srcset="../assets/img/hero-praezisionskomponente-480.webp 480w, ../assets/img/hero-praezisionskomponente-768.webp 768w, ../assets/img/hero-praezisionskomponente-1152.webp 1152w, ../assets/img/hero-praezisionskomponente-1600.webp 1600w" sizes="(min-width: 1024px) 576px, calc(100vw - 2rem)" type="image/webp"><img src="../assets/img/hero-praezisionskomponente-768.jpg" srcset="../assets/img/hero-praezisionskomponente-480.jpg 480w, ../assets/img/hero-praezisionskomponente-768.jpg 768w, ../assets/img/hero-praezisionskomponente-1152.jpg 1152w, ../assets/img/hero-praezisionskomponente-1600.jpg 1600w" sizes="(min-width: 1024px) 576px, calc(100vw - 2rem)" width="768" height="576" fetchpriority="high" alt="Componente in alluminio fresato con fori di accoppiamento sul piano di misura"></picture></figure>
-    </div>
-  </section>
-
-  <section class="section" aria-labelledby="leistungen">
-    <div class="container">
-      <div class="section-head">
-        <p class="eyebrow">Servizi</p>
-        <h2 id="leistungen">Dal pezzo singolo alla serie</h2>
-        <p class="lede">Il rispetto delle vostre specifiche è la nostra priorità assoluta.</p>
+    <div class="wrap">
+      <span class="label">Sviluppo e produzione</span>
+      <h1 class="hero__title">Meccanica di precisione da un unico partner</h1>
+      <p class="hero__lede">deico AG è un fornitore di meccanica di precisione, piccolo ma di qualità, con sede nell'Oberland zurighese. Torniamo, fresiamo e progettiamo secondo le vostre specifiche.</p>
+      <div class="hero__actions">
+        <a class="btn btn--primary" href="../it/kontakt/">Richiedere un'offerta</a>
+        <a class="btn btn--secondary" href="../it/maschinenpark/">Parco macchine</a>
       </div>
 
-      <ul class="card-grid">
-        <li class="card"><picture><source srcset="../assets/img/cnc-drehen-drehteile-480.webp 480w, ../assets/img/cnc-drehen-drehteile-768.webp 768w" sizes="(min-width: 768px) 341px, calc(100vw - 2rem)" type="image/webp"><img src="../assets/img/cnc-drehen-drehteile-768.jpg" srcset="../assets/img/cnc-drehen-drehteile-480.jpg 480w, ../assets/img/cnc-drehen-drehteile-768.jpg 768w" sizes="(min-width: 768px) 341px, calc(100vw - 2rem)" width="768" height="576" loading="lazy" decoding="async" alt="Fila di alberi di precisione torniti in acciaio"></picture><h3>Tornitura CNC</h3><p>Produciamo i vostri componenti torniti in lavorazione CNC per conto terzi. La produzione avviene in base ai vostri dati 3D o disegni. Realizziamo anche ricambi su campione.</p></li>
-        <li class="card"><picture><source srcset="../assets/img/cnc-fraesen-aluminiumplatte-480.webp 480w, ../assets/img/cnc-fraesen-aluminiumplatte-768.webp 768w" sizes="(min-width: 768px) 341px, calc(100vw - 2rem)" type="image/webp"><img src="../assets/img/cnc-fraesen-aluminiumplatte-768.jpg" srcset="../assets/img/cnc-fraesen-aluminiumplatte-480.jpg 480w, ../assets/img/cnc-fraesen-aluminiumplatte-768.jpg 768w" sizes="(min-width: 768px) 341px, calc(100vw - 2rem)" width="768" height="576" loading="lazy" decoding="async" alt="Piastra in alluminio fresata serrata sulla tavola della macchina"></picture><h3>Fresatura CNC a 5 assi</h3><p>Produciamo i vostri componenti fresati in lavorazione CNC per conto terzi. Uno dei nostri punti di forza è la realizzazione di pezzi complessi ed esigenti in piccole quantità.</p></li>
-        <li class="card"><picture><source srcset="../assets/img/fem-simulation-federbein-480.webp 480w, ../assets/img/fem-simulation-federbein-768.webp 768w" sizes="(min-width: 768px) 341px, calc(100vw - 2rem)" type="image/webp"><img src="../assets/img/fem-simulation-federbein-768.jpg" srcset="../assets/img/fem-simulation-federbein-480.jpg 480w, ../assets/img/fem-simulation-federbein-768.jpg 768w" sizes="(min-width: 768px) 341px, calc(100vw - 2rem)" width="768" height="434" loading="lazy" decoding="async" alt="Simulazione FEM di un ammortizzatore con distribuzione delle tensioni a colori"></picture><h3>Sviluppo e progettazione</h3><p>Progettiamo componenti di precisione e realizziamo tutta la documentazione di produzione. Sviluppiamo anche gruppi completi e calcoliamo e simuliamo i componenti meccanici internamente.</p></li>
-      </ul>
-    </div>
-  </section>
-
-  <section class="section section--subtle" aria-labelledby="idee">
-    <div class="container">
-      <div class="media">
-        <div class="media-text">
-          <p class="eyebrow">Da un unico partner</p>
-          <h2 id="idee">Dall'idea al prodotto finito</h2>
-          <p>Tecnica delle macchine dall'idea al prodotto finito: offriamo sviluppo e produzione da un unico partner. Approfittate della nostra competenza produttiva già in fase di sviluppo.</p>
-          <p>Grazie alla nostra lunga esperienza vi accompagniamo dalla prima idea fino alla produzione economica. Sviluppo e produzione sono riuniti sotto lo stesso tetto. I nostri collaboratori altamente qualificati sono una garanzia di qualità.</p>
-          <p><a href="../it/kontakt/">Fissare un colloquio di consulenza</a></p>
-        </div>
-        <figure class="media-figure"><picture><source srcset="../assets/img/konstruktion-fertigungszeichnung-480.webp 480w, ../assets/img/konstruktion-fertigungszeichnung-768.webp 768w, ../assets/img/konstruktion-fertigungszeichnung-1152.webp 1152w" sizes="(min-width: 768px) 520px, calc(100vw - 2rem)" type="image/webp"><img src="../assets/img/konstruktion-fertigungszeichnung-768.jpg" srcset="../assets/img/konstruktion-fertigungszeichnung-480.jpg 480w, ../assets/img/konstruktion-fertigungszeichnung-768.jpg 768w, ../assets/img/konstruktion-fertigungszeichnung-1152.jpg 1152w" sizes="(min-width: 768px) 520px, calc(100vw - 2rem)" width="768" height="543" loading="lazy" decoding="async" alt="Disegno di produzione di una boccola con cartiglio deico accanto al pezzo renderizzato"></picture></figure>
-      </div>
-
-      <dl class="spec-list">
-        <div><dt>CAD</dt><dd>Autodesk Inventor</dd></div>
-        <div><dt>FEM</dt><dd>Autodesk Inventor Nastran</dd></div>
-        <div><dt>CAM</dt><dd>Autodesk Inventor HSM</dd></div>
+      <dl class="factstrip">
+        <div><dt>Lotto</dt><dd><span class="stat">ab 1</span> <span class="factstrip__unit">pezzo</span></dd></div>
+        <div><dt>Fresatura</dt><dd><span class="stat">5</span> <span class="factstrip__unit">assi</span></dd></div>
+        <div><dt>Ripetibilità</dt><dd><span class="stat">&le; 1</span> <span class="factstrip__unit">µm</span></dd></div>
+        <div><dt>Sede</dt><dd><span class="stat">8636</span> <span class="factstrip__unit">Wald ZH</span></dd></div>
       </dl>
     </div>
   </section>
 
-  <section class="section" aria-labelledby="staerken">
-    <div class="container">
-      <div class="section-head">
-        <p class="eyebrow">Ciò che ci distingue</p>
-        <h2 id="staerken">Competenza produttiva nel dettaglio</h2>
-      </div>
+  <figure class="fig fig--overlay band">
+    <picture><source srcset="../assets/img/hero-praezisionskomponente-768.webp 768w, ../assets/img/hero-praezisionskomponente-1152.webp 1152w, ../assets/img/hero-praezisionskomponente-1600.webp 1600w, ../assets/img/hero-praezisionskomponente-1920.webp 1920w" sizes="100vw" type="image/webp"><img src="../assets/img/hero-praezisionskomponente-1152.jpg" srcset="../assets/img/hero-praezisionskomponente-768.jpg 768w, ../assets/img/hero-praezisionskomponente-1152.jpg 1152w, ../assets/img/hero-praezisionskomponente-1600.jpg 1600w, ../assets/img/hero-praezisionskomponente-1920.jpg 1920w" sizes="100vw" width="1152" height="648" fetchpriority="high" alt="Componente in alluminio fresato con fori di accoppiamento sul piano di misura"></picture>
+    <figcaption><b>01</b>&nbsp;&nbsp;Componente in alluminio fresato · Officina di Wald</figcaption>
+  </figure>
 
-      <ul class="feature-grid">
-        <li class="feature"><picture><source srcset="../assets/img/werkstoffe-hastelloy-480.webp 480w, ../assets/img/werkstoffe-hastelloy-768.webp 768w" sizes="(min-width: 1024px) 341px, (min-width: 480px) calc(50vw - 3rem), calc(100vw - 2rem)" type="image/webp"><img src="../assets/img/werkstoffe-hastelloy-480.jpg" srcset="../assets/img/werkstoffe-hastelloy-480.jpg 480w, ../assets/img/werkstoffe-hastelloy-768.jpg 768w" sizes="(min-width: 1024px) 341px, (min-width: 480px) calc(50vw - 3rem), calc(100vw - 2rem)" width="480" height="640" loading="lazy" decoding="async" alt="Pezzo tornito in Hastelloy C22, marcato con il numero di materiale 2.4602"></picture><h3>Materiali difficili da lavorare</h3><p>Lavoriamo anche materiali difficili da asportare come leghe a base di nichel (Hastelloy, Inconel) o leghe di titanio.</p></li>
-        <li class="feature"><picture><source srcset="../assets/img/automation-fertigungszelle-480.webp 480w, ../assets/img/automation-fertigungszelle-768.webp 768w" sizes="(min-width: 1024px) 341px, (min-width: 480px) calc(50vw - 3rem), calc(100vw - 2rem)" type="image/webp"><img src="../assets/img/automation-fertigungszelle-480.jpg" srcset="../assets/img/automation-fertigungszelle-480.jpg 480w, ../assets/img/automation-fertigungszelle-768.jpg 768w" sizes="(min-width: 1024px) 341px, (min-width: 480px) calc(50vw - 3rem), calc(100vw - 2rem)" width="480" height="317" loading="lazy" decoding="async" alt="Modello CAD di una cella di produzione automatizzata con robot"></picture><h3>Serie economiche</h3><p>Grazie alle nostre macchine di produzione automatizzate realizziamo serie a costi contenuti.</p></li>
-        <li class="feature"><picture><source srcset="../assets/img/oberflaechenmessung-marsurf-480.webp 480w, ../assets/img/oberflaechenmessung-marsurf-768.webp 768w" sizes="(min-width: 1024px) 341px, (min-width: 480px) calc(50vw - 3rem), calc(100vw - 2rem)" type="image/webp"><img src="../assets/img/oberflaechenmessung-marsurf-480.jpg" srcset="../assets/img/oberflaechenmessung-marsurf-480.jpg 480w, ../assets/img/oberflaechenmessung-marsurf-768.jpg 768w" sizes="(min-width: 1024px) 341px, (min-width: 480px) calc(50vw - 3rem), calc(100vw - 2rem)" width="480" height="640" loading="lazy" decoding="async" alt="Rugosimetro Mahr MarSurf accanto a un rapporto di misura di deico AG"></picture><h3>Misurazione e protocollo delle superfici</h3><p>Le superfici dei componenti per l'industria alimentare e farmaceutica e per la tecnologia medicale devono soddisfare requisiti elevati. Grazie a strumenti di misura moderni le misuriamo e le documentiamo.</p></li>
-        <li class="feature"><picture><source srcset="../assets/img/lieferservice-fahrzeuge-480.webp 480w, ../assets/img/lieferservice-fahrzeuge-768.webp 768w" sizes="(min-width: 1024px) 341px, (min-width: 480px) calc(50vw - 3rem), calc(100vw - 2rem)" type="image/webp"><img src="../assets/img/lieferservice-fahrzeuge-480.jpg" srcset="../assets/img/lieferservice-fahrzeuge-480.jpg 480w, ../assets/img/lieferservice-fahrzeuge-768.jpg 768w" sizes="(min-width: 1024px) 341px, (min-width: 480px) calc(50vw - 3rem), calc(100vw - 2rem)" width="480" height="270" loading="lazy" decoding="async" alt="Due veicoli di consegna con logo deico AG"></picture><h3>Servizio di consegna proprio</h3><p>I vostri componenti ci stanno a cuore. Per questo consegniamo personalmente con il nostro servizio di consegna.</p></li>
-        <li class="feature"><picture><source srcset="../assets/img/laserbeschriftung-massstaebe-480.webp 480w, ../assets/img/laserbeschriftung-massstaebe-768.webp 768w" sizes="(min-width: 1024px) 341px, (min-width: 480px) calc(50vw - 3rem), calc(100vw - 2rem)" type="image/webp"><img src="../assets/img/laserbeschriftung-massstaebe-480.jpg" srcset="../assets/img/laserbeschriftung-massstaebe-480.jpg 480w, ../assets/img/laserbeschriftung-massstaebe-768.jpg 768w" sizes="(min-width: 1024px) 341px, (min-width: 480px) calc(50vw - 3rem), calc(100vw - 2rem)" width="480" height="360" loading="lazy" decoding="async" alt="Righe marcate a laser con la scritta deico ag"></picture><h3>Marcatura laser</h3><p>Tramite le nostre aziende partner realizziamo le più diverse marcature laser.</p></li>
-        <li class="feature"><picture><source srcset="../assets/img/oberflaechenbehandlung-eloxiert-480.webp 480w, ../assets/img/oberflaechenbehandlung-eloxiert-768.webp 768w" sizes="(min-width: 1024px) 341px, (min-width: 480px) calc(50vw - 3rem), calc(100vw - 2rem)" type="image/webp"><img src="../assets/img/oberflaechenbehandlung-eloxiert-480.jpg" srcset="../assets/img/oberflaechenbehandlung-eloxiert-480.jpg 480w, ../assets/img/oberflaechenbehandlung-eloxiert-768.jpg 768w" sizes="(min-width: 1024px) 341px, (min-width: 480px) calc(50vw - 3rem), calc(100vw - 2rem)" width="480" height="640" loading="lazy" decoding="async" alt="Pezzi torniti anodizzati con un calibro"></picture><h3>Trattamento superficiale</h3><p>Tramite le nostre aziende partner sono possibili i più diversi rivestimenti superficiali, per l'alluminio ad esempio anodizzazione, anodizzazione dura o il procedimento Hartematalieren.</p></li>
+  <section class="section" aria-labelledby="leistungen">
+    <div class="wrap">
+      <span class="label">Servizi</span>
+      <h2 id="leistungen">Dal pezzo singolo alla serie</h2>
+      <p class="hero__lede">Il rispetto delle vostre specifiche è la nostra priorità assoluta.</p>
+
+      <ul class="cards mt-gap">
+        <li class="card">
+          <figure class="fig fig--card"><picture><source srcset="../assets/img/cnc-drehen-drehteile-480.webp 480w, ../assets/img/cnc-drehen-drehteile-768.webp 768w" sizes="(min-width: 768px) 30vw, calc(100vw - 2rem)" type="image/webp"><img src="../assets/img/cnc-drehen-drehteile-768.jpg" srcset="../assets/img/cnc-drehen-drehteile-480.jpg 480w, ../assets/img/cnc-drehen-drehteile-768.jpg 768w" sizes="(min-width: 768px) 30vw, calc(100vw - 2rem)" width="768" height="576" loading="lazy" decoding="async" alt="Fila di alberi di precisione torniti in acciaio"></picture></figure>
+          <div class="card__body">
+            <span class="label">01 / Tornitura</span>
+            <h3 class="card__name">Tornitura CNC</h3>
+            <p>Produciamo i vostri componenti torniti in lavorazione CNC per conto terzi. La produzione avviene in base ai vostri dati 3D o disegni. Realizziamo anche ricambi su campione.</p>
+          </div>
+        </li>
+        <li class="card">
+          <figure class="fig fig--card"><picture><source srcset="../assets/img/cnc-fraesen-aluminiumplatte-480.webp 480w, ../assets/img/cnc-fraesen-aluminiumplatte-768.webp 768w" sizes="(min-width: 768px) 30vw, calc(100vw - 2rem)" type="image/webp"><img src="../assets/img/cnc-fraesen-aluminiumplatte-768.jpg" srcset="../assets/img/cnc-fraesen-aluminiumplatte-480.jpg 480w, ../assets/img/cnc-fraesen-aluminiumplatte-768.jpg 768w" sizes="(min-width: 768px) 30vw, calc(100vw - 2rem)" width="768" height="576" loading="lazy" decoding="async" alt="Piastra in alluminio fresata serrata sulla tavola della macchina"></picture></figure>
+          <div class="card__body">
+            <span class="label">02 / Fresatura</span>
+            <h3 class="card__name">Fresatura CNC a 5 assi</h3>
+            <p>Produciamo i vostri componenti fresati in lavorazione CNC per conto terzi. Uno dei nostri punti di forza è la realizzazione di pezzi complessi ed esigenti in piccole quantità.</p>
+          </div>
+        </li>
+        <li class="card">
+          <figure class="fig fig--card fig--keep-colour"><picture><source srcset="../assets/img/fem-simulation-federbein-480.webp 480w, ../assets/img/fem-simulation-federbein-768.webp 768w" sizes="(min-width: 768px) 30vw, calc(100vw - 2rem)" type="image/webp"><img src="../assets/img/fem-simulation-federbein-768.jpg" srcset="../assets/img/fem-simulation-federbein-480.jpg 480w, ../assets/img/fem-simulation-federbein-768.jpg 768w" sizes="(min-width: 768px) 30vw, calc(100vw - 2rem)" width="768" height="434" loading="lazy" decoding="async" alt="Simulazione FEM di un ammortizzatore con distribuzione delle tensioni a colori"></picture></figure>
+          <div class="card__body">
+            <span class="label">03 / Progettazione</span>
+            <h3 class="card__name">Sviluppo e progettazione</h3>
+            <p>Progettiamo componenti di precisione e realizziamo tutta la documentazione di produzione. Sviluppiamo anche gruppi completi e calcoliamo e simuliamo i componenti meccanici internamente.</p>
+          </div>
+        </li>
       </ul>
     </div>
   </section>
 
-  <section class="section section--subtle" aria-labelledby="sonder">
-    <div class="container">
-      <div class="section-head">
-        <p class="eyebrow">Soluzioni speciali</p>
-        <h2 id="sonder">Quando il catalogo non basta</h2>
-      </div>
+  <section class="section section--surface" aria-labelledby="zahlen">
+    <div class="wrap">
+      <span class="label">La produzione in cifre</span>
+      <h2 id="zahlen">Cosa permettono le nostre macchine</h2>
 
-      <ul class="card-grid">
-        <li class="card"><picture><source srcset="../assets/img/roboterzubehoer-greifer-480.webp 480w, ../assets/img/roboterzubehoer-greifer-768.webp 768w" sizes="(min-width: 768px) 341px, calc(100vw - 2rem)" type="image/webp"><img src="../assets/img/roboterzubehoer-greifer-768.jpg" srcset="../assets/img/roboterzubehoer-greifer-480.jpg 480w, ../assets/img/roboterzubehoer-greifer-768.jpg 768w" sizes="(min-width: 768px) 341px, calc(100vw - 2rem)" width="768" height="614" loading="lazy" decoding="async" alt="Robot industriale con pinza sopra una griglia portapezzi"></picture><h3>Accessori per robot</h3><p>Sviluppiamo e produciamo accessori per robot su misura come griffe di presa, adattatori per diverse pinze o griglie portapezzi per pezzi speciali.</p></li>
-        <li class="card"><picture><source srcset="../assets/img/blechkonstruktion-cad-480.webp 480w, ../assets/img/blechkonstruktion-cad-768.webp 768w" sizes="(min-width: 768px) 341px, calc(100vw - 2rem)" type="image/webp"><img src="../assets/img/blechkonstruktion-cad-768.jpg" srcset="../assets/img/blechkonstruktion-cad-480.jpg 480w, ../assets/img/blechkonstruktion-cad-768.jpg 768w" sizes="(min-width: 768px) 341px, calc(100vw - 2rem)" width="768" height="417" loading="lazy" decoding="async" alt="Modello CAD di una costruzione in lamiera sullo schermo"></picture><h3>Costruzioni in lamiera</h3><p>Con il nostro CAD realizziamo costruzioni in lamiera e i relativi sviluppi. Facciamo produrre le lamiere dalle nostre aziende partner.</p></li>
-        <li class="card"><picture><source srcset="../assets/img/montage-vorrichtungen-480.webp 480w, ../assets/img/montage-vorrichtungen-768.webp 768w" sizes="(min-width: 768px) 341px, calc(100vw - 2rem)" type="image/webp"><img src="../assets/img/montage-vorrichtungen-768.jpg" srcset="../assets/img/montage-vorrichtungen-480.jpg 480w, ../assets/img/montage-vorrichtungen-768.jpg 768w" sizes="(min-width: 768px) 341px, calc(100vw - 2rem)" width="768" height="576" loading="lazy" decoding="async" alt="Dispositivi anodizzati neri allineati in fila"></picture><h3>Montaggio</h3><p>Montiamo i vostri dispositivi, gruppi, impianti e macchine.</p></li>
+      <div class="bento mt-gap">
+        <div class="bento__item bento__item--ink bento__item--w6"><span class="label label--invert">Corsa massima</span><p class="stat">635 × 535 × 460</p><p>mm, Awea FCV-620, fresatura CNC a 5 assi con automazione robotizzata</p></div>
+        <div class="bento__item bento__item--accent bento__item--w6"><span class="label">Ripetibilità</span><p class="stat">&le; 1 µm</p><p>Postazione di misura con altimetro, errore massimo 2 + 2L/1000 µm</p></div>
+        <div class="bento__item bento__item--w4"><span class="label">Diametro di tornitura</span><p class="stat">Ø 340</p><p>mm, Nakamura-Tome AS200LMYS</p></div>
+        <div class="bento__item bento__item--w4"><span class="label">Velocità mandrino</span><p class="stat">15'000</p><p>rpm, cambio utensili a 60 posti</p></div>
+        <div class="bento__item bento__item--w4"><span class="label">Macchine</span><p class="stat">9</p><p>Fresatura, tornitura, rettifica, segatura, metrologia</p></div>
+        <div class="bento__item bento__item--w12"><span class="label">Materiali</span><p class="data data--body">Acciaio · Alluminio · Ottone · Materie plastiche · Leghe a base di nichel (Hastelloy, Inconel) · Leghe di titanio</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--ink" aria-labelledby="idee">
+    <div class="wrap">
+      <div class="split">
+        <div class="split__text">
+          <span class="label label--invert">Da un unico partner</span>
+          <h2 id="idee">Dall'idea al prodotto finito</h2>
+          <p>Tecnica delle macchine dall'idea al prodotto finito: offriamo sviluppo e produzione da un unico partner. Approfittate della nostra competenza produttiva già in fase di sviluppo.</p>
+          <p>Grazie alla nostra lunga esperienza vi accompagniamo dalla prima idea fino alla produzione economica. Sviluppo e produzione sono riuniti sotto lo stesso tetto. I nostri collaboratori altamente qualificati sono una garanzia di qualità.</p>
+          <p><a class="btn btn--light" href="../it/kontakt/">Fissare un colloquio di consulenza</a></p>
+        </div>
+        <div class="split__media"><figure class="fig fig--card"><picture><source srcset="../assets/img/konstruktion-fertigungszeichnung-480.webp 480w, ../assets/img/konstruktion-fertigungszeichnung-768.webp 768w, ../assets/img/konstruktion-fertigungszeichnung-1152.webp 1152w" sizes="(min-width: 768px) 46vw, calc(100vw - 2rem)" type="image/webp"><img src="../assets/img/konstruktion-fertigungszeichnung-768.jpg" srcset="../assets/img/konstruktion-fertigungszeichnung-480.jpg 480w, ../assets/img/konstruktion-fertigungszeichnung-768.jpg 768w, ../assets/img/konstruktion-fertigungszeichnung-1152.jpg 1152w" sizes="(min-width: 768px) 46vw, calc(100vw - 2rem)" width="768" height="543" loading="lazy" decoding="async" alt="Disegno di produzione di una boccola con cartiglio deico accanto al pezzo renderizzato"></picture></figure></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="staerken">
+    <div class="wrap">
+      <span class="label">Ciò che ci distingue</span>
+      <h2 id="staerken">Competenza produttiva nel dettaglio</h2>
+
+      <ul class="cards mt-gap">
+        <li class="card">
+          <figure class="fig fig--card"><picture><source srcset="../assets/img/werkstoffe-hastelloy-480.webp 480w, ../assets/img/werkstoffe-hastelloy-768.webp 768w" sizes="(min-width: 768px) 30vw, calc(100vw - 2rem)" type="image/webp"><img src="../assets/img/werkstoffe-hastelloy-480.jpg" srcset="../assets/img/werkstoffe-hastelloy-480.jpg 480w, ../assets/img/werkstoffe-hastelloy-768.jpg 768w" sizes="(min-width: 768px) 30vw, calc(100vw - 2rem)" width="480" height="640" loading="lazy" decoding="async" alt="Pezzo tornito in Hastelloy C22, marcato con il numero di materiale 2.4602"></picture></figure>
+          <div class="card__body">
+            <span class="label">Materiali</span>
+            <h3 class="card__name">Materiali difficili da lavorare</h3>
+            <p>Lavoriamo anche materiali difficili da asportare come leghe a base di nichel (Hastelloy, Inconel) o leghe di titanio.</p>
+          </div>
+        </li>
+        <li class="card">
+          <figure class="fig fig--card"><picture><source srcset="../assets/img/automation-fertigungszelle-480.webp 480w, ../assets/img/automation-fertigungszelle-768.webp 768w" sizes="(min-width: 768px) 30vw, calc(100vw - 2rem)" type="image/webp"><img src="../assets/img/automation-fertigungszelle-480.jpg" srcset="../assets/img/automation-fertigungszelle-480.jpg 480w, ../assets/img/automation-fertigungszelle-768.jpg 768w" sizes="(min-width: 768px) 30vw, calc(100vw - 2rem)" width="480" height="317" loading="lazy" decoding="async" alt="Modello CAD di una cella di produzione automatizzata con robot"></picture></figure>
+          <div class="card__body">
+            <span class="label">Automazione</span>
+            <h3 class="card__name">Serie economiche</h3>
+            <p>Grazie alle nostre macchine di produzione automatizzate realizziamo serie a costi contenuti.</p>
+          </div>
+        </li>
+        <li class="card">
+          <figure class="fig fig--card"><picture><source srcset="../assets/img/oberflaechenmessung-marsurf-480.webp 480w, ../assets/img/oberflaechenmessung-marsurf-768.webp 768w" sizes="(min-width: 768px) 30vw, calc(100vw - 2rem)" type="image/webp"><img src="../assets/img/oberflaechenmessung-marsurf-480.jpg" srcset="../assets/img/oberflaechenmessung-marsurf-480.jpg 480w, ../assets/img/oberflaechenmessung-marsurf-768.jpg 768w" sizes="(min-width: 768px) 30vw, calc(100vw - 2rem)" width="480" height="640" loading="lazy" decoding="async" alt="Rugosimetro Mahr MarSurf accanto a un rapporto di misura di deico AG"></picture></figure>
+          <div class="card__body">
+            <span class="label">Metrologia</span>
+            <h3 class="card__name">Misurazione e protocollo delle superfici</h3>
+            <p>Le superfici dei componenti per l'industria alimentare e farmaceutica e per la tecnologia medicale devono soddisfare requisiti elevati. Grazie a strumenti di misura moderni le misuriamo e le documentiamo.</p>
+          </div>
+        </li>
+        <li class="card">
+          <figure class="fig fig--card"><picture><source srcset="../assets/img/lieferservice-fahrzeuge-480.webp 480w, ../assets/img/lieferservice-fahrzeuge-768.webp 768w" sizes="(min-width: 768px) 30vw, calc(100vw - 2rem)" type="image/webp"><img src="../assets/img/lieferservice-fahrzeuge-480.jpg" srcset="../assets/img/lieferservice-fahrzeuge-480.jpg 480w, ../assets/img/lieferservice-fahrzeuge-768.jpg 768w" sizes="(min-width: 768px) 30vw, calc(100vw - 2rem)" width="480" height="270" loading="lazy" decoding="async" alt="Due veicoli di consegna con logo deico AG"></picture></figure>
+          <div class="card__body">
+            <span class="label">Logistica</span>
+            <h3 class="card__name">Servizio di consegna proprio</h3>
+            <p>I vostri componenti ci stanno a cuore. Per questo consegniamo personalmente con il nostro servizio di consegna.</p>
+          </div>
+        </li>
+        <li class="card">
+          <figure class="fig fig--card"><picture><source srcset="../assets/img/laserbeschriftung-massstaebe-480.webp 480w, ../assets/img/laserbeschriftung-massstaebe-768.webp 768w" sizes="(min-width: 768px) 30vw, calc(100vw - 2rem)" type="image/webp"><img src="../assets/img/laserbeschriftung-massstaebe-480.jpg" srcset="../assets/img/laserbeschriftung-massstaebe-480.jpg 480w, ../assets/img/laserbeschriftung-massstaebe-768.jpg 768w" sizes="(min-width: 768px) 30vw, calc(100vw - 2rem)" width="480" height="360" loading="lazy" decoding="async" alt="Righe marcate a laser con la scritta deico ag"></picture></figure>
+          <div class="card__body">
+            <span class="label">Marcatura</span>
+            <h3 class="card__name">Marcatura laser</h3>
+            <p>Tramite le nostre aziende partner realizziamo le più diverse marcature laser.</p>
+          </div>
+        </li>
+        <li class="card">
+          <figure class="fig fig--card"><picture><source srcset="../assets/img/oberflaechenbehandlung-eloxiert-480.webp 480w, ../assets/img/oberflaechenbehandlung-eloxiert-768.webp 768w" sizes="(min-width: 768px) 30vw, calc(100vw - 2rem)" type="image/webp"><img src="../assets/img/oberflaechenbehandlung-eloxiert-480.jpg" srcset="../assets/img/oberflaechenbehandlung-eloxiert-480.jpg 480w, ../assets/img/oberflaechenbehandlung-eloxiert-768.jpg 768w" sizes="(min-width: 768px) 30vw, calc(100vw - 2rem)" width="480" height="640" loading="lazy" decoding="async" alt="Pezzi torniti anodizzati con un calibro"></picture></figure>
+          <div class="card__body">
+            <span class="label">Superfici</span>
+            <h3 class="card__name">Trattamento superficiale</h3>
+            <p>Tramite le nostre aziende partner sono possibili i più diversi rivestimenti superficiali, per l'alluminio ad esempio anodizzazione, anodizzazione dura o il procedimento Hartematalieren.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section section--surface" aria-labelledby="sonder">
+    <div class="wrap">
+      <span class="label">Soluzioni speciali</span>
+      <h2 id="sonder">Quando il catalogo non basta</h2>
+
+      <ul class="cards mt-gap">
+        <li class="card">
+          <figure class="fig fig--card"><picture><source srcset="../assets/img/roboterzubehoer-greifer-480.webp 480w, ../assets/img/roboterzubehoer-greifer-768.webp 768w" sizes="(min-width: 768px) 30vw, calc(100vw - 2rem)" type="image/webp"><img src="../assets/img/roboterzubehoer-greifer-768.jpg" srcset="../assets/img/roboterzubehoer-greifer-480.jpg 480w, ../assets/img/roboterzubehoer-greifer-768.jpg 768w" sizes="(min-width: 768px) 30vw, calc(100vw - 2rem)" width="768" height="614" loading="lazy" decoding="async" alt="Robot industriale con pinza sopra una griglia portapezzi"></picture></figure>
+          <div class="card__body">
+            <span class="label">Automazione</span>
+            <h3 class="card__name">Accessori per robot</h3>
+            <p>Sviluppiamo e produciamo accessori per robot su misura come griffe di presa, adattatori per diverse pinze o griglie portapezzi per pezzi speciali.</p>
+          </div>
+        </li>
+        <li class="card">
+          <figure class="fig fig--card"><picture><source srcset="../assets/img/blechkonstruktion-cad-480.webp 480w, ../assets/img/blechkonstruktion-cad-768.webp 768w" sizes="(min-width: 768px) 30vw, calc(100vw - 2rem)" type="image/webp"><img src="../assets/img/blechkonstruktion-cad-768.jpg" srcset="../assets/img/blechkonstruktion-cad-480.jpg 480w, ../assets/img/blechkonstruktion-cad-768.jpg 768w" sizes="(min-width: 768px) 30vw, calc(100vw - 2rem)" width="768" height="417" loading="lazy" decoding="async" alt="Modello CAD di una costruzione in lamiera sullo schermo"></picture></figure>
+          <div class="card__body">
+            <span class="label">Progettazione</span>
+            <h3 class="card__name">Costruzioni in lamiera</h3>
+            <p>Con il nostro CAD realizziamo costruzioni in lamiera e i relativi sviluppi. Facciamo produrre le lamiere dalle nostre aziende partner.</p>
+          </div>
+        </li>
+        <li class="card">
+          <figure class="fig fig--card"><picture><source srcset="../assets/img/montage-vorrichtungen-480.webp 480w, ../assets/img/montage-vorrichtungen-768.webp 768w" sizes="(min-width: 768px) 30vw, calc(100vw - 2rem)" type="image/webp"><img src="../assets/img/montage-vorrichtungen-768.jpg" srcset="../assets/img/montage-vorrichtungen-480.jpg 480w, ../assets/img/montage-vorrichtungen-768.jpg 768w" sizes="(min-width: 768px) 30vw, calc(100vw - 2rem)" width="768" height="576" loading="lazy" decoding="async" alt="Dispositivi anodizzati neri allineati in fila"></picture></figure>
+          <div class="card__body">
+            <span class="label">Montaggio</span>
+            <h3 class="card__name">Montaggio</h3>
+            <p>Montiamo i vostri dispositivi, gruppi, impianti e macchine.</p>
+          </div>
+        </li>
       </ul>
     </div>
   </section>
 
   <section class="section" aria-labelledby="branchen">
-    <div class="container">
-      <div class="section-head">
-        <p class="eyebrow">Settori</p>
-        <h2 id="branchen">A casa nei settori più diversi</h2>
-        <p class="lede">Lavoriamo diversi materiali come acciaio, alluminio, ottone e materie plastiche. I trattamenti superficiali e termici sono possibili tramite le nostre aziende partner.</p>
-      </div>
-      <ul class="tag-list">
-        <li>Tecnica delle macchine</li>
-        <li>Industria farmaceutica</li>
-        <li>Attrezzature sportive</li>
-        <li>Industria tessile</li>
-        <li>Tecnologia medicale</li>
-        <li>Macchine edili</li>
+    <div class="wrap">
+      <span class="label">Settori</span>
+      <h2 id="branchen">A casa nei settori più diversi</h2>
+      <p class="hero__lede">Lavoriamo diversi materiali come acciaio, alluminio, ottone e materie plastiche. I trattamenti superficiali e termici sono possibili tramite le nostre aziende partner.</p>
+
+      <ul class="sectors mt-gap">
+        <li><span>01</span> Tecnica delle macchine</li>
+        <li><span>02</span> Industria farmaceutica</li>
+        <li><span>03</span> Attrezzature sportive</li>
+        <li><span>04</span> Industria tessile</li>
+        <li><span>05</span> Tecnologia medicale</li>
+        <li><span>06</span> Macchine edili</li>
       </ul>
     </div>
   </section>
 
-  <section class="cta-band" aria-labelledby="angebot">
-    <div class="container">
-      <h2 id="angebot">Richiedere un'offerta</h2>
-      <p>Inviateci semplicemente i vostri dati 3D o il disegno e vi prepareremo volentieri un'offerta senza impegno.</p>
-      <a class="btn" href="../it/kontakt/">Contattaci</a>
+  <section class="cta" aria-labelledby="angebot">
+    <div class="wrap">
+      <span class="label">Richiedere un'offerta</span>
+      <h2 id="angebot">Inviateci semplicemente i vostri dati 3D o il disegno e vi prepareremo volentieri un'offerta senza impegno.</h2>
+      <a class="btn btn--light" href="../it/kontakt/">Contattaci</a>
     </div>
   </section>
 
 </main>
 
-<footer class="site-footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-col">
-        <h2 class="footer-title">deico AG</h2>
-        <address class="footer-address">
-          Huebstrasse 24<br>
-          8636 Wald<br>
-          Svizzera
-        </address>
-        <p><a href="tel:+41555355550">+41 55 535 55 50</a><br>
-           <a href="mailto:mail@deico.ch">mail@deico.ch</a></p>
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__grid">
+      <div>
+        <p class="foot__title">deico AG</p>
+        <address>Huebstrasse 24<br>8636 Wald<br>Svizzera</address>
+        <p class="mt-1"><a href="tel:+41555355550">+41 55 535 55 50</a><br><a href="mailto:mail@deico.ch">mail@deico.ch</a></p>
       </div>
-
-      <nav class="footer-col" aria-label="Navigazione">
-        <h2 class="footer-title">Navigazione</h2>
+      <nav aria-label="Navigazione">
+        <p class="foot__title">Navigazione</p>
         <ul>
           <li><a href="../it/">Home</a></li>
           <li><a href="../it/showroom/">Showroom</a></li>
@@ -194,23 +291,21 @@
           <li><a href="../it/kontakt/">Contatto</a></li>
         </ul>
       </nav>
-
-      <nav class="footer-col" aria-label="Note legali">
-        <h2 class="footer-title">Note legali</h2>
+      <nav aria-label="Note legali">
+        <p class="foot__title">Note legali</p>
         <ul>
           <li><a href="../it/impressum/">Note legali</a></li>
           <li><a href="../it/datenschutz/">Informativa sulla privacy</a></li>
         </ul>
       </nav>
     </div>
-
-    <div class="footer-bottom">
+    <div class="foot__bottom">
       <p>&copy; 2026 deico AG</p>
       <p>Anteprima. Non è il sito ufficiale di deico AG.</p>
     </div>
   </div>
 </footer>
 
-<script src="../js/main.js" defer></script>
+<script src="../js/main.js?v=2" defer></script>
 </body>
 </html>

@@ -6,36 +6,43 @@
 <meta name="robots" content="noindex, nofollow">
 <title>deico AG Präzisionsmechanik</title>
 <meta name="description" content="deico AG is a precision engineering partner in the Zurich Oberland. CNC turning, CNC 5-axis milling, development and design from a single source.">
+
 <link rel="alternate" hreflang="de-CH" href="../de/">
 <link rel="alternate" hreflang="fr-CH" href="../fr/">
 <link rel="alternate" hreflang="it-CH" href="../it/">
 <link rel="alternate" hreflang="en" href="../en/">
 <link rel="alternate" hreflang="x-default" href="../de/">
+
 <link rel="icon" href="../favicon.ico" sizes="16x16 32x32 48x48">
 <link rel="icon" type="image/png" sizes="192x192" href="../assets/icon/icon-192.png">
 <link rel="icon" type="image/png" sizes="512x512" href="../assets/icon/icon-512.png">
 <link rel="apple-touch-icon" href="../assets/icon/apple-touch-icon.png">
 <meta name="theme-color" content="#5E61ED">
-<link rel="stylesheet" href="../css/reset.css">
-<link rel="stylesheet" href="../css/tokens.css">
-<link rel="stylesheet" href="../css/main.css">
-<script>document.documentElement.className="js";</script>
+
+<link rel="preload" as="font" type="font/woff2" href="../assets/fonts/space-grotesk-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="../assets/fonts/jetbrains-mono-latin.woff2" crossorigin>
+
+<link rel="stylesheet" href="../css/reset.css?v=2">
+<link rel="stylesheet" href="../css/tokens.css?v=2">
+<link rel="stylesheet" href="../css/main.css?v=2">
+<script>document.documentElement.className = "js";</script>
 </head>
 <body>
+
 <a class="skip-link" href="#main">Skip to content</a>
 
-<header class="site-header">
-  <div class="container header-inner">
-    <a class="logo" href="../en/" aria-label="deico AG Präzisionsmechanik, Home page">
-      <picture><source srcset="../assets/logo/deico-logo-340.webp 340w, ../assets/logo/deico-logo-680.webp 680w" sizes="(min-width: 1024px) 96px, 79px" type="image/webp"><img src="../assets/logo/deico-logo-340.png" srcset="../assets/logo/deico-logo-340.png 340w, ../assets/logo/deico-logo-680.png 680w" sizes="(min-width: 1024px) 96px, 79px" width="340" height="120" alt="deico AG Präzisionsmechanik"></picture>
+<header class="head">
+  <div class="wrap head__in">
+    <a class="head__logo" href="../en/" aria-label="deico AG Präzisionsmechanik, Home page">
+      <picture><source srcset="../assets/logo/deico-logo-340.webp 340w, ../assets/logo/deico-logo-680.webp 680w" sizes="(min-width: 1024px) 91px, 79px" type="image/webp"><img src="../assets/logo/deico-logo-340.png" width="340" height="120" alt="deico AG Präzisionsmechanik"></picture>
     </a>
 
-    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
-      <span class="nav-toggle-bars"></span>
+    <button class="navtoggle" type="button" aria-expanded="false" aria-controls="nav">
+      <span class="navtoggle__bars"></span>
       <span class="visually-hidden">Menu</span>
     </button>
 
-    <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+    <nav class="nav" id="nav" aria-label="Main navigation">
       <ul>
         <li><a href="../en/" aria-current="page">Home</a></li>
         <li><a href="../en/showroom/">Showroom</a></li>
@@ -59,134 +66,224 @@
 <main id="main">
 
   <section class="hero">
-    <div class="container hero-inner">
-      <div class="hero-text">
-        <p class="eyebrow">Development and production</p>
-        <h1>Precision engineering from a single source</h1>
-        <p class="lede">deico AG is a small but capable precision engineering partner based in the Zurich Oberland. We turn, mill and design to your specifications.</p>
-        <div class="hero-actions">
-          <a class="btn btn--primary" href="../en/kontakt/">Request a quote</a>
-          <a class="btn btn--ghost" href="../en/maschinenpark/">View our machine park</a>
-        </div>
-      </div>
-      <figure class="hero-figure"><picture><source srcset="../assets/img/hero-praezisionskomponente-480.webp 480w, ../assets/img/hero-praezisionskomponente-768.webp 768w, ../assets/img/hero-praezisionskomponente-1152.webp 1152w, ../assets/img/hero-praezisionskomponente-1600.webp 1600w" sizes="(min-width: 1024px) 576px, calc(100vw - 2rem)" type="image/webp"><img src="../assets/img/hero-praezisionskomponente-768.jpg" srcset="../assets/img/hero-praezisionskomponente-480.jpg 480w, ../assets/img/hero-praezisionskomponente-768.jpg 768w, ../assets/img/hero-praezisionskomponente-1152.jpg 1152w, ../assets/img/hero-praezisionskomponente-1600.jpg 1600w" sizes="(min-width: 1024px) 576px, calc(100vw - 2rem)" width="768" height="576" fetchpriority="high" alt="Milled aluminium component with fitted bores on the surface plate"></picture></figure>
-    </div>
-  </section>
-
-  <section class="section" aria-labelledby="leistungen">
-    <div class="container">
-      <div class="section-head">
-        <p class="eyebrow">Services</p>
-        <h2 id="leistungen">From one-off to series</h2>
-        <p class="lede">Meeting your specifications is our highest priority.</p>
+    <div class="wrap">
+      <span class="label">Development and production</span>
+      <h1 class="hero__title">Precision engineering from a single source</h1>
+      <p class="hero__lede">deico AG is a small but capable precision engineering partner based in the Zurich Oberland. We turn, mill and design to your specifications.</p>
+      <div class="hero__actions">
+        <a class="btn btn--primary" href="../en/kontakt/">Request a quote</a>
+        <a class="btn btn--secondary" href="../en/maschinenpark/">Machine park</a>
       </div>
 
-      <ul class="card-grid">
-        <li class="card"><picture><source srcset="../assets/img/cnc-drehen-drehteile-480.webp 480w, ../assets/img/cnc-drehen-drehteile-768.webp 768w" sizes="(min-width: 768px) 341px, calc(100vw - 2rem)" type="image/webp"><img src="../assets/img/cnc-drehen-drehteile-768.jpg" srcset="../assets/img/cnc-drehen-drehteile-480.jpg 480w, ../assets/img/cnc-drehen-drehteile-768.jpg 768w" sizes="(min-width: 768px) 341px, calc(100vw - 2rem)" width="768" height="576" loading="lazy" decoding="async" alt="Row of finished turned steel precision shafts"></picture><h3>CNC turning</h3><p>We produce your turned components as CNC contract work, manufactured from your 3D data or drawings. We also make spare parts from a sample.</p></li>
-        <li class="card"><picture><source srcset="../assets/img/cnc-fraesen-aluminiumplatte-480.webp 480w, ../assets/img/cnc-fraesen-aluminiumplatte-768.webp 768w" sizes="(min-width: 768px) 341px, calc(100vw - 2rem)" type="image/webp"><img src="../assets/img/cnc-fraesen-aluminiumplatte-768.jpg" srcset="../assets/img/cnc-fraesen-aluminiumplatte-480.jpg 480w, ../assets/img/cnc-fraesen-aluminiumplatte-768.jpg 768w" sizes="(min-width: 768px) 341px, calc(100vw - 2rem)" width="768" height="576" loading="lazy" decoding="async" alt="Milled aluminium plate clamped on the machine table"></picture><h3>CNC 5-axis milling</h3><p>We produce your milled components as CNC contract work. One of our particular strengths is manufacturing complex, demanding parts in low volumes.</p></li>
-        <li class="card"><picture><source srcset="../assets/img/fem-simulation-federbein-480.webp 480w, ../assets/img/fem-simulation-federbein-768.webp 768w" sizes="(min-width: 768px) 341px, calc(100vw - 2rem)" type="image/webp"><img src="../assets/img/fem-simulation-federbein-768.jpg" srcset="../assets/img/fem-simulation-federbein-480.jpg 480w, ../assets/img/fem-simulation-federbein-768.jpg 768w" sizes="(min-width: 768px) 341px, calc(100vw - 2rem)" width="768" height="434" loading="lazy" decoding="async" alt="FEM simulation of a suspension strut with colour stress distribution"></picture><h3>Development and design</h3><p>We design precision components and produce all the associated manufacturing documentation. We also develop complete assemblies, and calculate and simulate mechanical parts in house.</p></li>
-      </ul>
-    </div>
-  </section>
-
-  <section class="section section--subtle" aria-labelledby="idee">
-    <div class="container">
-      <div class="media">
-        <div class="media-text">
-          <p class="eyebrow">From a single source</p>
-          <h2 id="idee">From idea to finished product</h2>
-          <p>Machine technology from idea to finished product: we offer development and production from a single source. Benefit from our manufacturing expertise as early as the development phase.</p>
-          <p>Our long experience means we can support you from the first idea through to economical production. Development and production sit under one roof. Our highly qualified staff are a guarantee of quality.</p>
-          <p><a href="../en/kontakt/">Arrange a consultation</a></p>
-        </div>
-        <figure class="media-figure"><picture><source srcset="../assets/img/konstruktion-fertigungszeichnung-480.webp 480w, ../assets/img/konstruktion-fertigungszeichnung-768.webp 768w, ../assets/img/konstruktion-fertigungszeichnung-1152.webp 1152w" sizes="(min-width: 768px) 520px, calc(100vw - 2rem)" type="image/webp"><img src="../assets/img/konstruktion-fertigungszeichnung-768.jpg" srcset="../assets/img/konstruktion-fertigungszeichnung-480.jpg 480w, ../assets/img/konstruktion-fertigungszeichnung-768.jpg 768w, ../assets/img/konstruktion-fertigungszeichnung-1152.jpg 1152w" sizes="(min-width: 768px) 520px, calc(100vw - 2rem)" width="768" height="543" loading="lazy" decoding="async" alt="Manufacturing drawing of a bush with the deico title block beside the rendered part"></picture></figure>
-      </div>
-
-      <dl class="spec-list">
-        <div><dt>CAD</dt><dd>Autodesk Inventor</dd></div>
-        <div><dt>FEM</dt><dd>Autodesk Inventor Nastran</dd></div>
-        <div><dt>CAM</dt><dd>Autodesk Inventor HSM</dd></div>
+      <dl class="factstrip">
+        <div><dt>Batch size</dt><dd><span class="stat">ab 1</span> <span class="factstrip__unit">piece</span></dd></div>
+        <div><dt>Milling</dt><dd><span class="stat">5</span> <span class="factstrip__unit">axes</span></dd></div>
+        <div><dt>Repeatability</dt><dd><span class="stat">&le; 1</span> <span class="factstrip__unit">µm</span></dd></div>
+        <div><dt>Location</dt><dd><span class="stat">8636</span> <span class="factstrip__unit">Wald ZH</span></dd></div>
       </dl>
     </div>
   </section>
 
-  <section class="section" aria-labelledby="staerken">
-    <div class="container">
-      <div class="section-head">
-        <p class="eyebrow">What sets us apart</p>
-        <h2 id="staerken">Manufacturing expertise in detail</h2>
-      </div>
+  <figure class="fig fig--overlay band">
+    <picture><source srcset="../assets/img/hero-praezisionskomponente-768.webp 768w, ../assets/img/hero-praezisionskomponente-1152.webp 1152w, ../assets/img/hero-praezisionskomponente-1600.webp 1600w, ../assets/img/hero-praezisionskomponente-1920.webp 1920w" sizes="100vw" type="image/webp"><img src="../assets/img/hero-praezisionskomponente-1152.jpg" srcset="../assets/img/hero-praezisionskomponente-768.jpg 768w, ../assets/img/hero-praezisionskomponente-1152.jpg 1152w, ../assets/img/hero-praezisionskomponente-1600.jpg 1600w, ../assets/img/hero-praezisionskomponente-1920.jpg 1920w" sizes="100vw" width="1152" height="648" fetchpriority="high" alt="Milled aluminium component with fitted bores on the surface plate"></picture>
+    <figcaption><b>01</b>&nbsp;&nbsp;Milled aluminium component · Wald workshop</figcaption>
+  </figure>
 
-      <ul class="feature-grid">
-        <li class="feature"><picture><source srcset="../assets/img/werkstoffe-hastelloy-480.webp 480w, ../assets/img/werkstoffe-hastelloy-768.webp 768w" sizes="(min-width: 1024px) 341px, (min-width: 480px) calc(50vw - 3rem), calc(100vw - 2rem)" type="image/webp"><img src="../assets/img/werkstoffe-hastelloy-480.jpg" srcset="../assets/img/werkstoffe-hastelloy-480.jpg 480w, ../assets/img/werkstoffe-hastelloy-768.jpg 768w" sizes="(min-width: 1024px) 341px, (min-width: 480px) calc(50vw - 3rem), calc(100vw - 2rem)" width="480" height="640" loading="lazy" decoding="async" alt="Turned component in Hastelloy C22, marked with material number 2.4602"></picture><h3>Difficult-to-machine materials</h3><p>We also machine difficult materials such as nickel-based alloys (Hastelloy, Inconel) and titanium alloys.</p></li>
-        <li class="feature"><picture><source srcset="../assets/img/automation-fertigungszelle-480.webp 480w, ../assets/img/automation-fertigungszelle-768.webp 768w" sizes="(min-width: 1024px) 341px, (min-width: 480px) calc(50vw - 3rem), calc(100vw - 2rem)" type="image/webp"><img src="../assets/img/automation-fertigungszelle-480.jpg" srcset="../assets/img/automation-fertigungszelle-480.jpg 480w, ../assets/img/automation-fertigungszelle-768.jpg 768w" sizes="(min-width: 1024px) 341px, (min-width: 480px) calc(50vw - 3rem), calc(100vw - 2rem)" width="480" height="317" loading="lazy" decoding="async" alt="CAD model of an automated production cell with robot"></picture><h3>Cost-effective series</h3><p>Our automated production machines let us manufacture series cost-effectively.</p></li>
-        <li class="feature"><picture><source srcset="../assets/img/oberflaechenmessung-marsurf-480.webp 480w, ../assets/img/oberflaechenmessung-marsurf-768.webp 768w" sizes="(min-width: 1024px) 341px, (min-width: 480px) calc(50vw - 3rem), calc(100vw - 2rem)" type="image/webp"><img src="../assets/img/oberflaechenmessung-marsurf-480.jpg" srcset="../assets/img/oberflaechenmessung-marsurf-480.jpg 480w, ../assets/img/oberflaechenmessung-marsurf-768.jpg 768w" sizes="(min-width: 1024px) 341px, (min-width: 480px) calc(50vw - 3rem), calc(100vw - 2rem)" width="480" height="640" loading="lazy" decoding="async" alt="Mahr MarSurf surface measuring instrument beside a deico AG measurement report"></picture><h3>Surface measurement and reporting</h3><p>Surfaces on parts for the food and pharmaceutical industries and for medical technology must meet high requirements. Modern measuring equipment lets us measure and document them.</p></li>
-        <li class="feature"><picture><source srcset="../assets/img/lieferservice-fahrzeuge-480.webp 480w, ../assets/img/lieferservice-fahrzeuge-768.webp 768w" sizes="(min-width: 1024px) 341px, (min-width: 480px) calc(50vw - 3rem), calc(100vw - 2rem)" type="image/webp"><img src="../assets/img/lieferservice-fahrzeuge-480.jpg" srcset="../assets/img/lieferservice-fahrzeuge-480.jpg 480w, ../assets/img/lieferservice-fahrzeuge-768.jpg 768w" sizes="(min-width: 1024px) 341px, (min-width: 480px) calc(50vw - 3rem), calc(100vw - 2rem)" width="480" height="270" loading="lazy" decoding="async" alt="Two liveried deico AG delivery vehicles"></picture><h3>Our own delivery service</h3><p>Your components matter to us. That is why we deliver them personally with our own delivery service.</p></li>
-        <li class="feature"><picture><source srcset="../assets/img/laserbeschriftung-massstaebe-480.webp 480w, ../assets/img/laserbeschriftung-massstaebe-768.webp 768w" sizes="(min-width: 1024px) 341px, (min-width: 480px) calc(50vw - 3rem), calc(100vw - 2rem)" type="image/webp"><img src="../assets/img/laserbeschriftung-massstaebe-480.jpg" srcset="../assets/img/laserbeschriftung-massstaebe-480.jpg 480w, ../assets/img/laserbeschriftung-massstaebe-768.jpg 768w" sizes="(min-width: 1024px) 341px, (min-width: 480px) calc(50vw - 3rem), calc(100vw - 2rem)" width="480" height="360" loading="lazy" decoding="async" alt="Laser-marked rules with the deico ag lettering"></picture><h3>Laser marking</h3><p>Through our partner companies we produce a wide range of laser markings.</p></li>
-        <li class="feature"><picture><source srcset="../assets/img/oberflaechenbehandlung-eloxiert-480.webp 480w, ../assets/img/oberflaechenbehandlung-eloxiert-768.webp 768w" sizes="(min-width: 1024px) 341px, (min-width: 480px) calc(50vw - 3rem), calc(100vw - 2rem)" type="image/webp"><img src="../assets/img/oberflaechenbehandlung-eloxiert-480.jpg" srcset="../assets/img/oberflaechenbehandlung-eloxiert-480.jpg 480w, ../assets/img/oberflaechenbehandlung-eloxiert-768.jpg 768w" sizes="(min-width: 1024px) 341px, (min-width: 480px) calc(50vw - 3rem), calc(100vw - 2rem)" width="480" height="640" loading="lazy" decoding="async" alt="Anodised turned parts with a caliper"></picture><h3>Surface treatment</h3><p>Through our partner companies a wide range of surface coatings is possible, for aluminium for example anodising, hard anodising or the Hartematalieren process.</p></li>
+  <section class="section" aria-labelledby="leistungen">
+    <div class="wrap">
+      <span class="label">Services</span>
+      <h2 id="leistungen">From one-off to series</h2>
+      <p class="hero__lede">Meeting your specifications is our highest priority.</p>
+
+      <ul class="cards mt-gap">
+        <li class="card">
+          <figure class="fig fig--card"><picture><source srcset="../assets/img/cnc-drehen-drehteile-480.webp 480w, ../assets/img/cnc-drehen-drehteile-768.webp 768w" sizes="(min-width: 768px) 30vw, calc(100vw - 2rem)" type="image/webp"><img src="../assets/img/cnc-drehen-drehteile-768.jpg" srcset="../assets/img/cnc-drehen-drehteile-480.jpg 480w, ../assets/img/cnc-drehen-drehteile-768.jpg 768w" sizes="(min-width: 768px) 30vw, calc(100vw - 2rem)" width="768" height="576" loading="lazy" decoding="async" alt="Row of finished turned steel precision shafts"></picture></figure>
+          <div class="card__body">
+            <span class="label">01 / Turning</span>
+            <h3 class="card__name">CNC turning</h3>
+            <p>We produce your turned components as CNC contract work, manufactured from your 3D data or drawings. We also make spare parts from a sample.</p>
+          </div>
+        </li>
+        <li class="card">
+          <figure class="fig fig--card"><picture><source srcset="../assets/img/cnc-fraesen-aluminiumplatte-480.webp 480w, ../assets/img/cnc-fraesen-aluminiumplatte-768.webp 768w" sizes="(min-width: 768px) 30vw, calc(100vw - 2rem)" type="image/webp"><img src="../assets/img/cnc-fraesen-aluminiumplatte-768.jpg" srcset="../assets/img/cnc-fraesen-aluminiumplatte-480.jpg 480w, ../assets/img/cnc-fraesen-aluminiumplatte-768.jpg 768w" sizes="(min-width: 768px) 30vw, calc(100vw - 2rem)" width="768" height="576" loading="lazy" decoding="async" alt="Milled aluminium plate clamped on the machine table"></picture></figure>
+          <div class="card__body">
+            <span class="label">02 / Milling</span>
+            <h3 class="card__name">CNC 5-axis milling</h3>
+            <p>We produce your milled components as CNC contract work. One of our particular strengths is manufacturing complex, demanding parts in low volumes.</p>
+          </div>
+        </li>
+        <li class="card">
+          <figure class="fig fig--card fig--keep-colour"><picture><source srcset="../assets/img/fem-simulation-federbein-480.webp 480w, ../assets/img/fem-simulation-federbein-768.webp 768w" sizes="(min-width: 768px) 30vw, calc(100vw - 2rem)" type="image/webp"><img src="../assets/img/fem-simulation-federbein-768.jpg" srcset="../assets/img/fem-simulation-federbein-480.jpg 480w, ../assets/img/fem-simulation-federbein-768.jpg 768w" sizes="(min-width: 768px) 30vw, calc(100vw - 2rem)" width="768" height="434" loading="lazy" decoding="async" alt="FEM simulation of a suspension strut with colour stress distribution"></picture></figure>
+          <div class="card__body">
+            <span class="label">03 / Design</span>
+            <h3 class="card__name">Development and design</h3>
+            <p>We design precision components and produce all the associated manufacturing documentation. We also develop complete assemblies, and calculate and simulate mechanical parts in house.</p>
+          </div>
+        </li>
       </ul>
     </div>
   </section>
 
-  <section class="section section--subtle" aria-labelledby="sonder">
-    <div class="container">
-      <div class="section-head">
-        <p class="eyebrow">Special solutions</p>
-        <h2 id="sonder">When off-the-shelf will not do</h2>
-      </div>
+  <section class="section section--surface" aria-labelledby="zahlen">
+    <div class="wrap">
+      <span class="label">Production in numbers</span>
+      <h2 id="zahlen">What our machines can do</h2>
 
-      <ul class="card-grid">
-        <li class="card"><picture><source srcset="../assets/img/roboterzubehoer-greifer-480.webp 480w, ../assets/img/roboterzubehoer-greifer-768.webp 768w" sizes="(min-width: 768px) 341px, calc(100vw - 2rem)" type="image/webp"><img src="../assets/img/roboterzubehoer-greifer-768.jpg" srcset="../assets/img/roboterzubehoer-greifer-480.jpg 480w, ../assets/img/roboterzubehoer-greifer-768.jpg 768w" sizes="(min-width: 768px) 341px, calc(100vw - 2rem)" width="768" height="614" loading="lazy" decoding="async" alt="Industrial robot with gripper above a parts nest"></picture><h3>Robot accessories</h3><p>We develop and produce custom robot accessories such as gripper jaws, adapters for various grippers and parts nests for special workpieces.</p></li>
-        <li class="card"><picture><source srcset="../assets/img/blechkonstruktion-cad-480.webp 480w, ../assets/img/blechkonstruktion-cad-768.webp 768w" sizes="(min-width: 768px) 341px, calc(100vw - 2rem)" type="image/webp"><img src="../assets/img/blechkonstruktion-cad-768.jpg" srcset="../assets/img/blechkonstruktion-cad-480.jpg 480w, ../assets/img/blechkonstruktion-cad-768.jpg 768w" sizes="(min-width: 768px) 341px, calc(100vw - 2rem)" width="768" height="417" loading="lazy" decoding="async" alt="CAD model of a sheet metal design on screen"></picture><h3>Sheet metal designs</h3><p>We create sheet metal designs and their flat patterns in our CAD system. The sheet metal itself is manufactured by our partner companies.</p></li>
-        <li class="card"><picture><source srcset="../assets/img/montage-vorrichtungen-480.webp 480w, ../assets/img/montage-vorrichtungen-768.webp 768w" sizes="(min-width: 768px) 341px, calc(100vw - 2rem)" type="image/webp"><img src="../assets/img/montage-vorrichtungen-768.jpg" srcset="../assets/img/montage-vorrichtungen-480.jpg 480w, ../assets/img/montage-vorrichtungen-768.jpg 768w" sizes="(min-width: 768px) 341px, calc(100vw - 2rem)" width="768" height="576" loading="lazy" decoding="async" alt="Black anodised fixtures lined up in a row"></picture><h3>Assembly</h3><p>We assemble your fixtures, sub-assemblies, plant and machines.</p></li>
+      <div class="bento mt-gap">
+        <div class="bento__item bento__item--ink bento__item--w6"><span class="label label--invert">Maximum travel</span><p class="stat">635 × 535 × 460</p><p>mm, Awea FCV-620, CNC 5-axis milling with robot automation</p></div>
+        <div class="bento__item bento__item--accent bento__item--w6"><span class="label">Repeatability</span><p class="stat">&le; 1 µm</p><p>Measuring station with height gauge, maximum error 2 + 2L/1000 µm</p></div>
+        <div class="bento__item bento__item--w4"><span class="label">Turning diameter</span><p class="stat">Ø 340</p><p>mm, Nakamura-Tome AS200LMYS</p></div>
+        <div class="bento__item bento__item--w4"><span class="label">Spindle speed</span><p class="stat">15'000</p><p>rpm, 60-tool changer</p></div>
+        <div class="bento__item bento__item--w4"><span class="label">Machines</span><p class="stat">9</p><p>Milling, turning, grinding, sawing, metrology</p></div>
+        <div class="bento__item bento__item--w12"><span class="label">Materials</span><p class="data data--body">Steel · Aluminium · Brass · Plastics · Nickel-based alloys (Hastelloy, Inconel) · Titanium alloys</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--ink" aria-labelledby="idee">
+    <div class="wrap">
+      <div class="split">
+        <div class="split__text">
+          <span class="label label--invert">From a single source</span>
+          <h2 id="idee">From idea to finished product</h2>
+          <p>Machine technology from idea to finished product: we offer development and production from a single source. Benefit from our manufacturing expertise as early as the development phase.</p>
+          <p>Our long experience means we can support you from the first idea through to economical production. Development and production sit under one roof. Our highly qualified staff are a guarantee of quality.</p>
+          <p><a class="btn btn--light" href="../en/kontakt/">Arrange a consultation</a></p>
+        </div>
+        <div class="split__media"><figure class="fig fig--card"><picture><source srcset="../assets/img/konstruktion-fertigungszeichnung-480.webp 480w, ../assets/img/konstruktion-fertigungszeichnung-768.webp 768w, ../assets/img/konstruktion-fertigungszeichnung-1152.webp 1152w" sizes="(min-width: 768px) 46vw, calc(100vw - 2rem)" type="image/webp"><img src="../assets/img/konstruktion-fertigungszeichnung-768.jpg" srcset="../assets/img/konstruktion-fertigungszeichnung-480.jpg 480w, ../assets/img/konstruktion-fertigungszeichnung-768.jpg 768w, ../assets/img/konstruktion-fertigungszeichnung-1152.jpg 1152w" sizes="(min-width: 768px) 46vw, calc(100vw - 2rem)" width="768" height="543" loading="lazy" decoding="async" alt="Manufacturing drawing of a bush with the deico title block beside the rendered part"></picture></figure></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="staerken">
+    <div class="wrap">
+      <span class="label">What sets us apart</span>
+      <h2 id="staerken">Manufacturing expertise in detail</h2>
+
+      <ul class="cards mt-gap">
+        <li class="card">
+          <figure class="fig fig--card"><picture><source srcset="../assets/img/werkstoffe-hastelloy-480.webp 480w, ../assets/img/werkstoffe-hastelloy-768.webp 768w" sizes="(min-width: 768px) 30vw, calc(100vw - 2rem)" type="image/webp"><img src="../assets/img/werkstoffe-hastelloy-480.jpg" srcset="../assets/img/werkstoffe-hastelloy-480.jpg 480w, ../assets/img/werkstoffe-hastelloy-768.jpg 768w" sizes="(min-width: 768px) 30vw, calc(100vw - 2rem)" width="480" height="640" loading="lazy" decoding="async" alt="Turned component in Hastelloy C22, marked with material number 2.4602"></picture></figure>
+          <div class="card__body">
+            <span class="label">Materials</span>
+            <h3 class="card__name">Difficult-to-machine materials</h3>
+            <p>We also machine difficult materials such as nickel-based alloys (Hastelloy, Inconel) and titanium alloys.</p>
+          </div>
+        </li>
+        <li class="card">
+          <figure class="fig fig--card"><picture><source srcset="../assets/img/automation-fertigungszelle-480.webp 480w, ../assets/img/automation-fertigungszelle-768.webp 768w" sizes="(min-width: 768px) 30vw, calc(100vw - 2rem)" type="image/webp"><img src="../assets/img/automation-fertigungszelle-480.jpg" srcset="../assets/img/automation-fertigungszelle-480.jpg 480w, ../assets/img/automation-fertigungszelle-768.jpg 768w" sizes="(min-width: 768px) 30vw, calc(100vw - 2rem)" width="480" height="317" loading="lazy" decoding="async" alt="CAD model of an automated production cell with robot"></picture></figure>
+          <div class="card__body">
+            <span class="label">Automation</span>
+            <h3 class="card__name">Cost-effective series</h3>
+            <p>Our automated production machines let us manufacture series cost-effectively.</p>
+          </div>
+        </li>
+        <li class="card">
+          <figure class="fig fig--card"><picture><source srcset="../assets/img/oberflaechenmessung-marsurf-480.webp 480w, ../assets/img/oberflaechenmessung-marsurf-768.webp 768w" sizes="(min-width: 768px) 30vw, calc(100vw - 2rem)" type="image/webp"><img src="../assets/img/oberflaechenmessung-marsurf-480.jpg" srcset="../assets/img/oberflaechenmessung-marsurf-480.jpg 480w, ../assets/img/oberflaechenmessung-marsurf-768.jpg 768w" sizes="(min-width: 768px) 30vw, calc(100vw - 2rem)" width="480" height="640" loading="lazy" decoding="async" alt="Mahr MarSurf surface measuring instrument beside a deico AG measurement report"></picture></figure>
+          <div class="card__body">
+            <span class="label">Metrology</span>
+            <h3 class="card__name">Surface measurement and reporting</h3>
+            <p>Surfaces on parts for the food and pharmaceutical industries and for medical technology must meet high requirements. Modern measuring equipment lets us measure and document them.</p>
+          </div>
+        </li>
+        <li class="card">
+          <figure class="fig fig--card"><picture><source srcset="../assets/img/lieferservice-fahrzeuge-480.webp 480w, ../assets/img/lieferservice-fahrzeuge-768.webp 768w" sizes="(min-width: 768px) 30vw, calc(100vw - 2rem)" type="image/webp"><img src="../assets/img/lieferservice-fahrzeuge-480.jpg" srcset="../assets/img/lieferservice-fahrzeuge-480.jpg 480w, ../assets/img/lieferservice-fahrzeuge-768.jpg 768w" sizes="(min-width: 768px) 30vw, calc(100vw - 2rem)" width="480" height="270" loading="lazy" decoding="async" alt="Two liveried deico AG delivery vehicles"></picture></figure>
+          <div class="card__body">
+            <span class="label">Logistics</span>
+            <h3 class="card__name">Our own delivery service</h3>
+            <p>Your components matter to us. That is why we deliver them personally with our own delivery service.</p>
+          </div>
+        </li>
+        <li class="card">
+          <figure class="fig fig--card"><picture><source srcset="../assets/img/laserbeschriftung-massstaebe-480.webp 480w, ../assets/img/laserbeschriftung-massstaebe-768.webp 768w" sizes="(min-width: 768px) 30vw, calc(100vw - 2rem)" type="image/webp"><img src="../assets/img/laserbeschriftung-massstaebe-480.jpg" srcset="../assets/img/laserbeschriftung-massstaebe-480.jpg 480w, ../assets/img/laserbeschriftung-massstaebe-768.jpg 768w" sizes="(min-width: 768px) 30vw, calc(100vw - 2rem)" width="480" height="360" loading="lazy" decoding="async" alt="Laser-marked rules with the deico ag lettering"></picture></figure>
+          <div class="card__body">
+            <span class="label">Marking</span>
+            <h3 class="card__name">Laser marking</h3>
+            <p>Through our partner companies we produce a wide range of laser markings.</p>
+          </div>
+        </li>
+        <li class="card">
+          <figure class="fig fig--card"><picture><source srcset="../assets/img/oberflaechenbehandlung-eloxiert-480.webp 480w, ../assets/img/oberflaechenbehandlung-eloxiert-768.webp 768w" sizes="(min-width: 768px) 30vw, calc(100vw - 2rem)" type="image/webp"><img src="../assets/img/oberflaechenbehandlung-eloxiert-480.jpg" srcset="../assets/img/oberflaechenbehandlung-eloxiert-480.jpg 480w, ../assets/img/oberflaechenbehandlung-eloxiert-768.jpg 768w" sizes="(min-width: 768px) 30vw, calc(100vw - 2rem)" width="480" height="640" loading="lazy" decoding="async" alt="Anodised turned parts with a caliper"></picture></figure>
+          <div class="card__body">
+            <span class="label">Surfaces</span>
+            <h3 class="card__name">Surface treatment</h3>
+            <p>Through our partner companies a wide range of surface coatings is possible, for aluminium for example anodising, hard anodising or the Hartematalieren process.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section section--surface" aria-labelledby="sonder">
+    <div class="wrap">
+      <span class="label">Special solutions</span>
+      <h2 id="sonder">When off-the-shelf will not do</h2>
+
+      <ul class="cards mt-gap">
+        <li class="card">
+          <figure class="fig fig--card"><picture><source srcset="../assets/img/roboterzubehoer-greifer-480.webp 480w, ../assets/img/roboterzubehoer-greifer-768.webp 768w" sizes="(min-width: 768px) 30vw, calc(100vw - 2rem)" type="image/webp"><img src="../assets/img/roboterzubehoer-greifer-768.jpg" srcset="../assets/img/roboterzubehoer-greifer-480.jpg 480w, ../assets/img/roboterzubehoer-greifer-768.jpg 768w" sizes="(min-width: 768px) 30vw, calc(100vw - 2rem)" width="768" height="614" loading="lazy" decoding="async" alt="Industrial robot with gripper above a parts nest"></picture></figure>
+          <div class="card__body">
+            <span class="label">Automation</span>
+            <h3 class="card__name">Robot accessories</h3>
+            <p>We develop and produce custom robot accessories such as gripper jaws, adapters for various grippers and parts nests for special workpieces.</p>
+          </div>
+        </li>
+        <li class="card">
+          <figure class="fig fig--card"><picture><source srcset="../assets/img/blechkonstruktion-cad-480.webp 480w, ../assets/img/blechkonstruktion-cad-768.webp 768w" sizes="(min-width: 768px) 30vw, calc(100vw - 2rem)" type="image/webp"><img src="../assets/img/blechkonstruktion-cad-768.jpg" srcset="../assets/img/blechkonstruktion-cad-480.jpg 480w, ../assets/img/blechkonstruktion-cad-768.jpg 768w" sizes="(min-width: 768px) 30vw, calc(100vw - 2rem)" width="768" height="417" loading="lazy" decoding="async" alt="CAD model of a sheet metal design on screen"></picture></figure>
+          <div class="card__body">
+            <span class="label">Design</span>
+            <h3 class="card__name">Sheet metal designs</h3>
+            <p>We create sheet metal designs and their flat patterns in our CAD system. The sheet metal itself is manufactured by our partner companies.</p>
+          </div>
+        </li>
+        <li class="card">
+          <figure class="fig fig--card"><picture><source srcset="../assets/img/montage-vorrichtungen-480.webp 480w, ../assets/img/montage-vorrichtungen-768.webp 768w" sizes="(min-width: 768px) 30vw, calc(100vw - 2rem)" type="image/webp"><img src="../assets/img/montage-vorrichtungen-768.jpg" srcset="../assets/img/montage-vorrichtungen-480.jpg 480w, ../assets/img/montage-vorrichtungen-768.jpg 768w" sizes="(min-width: 768px) 30vw, calc(100vw - 2rem)" width="768" height="576" loading="lazy" decoding="async" alt="Black anodised fixtures lined up in a row"></picture></figure>
+          <div class="card__body">
+            <span class="label">Assembly</span>
+            <h3 class="card__name">Assembly</h3>
+            <p>We assemble your fixtures, sub-assemblies, plant and machines.</p>
+          </div>
+        </li>
       </ul>
     </div>
   </section>
 
   <section class="section" aria-labelledby="branchen">
-    <div class="container">
-      <div class="section-head">
-        <p class="eyebrow">Industries</p>
-        <h2 id="branchen">At home in a wide range of industries</h2>
-        <p class="lede">We machine a variety of materials including steel, aluminium, brass and plastics. Surface and heat treatments are available through our partner companies.</p>
-      </div>
-      <ul class="tag-list">
-        <li>Mechanical engineering</li>
-        <li>Pharmaceutical industry</li>
-        <li>Sports equipment</li>
-        <li>Textile industry</li>
-        <li>Medical technology</li>
-        <li>Construction machinery</li>
+    <div class="wrap">
+      <span class="label">Industries</span>
+      <h2 id="branchen">At home in a wide range of industries</h2>
+      <p class="hero__lede">We machine a variety of materials including steel, aluminium, brass and plastics. Surface and heat treatments are available through our partner companies.</p>
+
+      <ul class="sectors mt-gap">
+        <li><span>01</span> Mechanical engineering</li>
+        <li><span>02</span> Pharmaceutical industry</li>
+        <li><span>03</span> Sports equipment</li>
+        <li><span>04</span> Textile industry</li>
+        <li><span>05</span> Medical technology</li>
+        <li><span>06</span> Construction machinery</li>
       </ul>
     </div>
   </section>
 
-  <section class="cta-band" aria-labelledby="angebot">
-    <div class="container">
-      <h2 id="angebot">Request a quote</h2>
-      <p>Just send us your 3D data or drawing and we will gladly prepare a quotation without obligation.</p>
-      <a class="btn" href="../en/kontakt/">Get in touch</a>
+  <section class="cta" aria-labelledby="angebot">
+    <div class="wrap">
+      <span class="label">Request a quote</span>
+      <h2 id="angebot">Just send us your 3D data or drawing and we will gladly prepare a quotation without obligation.</h2>
+      <a class="btn btn--light" href="../en/kontakt/">Get in touch</a>
     </div>
   </section>
 
 </main>
 
-<footer class="site-footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-col">
-        <h2 class="footer-title">deico AG</h2>
-        <address class="footer-address">
-          Huebstrasse 24<br>
-          8636 Wald<br>
-          Switzerland
-        </address>
-        <p><a href="tel:+41555355550">+41 55 535 55 50</a><br>
-           <a href="mailto:mail@deico.ch">mail@deico.ch</a></p>
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__grid">
+      <div>
+        <p class="foot__title">deico AG</p>
+        <address>Huebstrasse 24<br>8636 Wald<br>Switzerland</address>
+        <p class="mt-1"><a href="tel:+41555355550">+41 55 535 55 50</a><br><a href="mailto:mail@deico.ch">mail@deico.ch</a></p>
       </div>
-
-      <nav class="footer-col" aria-label="Navigation">
-        <h2 class="footer-title">Navigation</h2>
+      <nav aria-label="Navigation">
+        <p class="foot__title">Navigation</p>
         <ul>
           <li><a href="../en/">Home</a></li>
           <li><a href="../en/showroom/">Showroom</a></li>
@@ -194,23 +291,21 @@
           <li><a href="../en/kontakt/">Contact</a></li>
         </ul>
       </nav>
-
-      <nav class="footer-col" aria-label="Legal">
-        <h2 class="footer-title">Legal</h2>
+      <nav aria-label="Legal">
+        <p class="foot__title">Legal</p>
         <ul>
           <li><a href="../en/impressum/">Legal notice</a></li>
           <li><a href="../en/datenschutz/">Privacy policy</a></li>
         </ul>
       </nav>
     </div>
-
-    <div class="footer-bottom">
+    <div class="foot__bottom">
       <p>&copy; 2026 deico AG</p>
       <p>Preview. Not the official deico AG website.</p>
     </div>
   </div>
 </footer>
 
-<script src="../js/main.js" defer></script>
+<script src="../js/main.js?v=2" defer></script>
 </body>
 </html>
