@@ -1232,3 +1232,133 @@ a:hover {
 }
 
 .prose .notice { margin-bottom: calc(var(--gap) * 1.5); }
+
+/* --------------------------------------------------------------------------
+   24. Showroom shot and lightbox
+
+   Each tile is a link to the large image, so the gallery still works with no
+   JavaScript: the link simply opens the file. main.js upgrades that click
+   into a <dialog>. The description sits in the DOM either way, revealed on
+   hover and focus, and repeated inside the dialog.
+   -------------------------------------------------------------------------- */
+
+.shot { position: relative; margin: 0; }
+
+.shot__link {
+  display: block;
+  text-decoration: none;
+  transition: none;
+}
+
+/* The caption is a solid ink block, never a gradient. Hidden until the tile is
+   hovered or something inside it takes keyboard focus. */
+.shot__cap {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  display: none;
+  padding: 0.6rem 0.7rem;
+  background: var(--ink);
+  color: var(--base);
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  line-height: 1.45;
+  /* Descriptions are sentences, so no uppercase and no wide tracking here. */
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.shot:hover .shot__cap,
+.shot:focus-within .shot__cap { display: block; }
+
+/* A pointer that cannot hover never gets the caption, and on those devices a
+   tap opens the dialog, where the description is shown in full. */
+@media (hover: none) {
+  .shot__cap { display: none; }
+}
+
+/* --- Dialog ------------------------------------------------------------- */
+
+.lightbox {
+  width: min(96vw, 76rem);
+  max-width: none;
+  max-height: 94vh;
+  padding: 0;
+  border: var(--border);
+  background: var(--base);
+  box-shadow: var(--shadow-accent);
+  color: var(--ink);
+}
+
+.lightbox::backdrop { background: rgb(0 0 0 / 0.82); }
+
+.lightbox__bar {
+  display: flex;
+  align-items: center;
+  gap: var(--gap);
+  padding: 0.5rem 0.5rem 0.5rem 0.9rem;
+  background: var(--ink);
+  color: var(--base);
+}
+
+.lightbox__count {
+  margin: 0;
+  margin-inline-end: auto;
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: var(--track-micro);
+  text-transform: uppercase;
+}
+
+.lightbox__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: var(--tap);
+  height: var(--tap);
+  padding-inline: 0.6rem;
+  background: var(--ink);
+  border: 2px solid var(--base);
+  color: var(--base);
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  font-weight: 700;
+  letter-spacing: var(--track-micro);
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: none;
+}
+
+.lightbox__btn:hover,
+.lightbox__btn:focus-visible { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.lightbox__btn[disabled] { opacity: 0.35; cursor: not-allowed; }
+.lightbox__btn[disabled]:hover { background: var(--ink); border-color: var(--base); color: var(--base); }
+
+/* The dialog sits on --ink at the bar, so a focused control needs a paper ring. */
+.lightbox__bar { --focus-ring: var(--base); }
+
+.lightbox__figure { margin: 0; background: var(--surface); }
+
+.lightbox__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  /* Leaves room for the bar and the description without the dialog scrolling. */
+  max-height: 68vh;
+  object-fit: contain;
+  background: var(--surface);
+}
+
+.lightbox__desc {
+  margin: 0;
+  padding: var(--gap);
+  border-top: var(--border);
+  font-family: var(--font-mono);
+  font-size: var(--fs-data);
+  line-height: 1.6;
+}
+
+@media (min-width: 768px) {
+  .lightbox__img { max-height: 72vh; }
+}
