@@ -1209,3 +1209,26 @@ a:hover {
 
 @media (min-width: 480px) { .gate__list { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (min-width: 768px) { .gate__list { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+
+/* --------------------------------------------------------------------------
+   23. Legal prose
+
+   The privacy policy is long, link-dense text. Headings step down to h3 size
+   so a page of ten sections does not read as ten separate pages, and links
+   are allowed to break because the Google support URLs are long enough to
+   force a horizontal scrollbar at 320px otherwise.
+   -------------------------------------------------------------------------- */
+
+.prose h2 {
+  margin-top: calc(var(--gap) * 2.5);
+  font-size: var(--fs-h3);
+}
+
+.prose h2:first-child { margin-top: 0; }
+
+.prose a {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.prose .notice { margin-bottom: calc(var(--gap) * 1.5); }
