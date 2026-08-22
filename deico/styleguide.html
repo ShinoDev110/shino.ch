@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="de-CH" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Styleguide | deico AG Präzisionsmechanik</title>
+<meta name="description" content="Designsystem Axis Industrial, angewendet auf die deico AG Präzisionsmechanik.">
+
+<link rel="icon" href="./favicon.ico" sizes="16x16 32x32 48x48">
+<link rel="apple-touch-icon" href="./assets/icon/apple-touch-icon.png">
+<meta name="theme-color" content="#5E61ED">
+
+<link rel="preload" as="font" type="font/woff2" href="./assets/fonts/space-grotesk-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="./assets/fonts/jetbrains-mono-latin.woff2" crossorigin>
+
+<link rel="stylesheet" href="./css/reset.css">
+<link rel="stylesheet" href="./css/axis-tokens.css">
+<link rel="stylesheet" href="./css/axis-main.css">
+<script>document.documentElement.className = "js";</script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Zum Inhalt springen</a>
+
+<header class="head">
+  <div class="wrap head__in">
+    <a class="head__logo" href="./styleguide.html" aria-label="deico AG Präzisionsmechanik, Styleguide">
+      <picture>
+        <source srcset="./assets/logo/deico-logo-340.webp 340w, ./assets/logo/deico-logo-680.webp 680w" sizes="(min-width: 1024px) 91px, 79px" type="image/webp">
+        <img src="./assets/logo/deico-logo-340.png" width="340" height="120" alt="deico AG Präzisionsmechanik">
+      </picture>
+    </a>
+
+    <button class="navtoggle" type="button" aria-expanded="false" aria-controls="nav">
+      <span class="navtoggle__bars"></span>
+      <span class="visually-hidden">Menü</span>
+    </button>
+
+    <nav class="nav" id="nav" aria-label="Hauptnavigation">
+      <ul>
+        <li><a href="./styleguide.html" aria-current="page">Styleguide</a></li>
+        <li><a href="./de/showroom/">Showroom</a></li>
+        <li><a href="./de/maschinenpark/">Maschinenpark</a></li>
+        <li><a href="./de/kontakt/">Kontakt</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ============================================================ INTRO -->
+  <section class="section">
+    <div class="wrap stack">
+      <span class="tag tag--accent">Designsystem</span>
+      <h1>Axis Industrial für deico</h1>
+      <p class="lead">Alle Komponenten mit echten Bildern und echten deutschen Texten aus dem Bestand der deico AG. Keine Platzhalter. Die Sprache ist bewusst hart: 4px Rahmen, 8px harte Schatten, keine Rundungen, sofortige Farbumkehr beim Hover.</p>
+    </div>
+  </section>
+
+  <!-- ==================================================== 1. FARBTOKENS -->
+  <section class="section section--surface" aria-labelledby="farben">
+    <div class="wrap">
+      <span class="label">01 / Farbtokens</span>
+      <h2 id="farben">Farben</h2>
+      <span class="demo-note demo-note--block">Rund 90 Prozent neutral, rund 10 Prozent Akzent.</span>
+
+      <ul class="swatches">
+        <li class="swatch">
+          <div class="swatch__chip swatch__chip--base"></div>
+          <div class="swatch__meta"><code>#FFFFFF</code><span>--base</span><span class="swatch__use">Seitengrund</span></div>
+        </li>
+        <li class="swatch">
+          <div class="swatch__chip swatch__chip--ink"></div>
+          <div class="swatch__meta"><code>#000000</code><span>--ink</span><span class="swatch__use">Text, Rahmen, Schatten</span></div>
+        </li>
+        <li class="swatch">
+          <div class="swatch__chip swatch__chip--surface"></div>
+          <div class="swatch__meta"><code>#F5F5F0</code><span>--surface</span><span class="swatch__use">Abschnittsgrund</span></div>
+        </li>
+        <li class="swatch">
+          <div class="swatch__chip swatch__chip--muted"></div>
+          <div class="swatch__meta"><code>#6B6B6B</code><span>--muted</span><span class="swatch__use">Sekundärtext, 5.33:1</span></div>
+        </li>
+        <li class="swatch">
+          <div class="swatch__chip swatch__chip--accent"></div>
+          <div class="swatch__meta"><code>#5E61ED</code><span>--accent</span><span class="swatch__use">Flächen, Schatten, Hover</span></div>
+        </li>
+        <li class="swatch">
+          <div class="swatch__chip swatch__chip--accent-deep"></div>
+          <div class="swatch__meta"><code>#1B1D99</code><span>--accent-deep</span><span class="swatch__use">Links, kleiner Text, 12.49:1</span></div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ==================================================== 2. TYPOGRAFIE -->
+  <section class="section" aria-labelledby="typo">
+    <div class="wrap">
+      <span class="label">02 / Typografie</span>
+      <h2 id="typo">Schriftskala</h2>
+      <span class="demo-note demo-note--block">Space Grotesk für Fliesstext und Titel, JetBrains Mono für alle Zahlen, Kürzel und Beschriftungen.</span>
+
+      <div class="specimen">
+        <span class="specimen__meta">--fs-hero / Space Grotesk 700</span>
+        <p class="specimen__hero">Präzision</p>
+      </div>
+
+      <div class="specimen"><span class="specimen__meta">h1 / --fs-h1</span><p class="t-h1">Präzisionsmechanik aus einer Hand</p></div>
+      <div class="specimen"><span class="specimen__meta">h2 / --fs-h2</span><p class="t-h2">Vom Einzelteil bis zur Serie</p></div>
+      <div class="specimen"><span class="specimen__meta">h3 / --fs-h3</span><p class="t-h3">CNC 5-Achsen Fräsen mit Roboterautomation</p></div>
+      <div class="specimen"><span class="specimen__meta">h4 / --fs-h4</span><p class="t-h4">Schwer zerspanbare Werkstoffe</p></div>
+      <div class="specimen"><span class="specimen__meta">h5 / --fs-h5</span><p class="t-h5">Oberflächen messen und protokollieren</p></div>
+      <div class="specimen"><span class="specimen__meta">h6 / --fs-h6</span><p class="t-h6">Eigener Lieferservice</p></div>
+
+      <div class="specimen">
+        <span class="specimen__meta">Fliesstext / --fs-body</span>
+        <p class="specimen__body">Die deico AG ist ein kleiner aber feiner Dienstleister für Präzisionsmechanik mit Sitz im Zürcher Oberland. Wir drehen, fräsen und konstruieren nach Ihren Vorgaben. Eine unserer besonderen Stärken liegt in der Herstellung von komplexen und anspruchsvollen Bauteilen mit niedriger Stückzahl.</p>
+      </div>
+
+      <div class="specimen">
+        <span class="specimen__meta">Kleintext / --fs-small</span>
+        <p class="specimen__small">Über unsere Partnerbetriebe sind verschiedenste Oberflächenbeschichtungen möglich, bei Aluminium zum Beispiel Eloxieren, Hartanodisieren oder Hartematalieren.</p>
+      </div>
+
+      <div class="specimen">
+        <span class="specimen__meta">Mono Beschriftung / .label</span>
+        <span class="label">Werkstoffe &middot; Nickelbasislegierungen</span>
+      </div>
+
+      <div class="specimen">
+        <span class="specimen__meta">Mono Block / .tag</span>
+        <span class="tag">Maschinenpark</span> <span class="tag tag--accent">Ab 1 Stück</span>
+      </div>
+
+      <div class="specimen">
+        <span class="specimen__meta">Mono Zahlen / .stat, tabellarisch</span>
+        <p class="stat">15'000 rpm</p>
+        <p class="data mt-1">Ø 340 mm &middot; 635 × 535 × 460 mm &middot; ≤ 1 µm &middot; 2 + 2L/1000 µm</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================= 3. BUTTONS -->
+  <section class="section section--surface" aria-labelledby="buttons">
+    <div class="wrap">
+      <span class="label">03 / Schaltflächen</span>
+      <h2 id="buttons">Buttons</h2>
+      <span class="demo-note demo-note--block">Hover hebt das Element um 4px nach links oben, der Schatten wächst von 8px auf 12px. Ohne Übergang. Aktiv drückt es auf die Grundebene zurück.</span>
+
+      <div class="demo-row">
+        <div class="demo-cell"><a class="btn btn--primary" href="./de/kontakt/">Angebot anfordern</a><span class="demo-note">primary</span></div>
+        <div class="demo-cell"><a class="btn btn--secondary" href="./de/maschinenpark/">Maschinenpark</a><span class="demo-note">secondary</span></div>
+        <div class="demo-cell"><a class="btn--text" href="./de/showroom/">Showroom ansehen</a><span class="demo-note">text link</span></div>
+      </div>
+
+      <span class="demo-note demo-note--block">Mit Tab durchsteppen, um focus-visible zu prüfen.</span>
+
+      <div class="demo-row">
+        <div class="demo-cell"><button class="btn btn--primary" type="button">Standard</button><span class="demo-note">default</span></div>
+        <div class="demo-cell"><button class="btn btn--secondary" type="button">Sekundär</button><span class="demo-note">default</span></div>
+        <div class="demo-cell"><button class="btn btn--primary" type="button" disabled>Gesperrt</button><span class="demo-note">disabled</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================================================== 4. NAVIGATION -->
+  <section class="section" aria-labelledby="navi">
+    <div class="wrap">
+      <span class="label">04 / Navigation</span>
+      <h2 id="navi">Navigation</h2>
+      <span class="demo-note demo-note--block">Die Leiste oben ist die echte Navigation. Unter 768px klappt sie hinter den Menü-Knopf. Ohne JavaScript bleibt sie sichtbar und vollständig bedienbar.</span>
+
+      <nav class="navdemo" aria-label="Navigationszustände, Beispiel">
+        <ul>
+          <li><a href="#navi" aria-current="page">Aktiv</a></li>
+          <li><a href="#navi">Standard</a></li>
+          <li><a class="is-hover" href="#navi">Hover</a></li>
+        </ul>
+      </nav>
+    </div>
+  </section>
+
+  <!-- ========================================================== 5. HERO -->
+  <section aria-labelledby="hero">
+    <div class="wrap section section--head-only">
+      <span class="label">05 / Hero</span>
+      <h2 id="hero">Vollbreite Bildbahn</h2>
+      <span class="demo-note demo-note--block">16:9 fixiert, 4px Rahmen oben und unten, Bildunterschrift als Vollton-Block. Kein Verlauf, kein Weichzeichner.</span>
+    </div>
+    <figure class="fig fig--overlay band">
+      <picture>
+        <source srcset="./assets/img/hero-praezisionskomponente-768.webp 768w, ./assets/img/hero-praezisionskomponente-1152.webp 1152w, ./assets/img/hero-praezisionskomponente-1600.webp 1600w, ./assets/img/hero-praezisionskomponente-1920.webp 1920w" sizes="100vw" type="image/webp">
+        <img src="./assets/img/hero-praezisionskomponente-1152.jpg" srcset="./assets/img/hero-praezisionskomponente-768.jpg 768w, ./assets/img/hero-praezisionskomponente-1152.jpg 1152w, ./assets/img/hero-praezisionskomponente-1600.jpg 1600w, ./assets/img/hero-praezisionskomponente-1920.jpg 1920w" sizes="100vw" width="1152" height="648" fetchpriority="high" alt="Gefräste Aluminiumkomponente mit Passbohrungen auf der Messplatte">
+      </picture>
+      <figcaption><b>01</b>&nbsp;&nbsp;Gefräste Aluminiumkomponente &middot; Werkstatt Wald</figcaption>
+    </figure>
+  </section>
+
+  <!-- ================================================ 6. MASCHINENKARTE -->
+  <section class="section" aria-labelledby="maschinen">
+    <div class="wrap">
+      <span class="label">06 / Maschinenkarte</span>
+      <h2 id="maschinen">Maschinen im Raster</h2>
+      <span class="demo-note demo-note--block">Foto im 4:3-Raster, Name, dann Spezifikation in Mono. Echte Werte aus dem Maschinenpark.</span>
+
+      <ul class="cards">
+        <li class="card">
+          <figure class="fig fig--card">
+            <picture>
+              <source srcset="./assets/img/maschine-awea-fcv620-480.webp 480w, ./assets/img/maschine-awea-fcv620-768.webp 768w" sizes="(min-width: 768px) 30vw, calc(100vw - 2rem)" type="image/webp">
+              <img src="./assets/img/maschine-awea-fcv620-768.jpg" srcset="./assets/img/maschine-awea-fcv620-480.jpg 480w, ./assets/img/maschine-awea-fcv620-768.jpg 768w" sizes="(min-width: 768px) 30vw, calc(100vw - 2rem)" width="768" height="566" loading="lazy" decoding="async" alt="CNC 5-Achsen Fräsmaschine Awea FCV-620">
+            </picture>
+          </figure>
+          <div class="card__body">
+            <span class="label">Fräsen CNC 5-Achsen</span>
+            <h3 class="card__name">Awea FCV-620</h3>
+            <dl class="specs">
+              <div><dt>Verfahrwege</dt><dd>635 × 535 × 460 mm</dd></div>
+              <div><dt>Aufspannfläche</dt><dd>Ø 500 / 650 mm</dd></div>
+              <div><dt>Werkzeugwechsler</dt><dd>60-fach</dd></div>
+              <div><dt>Spindel</dt><dd>15'000 rpm</dd></div>
+              <div><dt>Steuerung</dt><dd>Heidenhain iTNC530</dd></div>
+            </dl>
+          </div>
+        </li>
+
+        <li class="card">
+          <figure class="fig fig--card">
+            <picture>
+              <source srcset="./assets/img/maschine-nakamura-as200-480.webp 480w, ./assets/img/maschine-nakamura-as200-768.webp 768w" sizes="(min-width: 768px) 30vw, calc(100vw - 2rem)" type="image/webp">
+              <img src="./assets/img/maschine-nakamura-as200-768.jpg" srcset="./assets/img/maschine-nakamura-as200-480.jpg 480w, ./assets/img/maschine-nakamura-as200-768.jpg 768w" sizes="(min-width: 768px) 30vw, calc(100vw - 2rem)" width="768" height="559" loading="lazy" decoding="async" alt="CAD-Modell der CNC-Drehmaschine mit Roboterautomation">
+            </picture>
+          </figure>
+          <div class="card__body">
+            <span class="label">Drehen CNC mit Automation</span>
+            <h3 class="card__name">Nakamura-Tome AS200LMYS</h3>
+            <dl class="specs">
+              <div><dt>Drehdurchmesser</dt><dd>max. 340 mm</dd></div>
+              <div><dt>Stangendurchlass</dt><dd>65 mm</dd></div>
+              <div><dt>Spitzenweite</dt><dd>800 mm</dd></div>
+              <div><dt>Werkzeugplätze</dt><dd>12 / 24</dd></div>
+              <div><dt>Steuerung</dt><dd>Fanuc Oi-TF</dd></div>
+            </dl>
+          </div>
+        </li>
+
+        <li class="card">
+          <figure class="fig fig--card">
+            <picture>
+              <source srcset="./assets/img/maschine-xyz-proturn-350-480.webp 480w, ./assets/img/maschine-xyz-proturn-350-768.webp 768w" sizes="(min-width: 768px) 30vw, calc(100vw - 2rem)" type="image/webp">
+              <img src="./assets/img/maschine-xyz-proturn-350-768.jpg" srcset="./assets/img/maschine-xyz-proturn-350-480.jpg 480w, ./assets/img/maschine-xyz-proturn-350-768.jpg 768w" sizes="(min-width: 768px) 30vw, calc(100vw - 2rem)" width="768" height="576" loading="lazy" decoding="async" alt="Drehmaschine XYZ Proturn 350 beim Drehen einer Welle mit Lünette">
+            </picture>
+          </figure>
+          <div class="card__body">
+            <span class="label">Drehen CNC</span>
+            <h3 class="card__name">XYZ Proturn 350</h3>
+            <dl class="specs">
+              <div><dt>Über Schlitten</dt><dd>190 mm</dd></div>
+              <div><dt>Über Bett</dt><dd>350 mm</dd></div>
+              <div><dt>Stangendurchlass</dt><dd>53 mm</dd></div>
+              <div><dt>Spitzenweite</dt><dd>1000 mm</dd></div>
+            </dl>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ==================================================== 7. BENTO GRID -->
+  <section class="section section--surface" aria-labelledby="bento">
+    <div class="wrap">
+      <span class="label">07 / Datenraster</span>
+      <h2 id="bento">Technische Kennzahlen</h2>
+      <span class="demo-note demo-note--block">Zwölfspaltiges Raster, Kacheln unterschiedlicher Breite. Zahlen immer in Mono, tabellarisch.</span>
+
+      <div class="bento">
+        <div class="bento__item bento__item--ink bento__item--w6">
+          <span class="label label--invert">Losgrösse</span>
+          <p class="stat">ab 1</p>
+          <p>Vom Prototyp über Ersatzteile nach Muster bis zur automatisierten Serie.</p>
+        </div>
+        <div class="bento__item bento__item--accent bento__item--w6">
+          <span class="label">Wiederholbarkeit</span>
+          <p class="stat">≤ 1 µm</p>
+          <p>Messplatz mit Höhenmessgerät, Fehlergrenze 2 + 2L/1000 µm.</p>
+        </div>
+        <div class="bento__item bento__item--w4">
+          <span class="label">Verfahrweg</span>
+          <p class="stat">635</p>
+          <p>× 535 × 460 mm, Awea FCV-620</p>
+        </div>
+        <div class="bento__item bento__item--w4">
+          <span class="label">Drehdurchmesser</span>
+          <p class="stat">Ø 340</p>
+          <p>mm, Nakamura-Tome AS200LMYS</p>
+        </div>
+        <div class="bento__item bento__item--w4">
+          <span class="label">Maschinen</span>
+          <p class="stat">9</p>
+          <p>Fräsen, Drehen, Schleifen, Sägen, Messtechnik</p>
+        </div>
+        <div class="bento__item bento__item--w12">
+          <span class="label">Werkstoffe</span>
+          <p class="data data--body">Stahl &middot; Aluminium &middot; Messing &middot; Kunststoff &middot; Nickelbasislegierungen (Hastelloy, Inconel) &middot; Titanlegierungen</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================== 8. BILDBEHANDLUNGEN -->
+  <section class="section" aria-labelledby="bilder">
+    <div class="wrap">
+      <span class="label">08 / Bildbehandlung</span>
+      <h2 id="bilder">Dasselbe Foto, vier Behandlungen</h2>
+      <span class="demo-note demo-note--block">Entsättigt im Ruhezustand, springt beim Hover ohne Übergang auf volle Farbe. Auf Touchgeräten ist das Bild von Anfang an farbig, weil es dort kein Hover gibt.</span>
+
+      <div class="treatments">
+        <div class="treat">
+          <span class="demo-note">A &middot; Vollbreite 16:9</span>
+          <figure class="fig fig--hero fig--bare">
+            <picture>
+              <source srcset="./assets/img/cnc-drehen-drehteile-480.webp 480w, ./assets/img/cnc-drehen-drehteile-768.webp 768w" sizes="(min-width: 768px) 70vw, calc(100vw - 2rem)" type="image/webp">
+              <img src="./assets/img/cnc-drehen-drehteile-768.jpg" srcset="./assets/img/cnc-drehen-drehteile-480.jpg 480w, ./assets/img/cnc-drehen-drehteile-768.jpg 768w" sizes="(min-width: 768px) 70vw, calc(100vw - 2rem)" width="768" height="432" loading="lazy" decoding="async" alt="Reihe fertig gedrehter Präzisionswellen aus Stahl">
+            </picture>
+          </figure>
+        </div>
+
+        <div class="treatments__trio">
+          <div class="treat">
+            <span class="demo-note">B &middot; Gerahmte Karte 4:3</span>
+            <figure class="fig fig--card fig--framed">
+              <picture>
+                <source srcset="./assets/img/cnc-drehen-drehteile-480.webp 480w, ./assets/img/cnc-drehen-drehteile-768.webp 768w" sizes="(min-width: 768px) 30vw, calc(100vw - 2rem)" type="image/webp">
+                <img src="./assets/img/cnc-drehen-drehteile-480.jpg" srcset="./assets/img/cnc-drehen-drehteile-480.jpg 480w, ./assets/img/cnc-drehen-drehteile-768.jpg 768w" sizes="(min-width: 768px) 30vw, calc(100vw - 2rem)" width="480" height="360" loading="lazy" decoding="async" alt="Reihe fertig gedrehter Präzisionswellen aus Stahl">
+              </picture>
+              <figcaption>Drehteile &middot; Stahl</figcaption>
+            </figure>
+          </div>
+
+          <div class="treat">
+            <span class="demo-note">C &middot; Quadratisches Detail 1:1</span>
+            <figure class="fig fig--detail fig--framed">
+              <picture>
+                <source srcset="./assets/img/cnc-drehen-drehteile-480.webp 480w, ./assets/img/cnc-drehen-drehteile-768.webp 768w" sizes="(min-width: 768px) 30vw, calc(100vw - 2rem)" type="image/webp">
+                <img src="./assets/img/cnc-drehen-drehteile-480.jpg" srcset="./assets/img/cnc-drehen-drehteile-480.jpg 480w, ./assets/img/cnc-drehen-drehteile-768.jpg 768w" sizes="(min-width: 768px) 30vw, calc(100vw - 2rem)" width="480" height="480" loading="lazy" decoding="async" alt="Detail einer gedrehten Präzisionswelle aus Stahl">
+              </picture>
+            </figure>
+          </div>
+
+          <div class="treat">
+            <span class="demo-note">D &middot; Bildunterschrift überlagert</span>
+            <figure class="fig fig--card fig--overlay fig--bare-accent">
+              <picture>
+                <source srcset="./assets/img/cnc-drehen-drehteile-480.webp 480w, ./assets/img/cnc-drehen-drehteile-768.webp 768w" sizes="(min-width: 768px) 30vw, calc(100vw - 2rem)" type="image/webp">
+                <img src="./assets/img/cnc-drehen-drehteile-480.jpg" srcset="./assets/img/cnc-drehen-drehteile-480.jpg 480w, ./assets/img/cnc-drehen-drehteile-768.jpg 768w" sizes="(min-width: 768px) 30vw, calc(100vw - 2rem)" width="480" height="360" loading="lazy" decoding="async" alt="Reihe fertig gedrehter Präzisionswellen aus Stahl">
+              </picture>
+              <figcaption><b>02</b>&nbsp;&nbsp;CNC Drehen</figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================= 9. KONTAKT -->
+  <section class="section section--surface" aria-labelledby="kontakt">
+    <div class="wrap">
+      <span class="label">09 / Kontakt</span>
+      <h2 id="kontakt">Kontaktblock</h2>
+      <span class="demo-note demo-note--block">Echte Adressdaten aus dem Bestand. Liefer- und Rechnungsadresse unterscheiden sich.</span>
+
+      <div class="contact">
+        <div class="contact__col">
+          <dl class="contact__row">
+            <dt>Rechnungsadresse</dt>
+            <dd><address>deico AG<br>Huebstrasse 24<br>CH-8636 Wald</address></dd>
+          </dl>
+          <dl class="contact__row">
+            <dt>Lieferadresse und Werkstatt</dt>
+            <dd><address>deico AG<br>Huebstrasse 25<br>CH-8636 Wald</address></dd>
+          </dl>
+          <dl class="contact__row">
+            <dt>MWST-Nummer</dt>
+            <dd>CHE-432.738.804 MWST</dd>
+          </dl>
+        </div>
+
+        <div class="contact__col">
+          <dl class="contact__row">
+            <dt>Telefon (Deutsch, Englisch)</dt>
+            <dd><a href="tel:+41555355550">+41 55 535 55 50</a></dd>
+          </dl>
+          <dl class="contact__row">
+            <dt>E-Mail</dt>
+            <dd><a href="mailto:mail@deico.ch">mail@deico.ch</a></dd>
+          </dl>
+          <dl class="contact__row">
+            <dt>Ansprechpartner</dt>
+            <dd>Daniel Eicher, Dipl. Ing. FH, Geschäftsführer<br>Matthias Eicher, Dipl. Ing. FH, stv. Geschäftsführer</dd>
+          </dl>
+          <p class="mt-gap"><a class="btn btn--primary" href="./de/kontakt/">Angebot anfordern</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ========================================================== 10. FOOTER -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__grid">
+      <div>
+        <p class="foot__title">deico AG</p>
+        <address>Huebstrasse 24<br>8636 Wald<br>Schweiz</address>
+        <p class="mt-1"><a href="tel:+41555355550">+41 55 535 55 50</a><br><a href="mailto:mail@deico.ch">mail@deico.ch</a></p>
+      </div>
+      <nav aria-label="Navigation">
+        <p class="foot__title">Navigation</p>
+        <ul>
+          <li><a href="./de/">Home</a></li>
+          <li><a href="./de/showroom/">Showroom</a></li>
+          <li><a href="./de/maschinenpark/">Maschinenpark</a></li>
+          <li><a href="./de/kontakt/">Kontakt</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Rechtliches">
+        <p class="foot__title">Rechtliches</p>
+        <ul>
+          <li><a href="./de/impressum/">Impressum</a></li>
+          <li><a href="./de/datenschutz/">Datenschutzerklärung</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot__bottom">
+      <p>&copy; 2026 deico AG</p>
+      <p>Styleguide. Nicht die offizielle Website der deico AG.</p>
+    </div>
+  </div>
+</footer>
+
+<div class="vpw" aria-hidden="true"><span id="vpw-val">0</span> px <b id="vpw-bp">XS</b></div>
+
+<script>
+(function () {
+  "use strict";
+
+  /* Navigation toggle. Progressive enhancement only: without this script the
+     nav stays visible and every link remains reachable. */
+  var toggle = document.querySelector(".navtoggle");
+  var nav = document.getElementById("nav");
+
+  function closeNav() {
+    if (!toggle || !nav) return;
+    toggle.setAttribute("aria-expanded", "false");
+    nav.classList.remove("is-open");
+  }
+
+  if (toggle && nav) {
+    toggle.addEventListener("click", function () {
+      var open = toggle.getAttribute("aria-expanded") === "true";
+      toggle.setAttribute("aria-expanded", open ? "false" : "true");
+      nav.classList.toggle("is-open", !open);
+    });
+
+    nav.addEventListener("click", function (event) {
+      if (event.target.closest("a")) closeNav();
+    });
+  }
+
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape" && toggle && toggle.getAttribute("aria-expanded") === "true") {
+      closeNav();
+      toggle.focus();
+    }
+  });
+
+  /* A panel left open on a phone should not persist past the breakpoint. */
+  var wide = window.matchMedia("(min-width: 768px)");
+  function onBreakpoint(event) { if (event.matches) closeNav(); }
+  if (wide.addEventListener) wide.addEventListener("change", onBreakpoint);
+  else if (wide.addListener) wide.addListener(onBreakpoint);
+
+  /* Viewport readout, so breakpoints are obvious while resizing.
+
+     Reports window.innerWidth, not documentElement.clientWidth. Media queries
+     match against innerWidth, which includes the classic scrollbar, so the
+     two can differ by about 15px. Showing clientWidth here would mean the
+     widget said 753 while (min-width: 768px) was already matching. */
+  var out = document.getElementById("vpw-val");
+  var bpOut = document.getElementById("vpw-bp");
+  var BANDS = [[1024, "LG"], [768, "MD"], [600, "SM"], [0, "XS"]];
+
+  function report() {
+    var w = window.innerWidth;
+    if (out) out.textContent = w;
+    if (!bpOut) return;
+    for (var i = 0; i < BANDS.length; i++) {
+      if (w >= BANDS[i][0]) { bpOut.textContent = BANDS[i][1]; return; }
+    }
+  }
+
+  report();
+  window.addEventListener("resize", report, { passive: true });
+
+  /* Belt and braces. A resize event can be missed when the viewport is changed
+     by tooling rather than by dragging the window, and a stale readout is
+     worse than none when the whole point is spotting where the layout breaks. */
+  if (window.ResizeObserver) {
+    new ResizeObserver(report).observe(document.documentElement);
+  }
+})();
+</script>
+
+</body>
+</html>
