@@ -9,3 +9,6 @@
 
 # Raw image originals - build input for deico/, must not deploy
 /deico/assets/_src/
+
+# Third-party design reference (Axis Industrial template) - read only, never deploy
+/_reference/
