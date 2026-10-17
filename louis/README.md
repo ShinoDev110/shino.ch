@@ -19,7 +19,7 @@ German is the source and lives in the HTML. English lives in `assets/js/i18n.js`
 - A key missing from `EN` keeps the German text and logs `[i18n] no English text for ...` in the console.
 - The choice is stored in `localStorage` (`louis-lang`). `?lang=en` or `?lang=de` in a link wins,
   so `https://shino.ch/louis/?lang=en` opens in English.
-- Names (Aldi, Meliodas, series titles) need no key.
+- Names (Aldi, Edward, series titles) need no key.
 
 ## Pages
 
@@ -40,8 +40,8 @@ All pages carry `noindex, nofollow` while this is a preview. Remove that once it
 | Photo | `assets/img/louis-booth-{480,880}.webp` (from louis3)      | Contact about block              |
 | Audio | `assets/audio/aldi_sample_commercial.mp3` (0:12)           | Home demo panel, portfolio card  |
 | Audio | `assets/audio/mcdonalds_sample_commercial.mp3` (0:13)      | Home demo panel, portfolio card  |
-| Video | `assets/video/meliodas.mp4` + `meliodas-poster.webp`       | Portfolio (Seven Deadly Sins)    |
-| Video | `assets/video/gojo.mp4` + `gojo-poster.webp`               | Portfolio (Jujutsu Kaisen)       |
+| Video | `assets/video/edward.mp4` + `edward-poster.webp`           | Portfolio (Fullmetal Alchemist)  |
+| Video | `assets/video/gojo.mp4` + `gojo-poster.webp`               | Portfolio (Gojo & Geto, JJK)     |
 
 Full-size photo originals live in `assets/_src/` (ignored by `louis/.gitignore`, they contain GPS data).
 
@@ -49,7 +49,7 @@ Full-size photo originals live in `assets/_src/` (ignored by `louis/.gitignore`,
 
 General rules for every file:
 
-- **Lowercase names, no spaces or umlauts** (`meliodas.mp4`, not `Meliodas.mp4`). GitHub Pages is
+- **Lowercase names, no spaces or umlauts** (`edward.mp4`, not `Edward.mp4`). GitHub Pages is
   case-sensitive and Windows hides the difference. Fix a wrong case with `git mv -f Old.mp4 old.mp4`
   if the file is already staged (the IDE stages new files on its own).
 - **Never commit** anything; the owner commits.

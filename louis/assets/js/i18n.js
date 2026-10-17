@@ -64,9 +64,9 @@
         'portfolio.aldi.text': 'Sample spot for a supermarket. Friendly and familiar, like a neighbour letting you in on the best deal of the week.',
         'portfolio.mcd.text': 'Sample spot for a fast food chain. Relaxed, lively and so appetising you’ll want to head out right away.',
         'portfolio.video.title': 'Anime dubbing',
-        'portfolio.video.lead': 'Two iconic characters, two completely different energies, one voice. My dubbing samples for Meliodas and Gojo.',
-        'portfolio.meliodas.play': 'Play Meliodas',
-        'portfolio.gojo.play': 'Play Gojo',
+        'portfolio.video.lead': 'Two cult series, completely different energies, one voice. My dubbing samples from Fullmetal Alchemist and Jujutsu Kaisen.',
+        'portfolio.edward.play': 'Play Edward',
+        'portfolio.gojo.play': 'Play Gojo & Geto',
         'portfolio.cta.title': 'Like what you hear?',
         'portfolio.cta.text': 'Then let’s record something together. Send me your script and we’ll get going.',
 

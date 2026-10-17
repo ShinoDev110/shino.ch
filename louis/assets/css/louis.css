@@ -748,6 +748,13 @@ p {
     gap: 20px;
 }
 
+/* desktop: stop the text before the rings, which take roughly the right 380px of the screen */
+@media (min-width: 901px) {
+    .page-head .wrap > * {
+        max-width: calc(100vw - 420px - max(var(--gutter), (100vw - var(--max)) / 2));
+    }
+}
+
 .page-head .rings {
     width: 640px;
     right: -260px;
@@ -1088,7 +1095,7 @@ a.contact-card:hover {
     }
 
     .page-head .wrap {
-        padding-right: max(var(--gutter), 150px);
+        padding-right: max(var(--gutter), 220px);
     }
 }
 
