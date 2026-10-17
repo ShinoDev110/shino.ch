@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="de">
+<head>
+    <meta charset="utf-8"/>
+    <title data-i18n="contact.meta.title">Kontakt | Louis Kessler</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <meta content="Louis Kessler als Sprecher buchen: Schreib eine E-Mail mit deinem Projekt."
+          name="description" data-i18n-attr="content:contact.meta.desc">
+    <!-- Preview for the client, not public yet -->
+    <meta content="noindex, nofollow" name="robots">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Louis Kessler | Kontakt">
+    <meta property="og:description" content="Louis als Sprecher buchen: Schreib ihm eine E-Mail.">
+    <meta property="og:image" content="https://shino.ch/louis/assets/img/louis-og.jpg">
+    <meta property="og:url" content="https://shino.ch/louis/contact/">
+    <link href="/louis/assets/img/favicon.svg" rel="icon" type="image/svg+xml">
+    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Nunito:wght@500;700;800&display=swap" rel="stylesheet">
+    <link href="/louis/assets/css/louis.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-head">
+    <div class="wrap">
+        <a class="logo" href="/louis/"><span class="logo-badge">LK</span><span>Louis Kessler</span></a>
+        <nav class="nav" aria-label="Hauptnavigation" data-i18n-attr="aria-label:nav.label">
+            <a href="/louis/" data-i18n="nav.home">Start</a>
+            <a href="/louis/portfolio/" data-i18n="nav.portfolio">Portfolio</a>
+            <a href="/louis/contact/" aria-current="page" data-i18n="nav.contact">Kontakt</a>
+        </nav>
+        <div class="lang" role="group" aria-label="Sprache" data-i18n-attr="aria-label:lang.label">
+            <button type="button" data-lang="de" aria-pressed="true" aria-label="Deutsch">DE</button>
+            <button type="button" data-lang="en" aria-pressed="false" aria-label="English">EN</button>
+        </div>
+    </div>
+</header>
+
+<main>
+    <section class="page-head" style="background:var(--pink)">
+        <div class="rings" aria-hidden="true"></div>
+        <div class="wrap">
+            <span class="sticker sun" data-i18n="nav.contact">Kontakt</span>
+            <h1 data-i18n="contact.title">Lass uns etwas aufnehmen!</h1>
+            <p class="lead" data-i18n="contact.lead">Du hast ein Projekt, eine Idee oder einfach eine Frage? Schreib mir eine E-Mail. Ich freue mich auf deine Nachricht.</p>
+        </div>
+    </section>
+
+    <!-- Contact is email only, on purpose: no phone number. -->
+    <section class="section">
+        <div class="wrap contact-grid">
+            <a class="contact-card" href="mailto:louis.eggerschwiler@gmail.com">
+                <span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M4 7l8 6 8-6"/></svg></span>
+                <span data-i18n="contact.email.label">E-Mail</span>
+                <strong>louis.eggerschwiler@<wbr>gmail.com</strong>
+            </a>
+            <div class="contact-card">
+                <span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 13h6M10 17h6"/></svg></span>
+                <span data-i18n="contact.quote.label">Für ein schnelles Angebot</span>
+                <strong data-i18n="contact.quote.value">Skript, Länge und Verwendung</strong>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="padding-top:0">
+        <div class="wrap split">
+            <div class="photo">
+                <img src="/louis/assets/img/louis-booth-880.webp"
+                     srcset="/louis/assets/img/louis-booth-480.webp 480w, /louis/assets/img/louis-booth-880.webp 880w"
+                     sizes="(max-width: 900px) min(100vw, 420px), 420px" width="880" height="1100"
+                     alt="Louis Kessler in der Sprecherkabine, durch die Scheibe fotografiert"
+                     data-i18n-attr="alt:contact.how.alt" loading="lazy">
+            </div>
+            <div class="stack">
+                <span class="sticker mint" data-i18n="contact.how.sticker">So läuft’s</span>
+                <h2 data-i18n="contact.how.title">Von der Anfrage zur fertigen Aufnahme</h2>
+                <p data-i18n="contact.how.text">Du schickst mir dein Skript und ein paar Infos zum Projekt. Ich nehme auf, du hörst rein, und wenn etwas noch nicht ganz passt, feilen wir gemeinsam daran. Unkompliziert und mit viel Spass bei der Sache.</p>
+                <div class="btns">
+                    <a class="btn" href="mailto:louis.eggerschwiler@gmail.com" data-i18n="btn.write">E-Mail schreiben</a>
+                    <a class="btn ghost" href="/louis/portfolio/" data-i18n="btn.listen">Hörproben anhören</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="stripes" aria-hidden="true"></div>
+</main>
+
+<footer class="site-foot">
+    <div class="wrap">
+        <span>© Louis Kessler</span>
+        <nav aria-label="Fusszeile" data-i18n-attr="aria-label:foot.label">
+            <a href="/louis/portfolio/" data-i18n="nav.portfolio">Portfolio</a>
+            <a href="/louis/contact/" data-i18n="nav.contact">Kontakt</a>
+        </nav>
+        <a href="mailto:louis.eggerschwiler@gmail.com">louis.eggerschwiler@gmail.com</a>
+    </div>
+</footer>
+<script src="/louis/assets/js/i18n.js"></script>
+<script src="/louis/assets/js/louis.js"></script>
+</body>
+</html>

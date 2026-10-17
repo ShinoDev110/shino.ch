@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="de">
+<head>
+    <meta charset="utf-8"/>
+    <title>Portfolio | Louis Kessler</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <meta content="Hörproben und Videos von Louis Kessler: Werbespots und Anime-Synchro zum Reinhören."
+          name="description" data-i18n-attr="content:portfolio.meta.desc">
+    <!-- Preview for the client, not public yet -->
+    <meta content="noindex, nofollow" name="robots">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Louis Kessler | Portfolio">
+    <meta property="og:description" content="Hörproben und Anime-Synchro von Louis Kessler.">
+    <meta property="og:image" content="https://shino.ch/louis/assets/img/louis-og.jpg">
+    <meta property="og:url" content="https://shino.ch/louis/portfolio/">
+    <link href="/louis/assets/img/favicon.svg" rel="icon" type="image/svg+xml">
+    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Nunito:wght@500;700;800&display=swap" rel="stylesheet">
+    <link href="/louis/assets/css/louis.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-head">
+    <div class="wrap">
+        <a class="logo" href="/louis/"><span class="logo-badge">LK</span><span>Louis Kessler</span></a>
+        <nav class="nav" aria-label="Hauptnavigation" data-i18n-attr="aria-label:nav.label">
+            <a href="/louis/" data-i18n="nav.home">Start</a>
+            <a href="/louis/portfolio/" aria-current="page" data-i18n="nav.portfolio">Portfolio</a>
+            <a href="/louis/contact/" data-i18n="nav.contact">Kontakt</a>
+        </nav>
+        <div class="lang" role="group" aria-label="Sprache" data-i18n-attr="aria-label:lang.label">
+            <button type="button" data-lang="de" aria-pressed="true" aria-label="Deutsch">DE</button>
+            <button type="button" data-lang="en" aria-pressed="false" aria-label="English">EN</button>
+        </div>
+    </div>
+</header>
+
+<main>
+    <section class="page-head">
+        <div class="rings" aria-hidden="true"></div>
+        <div class="wrap">
+            <span class="sticker">Portfolio</span>
+            <h1 data-i18n="portfolio.title">Hör rein. Schau rein.</h1>
+            <p class="lead" data-i18n="portfolio.lead">Hier findest du meine Hörproben und Videos. Drück auf Play und hör selbst, wie viel in einer Stimme steckt.</p>
+        </div>
+    </section>
+
+    <!-- Audio: one card per demo. See louis/README.md, "Adding media" -->
+    <section class="section" id="audio">
+        <div class="wrap stack" style="gap:48px">
+            <div class="stack">
+                <h2 data-i18n="portfolio.audio.title">Hörproben</h2>
+                <p class="lead" data-i18n="portfolio.audio.lead">Werbespots mit einem Lächeln in der Stimme: klar, sympathisch und auf den Punkt.</p>
+            </div>
+            <div class="cards">
+                <article class="card">
+                    <div class="card-face">
+                        <div class="face"><svg viewBox="0 0 64 64" aria-hidden="true" style="fill:none;stroke:var(--ink);stroke-width:3;stroke-linecap:round"><circle cx="23" cy="27" r="3" style="fill:var(--ink)"/><circle cx="41" cy="27" r="3" style="fill:var(--ink)"/><path d="M18 38 q14 14 28 0"/></svg></div>
+                        <div><h3>Aldi</h3><small data-i18n="demo.tag.commercial">Werbung · Sample</small></div>
+                    </div>
+                    <p data-i18n="portfolio.aldi.text">Sample-Spot für einen Supermarkt. Freundlich und vertraut, wie ein Nachbar, der dir das beste Angebot der Woche verrät.</p>
+                    <div class="demo" data-src="/louis/assets/audio/aldi_sample_commercial.mp3">
+                        <button class="play" type="button" aria-label="Aldi-Werbung abspielen" data-i18n-attr="aria-label:demo.aldi.play" aria-pressed="false">
+                            <svg class="i-play" viewBox="0 0 24 24"><path d="M7 4.5v15l12.5-7.5z"/></svg>
+                            <svg class="i-pause" viewBox="0 0 24 24"><path d="M6 4h4.5v16H6zM13.5 4H18v16h-4.5z"/></svg>
+                        </button>
+                        <div class="wave" aria-label="Position" data-peaks="59,80,87,99,61,63,51,90,54,58,49,27,16,37,88,86,48,88,100,84,14,70,44,82,33,8,63,68,46,35,40,74,52,59"></div>
+                        <span class="time">0:12</span>
+                    </div>
+                </article>
+                <article class="card">
+                    <div class="card-face">
+                        <div class="face"><svg viewBox="0 0 64 64" aria-hidden="true" style="fill:none;stroke:var(--ink);stroke-width:3;stroke-linecap:round;stroke-linejoin:round"><path d="M17 29 q6 -7 12 0M35 29 q6 -7 12 0"/><path d="M18 37 h28 q0 14 -14 14 q-14 0 -14 -14z" style="fill:var(--pink)"/></svg></div>
+                        <div><h3>McDonald’s</h3><small data-i18n="demo.tag.commercial">Werbung · Sample</small></div>
+                    </div>
+                    <p data-i18n="portfolio.mcd.text">Sample-Spot für eine Fast-Food-Kette. Locker, lebendig und so appetitlich, dass du am liebsten gleich losfahren willst.</p>
+                    <div class="demo" data-src="/louis/assets/audio/mcdonalds_sample_commercial.mp3">
+                        <button class="play" type="button" aria-label="McDonald’s-Werbung abspielen" data-i18n-attr="aria-label:demo.mcd.play" aria-pressed="false">
+                            <svg class="i-play" viewBox="0 0 24 24"><path d="M7 4.5v15l12.5-7.5z"/></svg>
+                            <svg class="i-pause" viewBox="0 0 24 24"><path d="M6 4h4.5v16H6zM13.5 4H18v16h-4.5z"/></svg>
+                        </button>
+                        <div class="wave" aria-label="Position" data-peaks="8,8,8,8,8,8,8,13,24,63,67,58,56,50,17,18,19,48,99,59,67,62,73,59,100,70,82,32,97,39,13,19,21,8"></div>
+                        <span class="time">0:13</span>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <div class="ticker" aria-hidden="true">
+        <div class="ticker-track">
+            <span data-i18n="ticker.1">Werbespots</span><span data-i18n="ticker.2">Anime-Synchro</span><span data-i18n="ticker.3">Zeichentrick</span><span data-i18n="ticker.4">Games</span><span data-i18n="ticker.5">Charakterstimmen</span><span data-i18n="ticker.6">Erklärvideos</span>
+            <span data-i18n="ticker.1">Werbespots</span><span data-i18n="ticker.2">Anime-Synchro</span><span data-i18n="ticker.3">Zeichentrick</span><span data-i18n="ticker.4">Games</span><span data-i18n="ticker.5">Charakterstimmen</span><span data-i18n="ticker.6">Erklärvideos</span>
+        </div>
+    </div>
+
+    <!--
+      Videos: self-hosted MP4s in /louis/assets/video/ (data-video), or YouTube (data-youtube="VIDEO_ID",
+      loads only after a click). Each <video> has a poster frame (x-poster.webp) and loads nothing until clicked.
+    -->
+    <section class="section" id="video">
+        <div class="wrap stack" style="gap:48px">
+            <div class="stack">
+                <h2 data-i18n="portfolio.video.title">Anime-Synchro</h2>
+                <p class="lead" data-i18n="portfolio.video.lead">Zwei Kultfiguren, zwei komplett verschiedene Energien, eine Stimme. Meine Synchro-Proben zu Meliodas und Gojo.</p>
+            </div>
+            <div class="videos">
+                <article class="video">
+                    <div class="video-frame" data-video="/louis/assets/video/meliodas.mp4">
+                        <video src="/louis/assets/video/meliodas.mp4" poster="/louis/assets/video/meliodas-poster.webp" preload="none" muted playsinline tabindex="-1" aria-hidden="true"></video>
+                        <button class="play" type="button" aria-label="Meliodas abspielen" data-i18n-attr="aria-label:portfolio.meliodas.play"><svg viewBox="0 0 24 24"><path d="M7 4.5v15l12.5-7.5z"/></svg></button>
+                    </div>
+                    <div class="video-meta"><h3>Meliodas</h3><span class="sticker sun">The Seven Deadly Sins</span></div>
+                </article>
+                <article class="video">
+                    <div class="video-frame" data-video="/louis/assets/video/gojo.mp4">
+                        <video src="/louis/assets/video/gojo.mp4" poster="/louis/assets/video/gojo-poster.webp" preload="none" muted playsinline tabindex="-1" aria-hidden="true"></video>
+                        <button class="play" type="button" aria-label="Gojo abspielen" data-i18n-attr="aria-label:portfolio.gojo.play"><svg viewBox="0 0 24 24"><path d="M7 4.5v15l12.5-7.5z"/></svg></button>
+                    </div>
+                    <div class="video-meta"><h3>Gojo</h3><span class="sticker sky">Jujutsu Kaisen</span></div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <div class="stripes" aria-hidden="true"></div>
+    <section class="cta">
+        <div class="rings" aria-hidden="true"></div>
+        <div class="wrap">
+            <h2 data-i18n="portfolio.cta.title">Gefällt dir, was du hörst?</h2>
+            <p data-i18n="portfolio.cta.text">Dann lass uns zusammen etwas aufnehmen. Schick mir dein Skript, und wir legen los.</p>
+            <a class="btn" href="mailto:louis.eggerschwiler@gmail.com" data-i18n="btn.request">Anfrage senden</a>
+        </div>
+    </section>
+</main>
+
+<footer class="site-foot">
+    <div class="wrap">
+        <span>© Louis Kessler</span>
+        <nav aria-label="Fusszeile" data-i18n-attr="aria-label:foot.label">
+            <a href="/louis/portfolio/" data-i18n="nav.portfolio">Portfolio</a>
+            <a href="/louis/contact/" data-i18n="nav.contact">Kontakt</a>
+        </nav>
+        <a href="mailto:louis.eggerschwiler@gmail.com">louis.eggerschwiler@gmail.com</a>
+    </div>
+</footer>
+<script src="/louis/assets/js/i18n.js"></script>
+<script src="/louis/assets/js/louis.js"></script>
+</body>
+</html>
