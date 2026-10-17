@@ -40,7 +40,7 @@
             <div class="hero-text">
                 <span class="sticker" data-i18n="home.hero.sticker">Sprecher aus der Schweiz</span>
                 <h1 data-i18n="home.hero.title">Eine Stimme. <span class="mark">Hundert</span> Charaktere.</h1>
-                <p class="lead" data-i18n="home.hero.lead">Vom sympathischen Werbespot bis zum Anime-Helde! Ich gebe deinem Projekt eine Stimme, die im Kopf bleibt.</p>
+                <p class="lead" data-i18n="home.hero.lead">Vom sympathischen Werbespot bis zum Anime-Helden! Ich gebe deinem Projekt eine Stimme, die im Kopf bleibt.</p>
                 <div class="btns">
                     <a class="btn" href="/louis/portfolio/" data-i18n="btn.listen">Hörproben anhören</a>
                     <a class="btn ghost" href="mailto:louis.eggerschwiler@gmail.com" data-i18n="btn.request">Anfrage senden</a>
@@ -105,6 +105,33 @@
                         </div>
                         <span class="time">0:13</span>
                     </article>
+                </div>
+
+                <!-- Random clip: picks any audio demo from the portfolio page (louis.js, "random clip") -->
+                <div class="shuffle">
+                    <div class="shuffle-head">
+                        <div class="shuffle-q">
+                            <h3 data-i18n="home.shuffle.q">Keine Lust zu suchen?</h3>
+                            <p data-i18n="home.shuffle.sub">Ich spiel dir einfach einen zufälligen Clip vor.</p>
+                        </div>
+                        <button class="btn sun shuffle-btn" type="button">
+                            <svg class="dice" viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="8" cy="8" r="1.7"/><circle cx="16" cy="8" r="1.7"/><circle cx="12" cy="12" r="1.7"/><circle cx="8" cy="16" r="1.7"/><circle cx="16" cy="16" r="1.7"/></svg>
+                            <span data-i18n="home.shuffle.btn">Überrasch mich!</span>
+                        </button>
+                    </div>
+                    <div class="shuffle-now" hidden>
+                        <button class="play" type="button" aria-label="Abspielen oder pausieren" data-i18n-attr="aria-label:home.shuffle.toggle" aria-pressed="false">
+                            <svg class="i-play" viewBox="0 0 24 24"><path d="M7 4.5v15l12.5-7.5z"/></svg>
+                            <svg class="i-pause" viewBox="0 0 24 24"><path d="M6 4h4.5v16H6zM13.5 4H18v16h-4.5z"/></svg>
+                        </button>
+                        <div class="shuffle-body">
+                            <div class="shuffle-title" aria-live="polite"><small data-i18n="home.shuffle.now">Jetzt läuft</small> <strong class="shuffle-name"></strong></div>
+                            <div class="progress" role="slider" tabindex="0" aria-label="Position" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                                <div class="progress-fill"><span class="progress-knob"></span></div>
+                            </div>
+                        </div>
+                        <span class="time">0:00 / 0:00</span>
+                    </div>
                 </div>
             </div>
         </div>

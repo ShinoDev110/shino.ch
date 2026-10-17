@@ -1,4 +1,4 @@
-// Audio demos, video cards and the googly-eyed mascot.
+// Audio demos, the random clip player, video cards and the googly-eyed mascot.
 (function () {
     'use strict';
 
@@ -11,8 +11,11 @@
         };
     }
 
-    // ---------- audio demos ----------
+    // ---------- audio ----------
+    // One Audio object per file, shared by every player that shows it (home rows, portfolio cards,
+    // the random clip bar), so they always stay in sync. Only one clip plays at a time.
     var current = null;
+    var audios = {};
 
     function fmt(sec) {
         if (!isFinite(sec)) sec = 0;
@@ -20,18 +23,51 @@
         return m + ':' + (s < 10 ? '0' : '') + s;
     }
 
+    function audioFor(src) {
+        if (audios[src]) return audios[src];
+        var a = new Audio();
+        a.preload = 'none';
+        a.src = src;
+        a.addEventListener('play', function () {
+            if (current && current !== a) current.pause();
+            current = a;
+            pauseVideos();
+        });
+        a.addEventListener('ended', function () {
+            a.currentTime = 0;
+        });
+        audios[src] = a;
+        return a;
+    }
+
+    function toggle(a) {
+        if (a.paused) a.play().catch(function () {});
+        else a.pause();
+    }
+
+    function seek(a, p) {
+        p = Math.max(0, Math.min(1, p));
+        var go = function () {
+            if (isFinite(a.duration)) a.currentTime = p * a.duration;
+        };
+        if (a.readyState >= 1) return go();
+        a.preload = 'metadata';
+        a.addEventListener('loadedmetadata', go, {once: true});
+        a.load();
+    }
+
+    // ---------- demo players (waveform rows and cards) ----------
     document.querySelectorAll('.demo').forEach(function (demo, idx) {
+        if (!demo.dataset.src) return;
         var btn = demo.querySelector('.play');
         var wave = demo.querySelector('.wave');
         var time = demo.querySelector('.time');
-        if (!demo.dataset.src) return;
-        var seed = idx + 1;
-        var audio = null;
+        var a = audioFor(demo.dataset.src);
         var initial = time.textContent;
 
         // waveform: real loudness from data-peaks (percent per bar) when given, otherwise a made-up shape
         var peaks = wave.dataset.peaks ? wave.dataset.peaks.split(',').map(Number) : null;
-        var rnd = rng(seed), bars = peaks ? peaks.length : +wave.dataset.bars || 56;
+        var rnd = rng(idx + 1), bars = peaks ? peaks.length : +wave.dataset.bars || 56;
         for (var i = 0; i < bars; i++) {
             var bar = document.createElement('i');
             var env = .45 + .55 * Math.sin(Math.PI * (i + .5) / bars);
@@ -41,55 +77,29 @@
         var barEls = wave.children;
 
         function paint() {
-            var p = audio && audio.duration ? audio.currentTime / audio.duration : 0;
+            var p = a.duration ? a.currentTime / a.duration : 0;
             var on = Math.round(p * barEls.length);
             for (var j = 0; j < barEls.length; j++) barEls[j].classList.toggle('on', j < on);
             // at rest show the length, while playing the position
-            time.textContent = audio && audio.currentTime > 0 ? fmt(audio.currentTime)
-                : audio && isFinite(audio.duration) ? fmt(audio.duration) : initial;
+            time.textContent = a.currentTime > 0 ? fmt(a.currentTime)
+                : isFinite(a.duration) ? fmt(a.duration) : initial;
             wave.setAttribute('aria-valuenow', Math.round(p * 100));
         }
 
-        function ensure() {
-            if (audio) return audio;
-            audio = new Audio(demo.dataset.src);
-            audio.preload = 'metadata';
-            audio.addEventListener('timeupdate', paint);
-            audio.addEventListener('play', function () {
-                pauseVideos();
-                demo.classList.add('is-playing');
-                btn.setAttribute('aria-pressed', 'true');
-            });
-            audio.addEventListener('pause', function () {
-                demo.classList.remove('is-playing');
-                btn.setAttribute('aria-pressed', 'false');
-            });
-            audio.addEventListener('ended', function () {
-                audio.currentTime = 0;
-                paint();
-            });
-            return audio;
-        }
-
-        btn.addEventListener('click', function () {
-            var a = ensure();
-            if (a.paused) {
-                if (current && current !== a) current.pause();
-                current = a;
-                a.play().catch(function () {});
-            } else {
-                a.pause();
-            }
+        a.addEventListener('timeupdate', paint);
+        a.addEventListener('loadedmetadata', paint);
+        a.addEventListener('play', function () {
+            demo.classList.add('is-playing');
+            btn.setAttribute('aria-pressed', 'true');
+        });
+        a.addEventListener('pause', function () {
+            demo.classList.remove('is-playing');
+            btn.setAttribute('aria-pressed', 'false');
         });
 
-        function seekTo(p) {
-            var a = ensure();
-            var go = function () {
-                a.currentTime = Math.max(0, Math.min(1, p)) * a.duration;
-                paint();
-            };
-            if (a.readyState >= 1) go(); else a.addEventListener('loadedmetadata', go, {once: true});
-        }
+        btn.addEventListener('click', function () {
+            toggle(a);
+        });
 
         wave.setAttribute('role', 'slider');
         wave.setAttribute('tabindex', '0');
@@ -98,16 +108,129 @@
         wave.setAttribute('aria-valuenow', '0');
         wave.addEventListener('click', function (e) {
             var r = wave.getBoundingClientRect();
-            seekTo((e.clientX - r.left) / r.width);
+            seek(a, (e.clientX - r.left) / r.width);
         });
         wave.addEventListener('keydown', function (e) {
             if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
             e.preventDefault();
-            var a = ensure();
             var p = a.duration ? a.currentTime / a.duration : 0;
-            seekTo(p + (e.key === 'ArrowRight' ? .05 : -.05));
+            seek(a, p + (e.key === 'ArrowRight' ? .05 : -.05));
         });
     });
+
+    // ---------- random clip ("Keine Lust zu suchen?") ----------
+    // Plays a random audio demo from the portfolio page, so new portfolio cards join automatically.
+    // It shares the Audio objects above: if the clip is also in the home panel, that row plays along.
+    var shuffle = document.querySelector('.shuffle');
+    if (shuffle) {
+        var sBtn = shuffle.querySelector('.shuffle-btn');
+        var now = shuffle.querySelector('.shuffle-now');
+        var nPlay = now.querySelector('.play');
+        var nName = now.querySelector('.shuffle-name');
+        var track = now.querySelector('.progress');
+        var fill = now.querySelector('.progress-fill');
+        var nTime = now.querySelector('.time');
+        var pool = null, cur = null, last = null, dragging = false;
+        var hooked = [];
+
+        var clipsIn = function (doc) {
+            var seen = {};
+            return [].map.call(doc.querySelectorAll('.demo[data-src]'), function (d) {
+                var h = (d.closest('.card') || d).querySelector('h3');
+                return {src: d.dataset.src, title: h ? h.textContent.trim() : ''};
+            }).filter(function (c) {
+                if (!c.src || seen[c.src]) return false;
+                seen[c.src] = true;
+                return true;
+            });
+        };
+
+        // load the list up front, so the click can start playback right away (browsers want that)
+        fetch('/louis/portfolio/').then(function (r) {
+            return r.ok ? r.text() : '';
+        }).then(function (html) {
+            var list = html ? clipsIn(new DOMParser().parseFromString(html, 'text/html')) : [];
+            if (list.length) pool = list;
+        }).catch(function () { /* fall back to the clips on this page */ });
+
+        var paintNow = function (p) {
+            if (!cur) return;
+            if (p === undefined) p = cur.duration ? cur.currentTime / cur.duration : 0;
+            fill.style.width = (p * 100) + '%';
+            track.setAttribute('aria-valuenow', Math.round(p * 100));
+            nTime.textContent = fmt(cur.currentTime) + ' / ' + fmt(cur.duration);
+            now.classList.toggle('is-playing', !cur.paused);
+            nPlay.setAttribute('aria-pressed', String(!cur.paused));
+        };
+
+        var hook = function (a) {
+            if (hooked.indexOf(a) !== -1) return;
+            hooked.push(a);
+            ['timeupdate', 'play', 'pause', 'loadedmetadata'].forEach(function (ev) {
+                a.addEventListener(ev, function () {
+                    if (a === cur && !dragging) paintNow();
+                });
+            });
+        };
+
+        sBtn.addEventListener('click', function () {
+            var list = pool || clipsIn(document);
+            if (!list.length) return;
+            var options = list.length > 1 ? list.filter(function (c) {
+                return c.src !== last;
+            }) : list;
+            var clip = options[Math.floor(Math.random() * options.length)];
+            last = clip.src;
+
+            var next = audioFor(clip.src);
+            if (cur && cur !== next) cur.pause();
+            cur = next;
+            hook(cur);
+            cur.currentTime = 0;
+            nName.textContent = clip.title;
+            now.hidden = false;
+            cur.play().catch(function () {});
+            paintNow(0);
+
+            sBtn.classList.remove('spin');
+            void sBtn.offsetWidth; // restart the dice animation
+            sBtn.classList.add('spin');
+        });
+
+        nPlay.addEventListener('click', function () {
+            if (cur) toggle(cur);
+        });
+
+        // progress bar: click, drag or use the arrow keys to skip through the clip
+        var at = function (e) {
+            var r = track.getBoundingClientRect();
+            return Math.max(0, Math.min(1, (e.clientX - r.left) / r.width));
+        };
+        track.addEventListener('pointerdown', function (e) {
+            if (!cur) return;
+            dragging = true;
+            track.setPointerCapture(e.pointerId);
+            paintNow(at(e));
+            seek(cur, at(e));
+        });
+        track.addEventListener('pointermove', function (e) {
+            if (!dragging) return;
+            paintNow(at(e));
+            seek(cur, at(e));
+        });
+        ['pointerup', 'pointercancel'].forEach(function (ev) {
+            track.addEventListener(ev, function () {
+                dragging = false;
+                paintNow();
+            });
+        });
+        track.addEventListener('keydown', function (e) {
+            if (!cur || (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight')) return;
+            e.preventDefault();
+            var p = cur.duration ? cur.currentTime / cur.duration : 0;
+            seek(cur, p + (e.key === 'ArrowRight' ? .05 : -.05));
+        });
+    }
 
     // ---------- videos ----------
     // data-video="/louis/assets/video/x.mp4" plays the local file in place.

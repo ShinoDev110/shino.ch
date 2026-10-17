@@ -32,6 +32,14 @@
 
 html {
     scroll-behavior: smooth;
+    /* stop iOS from enlarging text in landscape */
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+/* no grey flash on tap; the buttons have their own pressed state */
+a, button, [role="slider"] {
+    -webkit-tap-highlight-color: transparent;
 }
 
 body {
@@ -126,9 +134,11 @@ p {
     transition: transform .15s ease, box-shadow .15s ease;
 }
 
-.btn:hover {
-    transform: translate(-2px, -2px) rotate(-1.5deg);
-    box-shadow: 7px 7px 0 var(--ink);
+@media (hover: hover) {
+    .btn:hover {
+        transform: translate(-2px, -2px) rotate(-1.5deg);
+        box-shadow: 7px 7px 0 var(--ink);
+    }
 }
 
 .btn:active {
@@ -221,8 +231,10 @@ p {
     transition: transform .3s cubic-bezier(.3, 1.8, .5, 1);
 }
 
-.logo:hover .logo-badge {
-    transform: rotate(10deg) scale(1.08);
+@media (hover: hover) {
+    .logo:hover .logo-badge {
+        transform: rotate(10deg) scale(1.08);
+    }
 }
 
 .nav {
@@ -241,9 +253,11 @@ p {
     transition: transform .15s ease, background .15s ease;
 }
 
-.nav a:hover {
-    background: var(--sun);
-    transform: rotate(-3deg);
+@media (hover: hover) {
+    .nav a:hover {
+        background: var(--sun);
+        transform: rotate(-3deg);
+    }
 }
 
 .nav a[aria-current="page"] {
@@ -273,8 +287,10 @@ p {
     transition: background .15s ease, transform .2s cubic-bezier(.3, 1.8, .5, 1);
 }
 
-.lang button:hover {
-    transform: rotate(-6deg);
+@media (hover: hover) {
+    .lang button:hover {
+        transform: rotate(-6deg);
+    }
 }
 
 .lang button[aria-pressed="true"] {
@@ -282,9 +298,19 @@ p {
 }
 
 /* ---------- hero ---------- */
+/*
+ * The hero's rainbow rings run on into the section below instead of being cut off.
+ * main clips them sideways (overflow-x: clip); everything after the hero sits one layer up,
+ * so the rings stay behind that content.
+ */
 .hero {
     position: relative;
-    overflow: hidden;
+    z-index: 0;
+}
+
+.hero ~ * {
+    position: relative;
+    z-index: 1;
 }
 
 .hero .wrap {
@@ -542,8 +568,10 @@ p {
     transition: transform .2s cubic-bezier(.3, 1.8, .5, 1);
 }
 
-.play:hover {
-    transform: scale(1.08) rotate(-8deg);
+@media (hover: hover) {
+    .play:hover {
+        transform: scale(1.08) rotate(-8deg);
+    }
 }
 
 .play:active {
@@ -614,6 +642,167 @@ p {
     color: var(--ink-soft);
     min-width: 4.5ch;
     text-align: right;
+}
+
+/* ---------- random clip ("Keine Lust zu suchen?") ---------- */
+.shuffle {
+    display: grid;
+    gap: 18px;
+    padding-top: 24px;
+    border-top: 3px dashed rgba(251, 243, 230, .25);
+}
+
+.shuffle-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px 24px;
+}
+
+.shuffle-q {
+    display: grid;
+    gap: 4px;
+}
+
+.shuffle-q h3 {
+    font-size: clamp(24px, 3vw, 32px);
+    color: var(--cream);
+}
+
+.shuffle-q p {
+    color: rgba(251, 243, 230, .72);
+}
+
+.shuffle-btn .dice {
+    width: 26px;
+    height: 26px;
+    flex: none;
+}
+
+.shuffle-btn .dice rect {
+    fill: var(--paper);
+    stroke: var(--ink);
+    stroke-width: 2;
+}
+
+.shuffle-btn .dice circle {
+    fill: var(--ink);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .shuffle-btn.spin .dice {
+        animation: roll .7s cubic-bezier(.3, 1.6, .5, 1);
+    }
+
+    .shuffle-now:not([hidden]) {
+        animation: pop .45s cubic-bezier(.3, 1.6, .5, 1);
+    }
+}
+
+@keyframes roll {
+    from {
+        transform: rotate(-300deg) scale(.5);
+    }
+}
+
+@keyframes pop {
+    from {
+        transform: scale(.85) rotate(-2deg);
+        opacity: 0;
+    }
+}
+
+.shuffle-now {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 18px;
+    padding: 14px 24px 14px 14px;
+    border: var(--border);
+    border-radius: 999px;
+    background: var(--sun);
+    color: var(--ink);
+}
+
+.shuffle-now[hidden] {
+    display: none;
+}
+
+.shuffle-now .play {
+    background: var(--ink);
+    color: var(--sun);
+}
+
+.shuffle-body {
+    display: grid;
+    gap: 10px;
+    min-width: 0;
+}
+
+.shuffle-title {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 4px 10px;
+}
+
+.shuffle-title small {
+    font-weight: 800;
+    font-size: 13px;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+}
+
+.shuffle-title strong {
+    font: 400 22px/1.1 var(--display);
+}
+
+.progress {
+    position: relative;
+    height: 18px;
+    border: var(--border);
+    border-radius: 999px;
+    background: var(--paper);
+    cursor: pointer;
+    touch-action: none;
+}
+
+.progress-fill {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 0;
+    border-radius: 999px;
+    background: var(--pink);
+}
+
+.progress-knob {
+    position: absolute;
+    right: -12px;
+    top: 50%;
+    width: 24px;
+    height: 24px;
+    margin-top: -12px;
+    border: var(--border);
+    border-radius: 50%;
+    background: var(--paper);
+    box-shadow: 2px 2px 0 var(--ink);
+    transition: transform .15s ease;
+}
+
+@media (hover: hover) {
+    .progress:hover .progress-knob,
+    .progress:active .progress-knob {
+        transform: scale(1.15);
+    }
+}
+
+.shuffle-now .time {
+    color: var(--ink);
+    min-width: 0;
+    white-space: nowrap;
 }
 
 /* ---------- ticker band ---------- */
@@ -715,12 +904,16 @@ p {
     background: var(--paper);
 }
 
-.pill:nth-child(odd):hover {
-    transform: rotate(-4deg) scale(1.04);
+@media (hover: hover) {
+    .pill:nth-child(odd):hover {
+        transform: rotate(-4deg) scale(1.04);
+    }
 }
 
-.pill:nth-child(even):hover {
-    transform: rotate(4deg) scale(1.04);
+@media (hover: hover) {
+    .pill:nth-child(even):hover {
+        transform: rotate(4deg) scale(1.04);
+    }
 }
 
 .center {
@@ -816,8 +1009,10 @@ p {
     transform: rotate(1.2deg);
 }
 
-.card:hover {
-    transform: rotate(0) translateY(-6px);
+@media (hover: hover) {
+    .card:hover {
+        transform: rotate(0) translateY(-6px);
+    }
 }
 
 .card-face {
@@ -970,8 +1165,10 @@ p {
     transition: transform .25s cubic-bezier(.3, 1.8, .5, 1);
 }
 
-a.contact-card:hover {
-    transform: rotate(-2deg) translateY(-4px);
+@media (hover: hover) {
+    a.contact-card:hover {
+        transform: rotate(-2deg) translateY(-4px);
+    }
 }
 
 .contact-card .icon {
@@ -1151,8 +1348,62 @@ a.contact-card:hover {
         text-align: center;
     }
 
-    .cards, .pills {
+    .cards {
         grid-template-columns: minmax(0, 1fr);
+    }
+
+    /* services: two compact columns instead of one tall stack */
+    .pills {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+    }
+
+    .pill {
+        display: grid;
+        place-items: center;
+        padding: 16px 8px;
+        font-size: 16px;
+        box-shadow: 4px 4px 0 var(--ink);
+    }
+
+    /* buttons in a row become full-width, easy thumb targets */
+    .btns .btn {
+        flex: 1 1 100%;
+        justify-content: center;
+    }
+
+    .cta .btn {
+        justify-self: stretch;
+        justify-content: center;
+    }
+
+    /* language switch: bigger tap targets */
+    .lang button {
+        padding: 9px 12px;
+        font-size: 15px;
+    }
+
+    /* photos next to text: smaller, so they don't fill the whole screen */
+    .split .photo {
+        width: min(82%, 330px);
+    }
+
+    /* footer: stacked and centred, with roomy links */
+    .site-foot .wrap {
+        flex-direction: column;
+        gap: 6px;
+        padding-block: 28px;
+        text-align: center;
+    }
+
+    .site-foot nav {
+        justify-content: center;
+        gap: 0 18px;
+    }
+
+    .site-foot a {
+        display: inline-block;
+        padding: 10px 4px;
     }
 
     .contact-card {
@@ -1188,6 +1439,23 @@ a.contact-card:hover {
         grid-column: 2;
         text-align: left;
         margin-top: -10px;
+    }
+
+    .shuffle-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .shuffle-now {
+        grid-template-columns: auto minmax(0, 1fr);
+        border-radius: 28px;
+        padding-right: 20px;
+    }
+
+    .shuffle-now .time {
+        grid-column: 2;
+        margin-top: -8px;
+        text-align: left;
     }
 
     .bubble {

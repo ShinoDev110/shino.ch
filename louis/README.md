@@ -25,7 +25,7 @@ German is the source and lives in the HTML. English lives in `assets/js/i18n.js`
 
 | URL                  | File                   | Content                                          |
 |----------------------|------------------------|--------------------------------------------------|
-| `/louis/`            | `index.html`           | Hero photo, demo panel, ticker, about, pills, CTA |
+| `/louis/`            | `index.html`           | Hero photo, demo panel + random clip, ticker, about, pills, CTA |
 | `/louis/portfolio/`  | `portfolio/index.html` | Audio cards, video grid                          |
 | `/louis/contact/`    | `contact/index.html`   | Contact cards, about block with photo            |
 
@@ -81,6 +81,9 @@ ImageMagick: `"/c/Program Files/ImageMagick-7.1.2-Q16-HDRI/magick.exe"` (not on 
    keys (`data-i18n`, `data-i18n-attr="aria-label:..."`) and add their English to `assets/js/i18n.js`.
 4. **Home (optional, for highlights):** copy one `<article class="demo">` in the `.demos` panel of
    `index.html`, same fields, `data-peaks` with 56 values. Keep the panel to about 3 rows.
+
+The "Keine Lust zu suchen?" random clip button on the home page picks from every `.demo[data-src]`
+on the portfolio page (it fetches that page), so a new portfolio card joins the shuffle by itself.
 
 Without `data-peaks` the player still works and draws a made-up waveform. A `.demo` without
 `data-src` is ignored by the script, so never leave one in the page.
