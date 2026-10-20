@@ -82,13 +82,27 @@
                         <span class="time">0:13</span>
                     </div>
                 </article>
+                <article class="card">
+                    <div class="card-face">
+                        <div class="face"><svg viewBox="0 0 64 64" aria-hidden="true" style="fill:none;stroke:var(--ink);stroke-width:3;stroke-linecap:round;stroke-linejoin:round"><path d="M17 28 q6 5 12 0M35 28 q6 5 12 0"/><path d="M26 42 q6 4 12 0"/><path d="M47 9 h7 l-7 8 h7" style="stroke-width:2.4"/></svg></div>
+                        <div><h3>Lunea</h3><small data-i18n="demo.tag.commercial">Werbung · Sample</small></div>
+                    </div>
+                    <p data-i18n="portfolio.lunea.text">Sample-Spot für Matratzen und Kissen. Ruhig, warm und so entspannt, dass man sich am liebsten gleich hinlegen möchte.</p>
+                    <div class="demo" data-src="/louis/assets/audio/lunea.mp3">
+                        <button class="play" type="button" aria-label="Lunea-Werbung abspielen" data-i18n-attr="aria-label:demo.lunea.play" aria-pressed="false">
+                            <svg class="i-play" viewBox="0 0 24 24"><path d="M7 4.5v15l12.5-7.5z"/></svg>
+                            <svg class="i-pause" viewBox="0 0 24 24"><path d="M6 4h4.5v16H6zM13.5 4H18v16h-4.5z"/></svg>
+                        </button>
+                        <div class="wave" aria-label="Position" data-peaks="14,17,11,13,10,58,95,100,54,65,47,25,35,78,29,83,69,27,63,52,43,11,12,94,10,65,51,18,70,62,54,10,10,10"></div>
+                        <span class="time">0:14</span>
+                    </div>
+                </article>
             </div>
         </div>
     </section>
 
     <div class="ticker" aria-hidden="true">
         <div class="ticker-track">
-            <span data-i18n="ticker.1">Werbespots</span><span data-i18n="ticker.2">Anime-Synchro</span><span data-i18n="ticker.3">Zeichentrick</span><span data-i18n="ticker.4">Games</span><span data-i18n="ticker.5">Charakterstimmen</span><span data-i18n="ticker.6">Erklärvideos</span>
             <span data-i18n="ticker.1">Werbespots</span><span data-i18n="ticker.2">Anime-Synchro</span><span data-i18n="ticker.3">Zeichentrick</span><span data-i18n="ticker.4">Games</span><span data-i18n="ticker.5">Charakterstimmen</span><span data-i18n="ticker.6">Erklärvideos</span>
         </div>
     </div>
@@ -122,6 +136,25 @@
         </div>
     </section>
 
+    <!-- Live-action film dubbing, kept apart from the anime clips -->
+    <section class="section film" id="film">
+        <div class="wrap stack" style="gap:48px">
+            <div class="stack">
+                <h2 data-i18n="portfolio.film.title">Film-Synchro</h2>
+                <p class="lead" data-i18n="portfolio.film.lead">Echte Schauspieler, echte Emotionen: meine Synchro-Probe zu einer Szene aus Don’t Worry Darling.</p>
+            </div>
+            <div class="videos">
+                <article class="video">
+                    <div class="video-frame" data-video="/louis/assets/video/mein-leben.mp4">
+                        <video src="/louis/assets/video/mein-leben.mp4" poster="/louis/assets/video/mein-leben-poster.webp" preload="none" muted playsinline tabindex="-1" aria-hidden="true"></video>
+                        <button class="play" type="button" aria-label="Don’t Worry Darling abspielen" data-i18n-attr="aria-label:portfolio.film.play"><svg viewBox="0 0 24 24"><path d="M7 4.5v15l12.5-7.5z"/></svg></button>
+                    </div>
+                    <div class="video-meta"><h3>Don’t Worry Darling</h3><span class="sticker" data-i18n="portfolio.film.tag">Spielfilm</span></div>
+                </article>
+            </div>
+        </div>
+    </section>
+
     <div class="stripes" aria-hidden="true"></div>
     <section class="cta">
         <div class="rings" aria-hidden="true"></div>
@@ -143,7 +176,7 @@
         <a href="mailto:louis.eggerschwiler@gmail.com">louis.eggerschwiler@gmail.com</a>
     </div>
 </footer>
-<script src="/louis/assets/js/i18n.js"></script>
 <script src="/louis/assets/js/louis.js"></script>
+<script src="/louis/assets/js/i18n.js"></script>
 </body>
 </html>

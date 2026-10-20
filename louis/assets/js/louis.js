@@ -1,4 +1,4 @@
-// Audio demos, the random clip player, video cards and the googly-eyed mascot.
+// Audio demos, the random clip player, the "Hoi!" bubble, video cards and the googly-eyed mascot.
 (function () {
     'use strict';
 
@@ -10,6 +10,25 @@
             return s / 233280;
         };
     }
+
+    // ---------- ticker band ----------
+    // The HTML holds one set of words. Repeat it until one half is wider than any screen, then
+    // double it: the CSS slides by exactly half, so the loop has no gap. Speed stays constant.
+    // Runs before i18n.js, so the copies are translated along with the originals.
+    document.querySelectorAll('.ticker-track').forEach(function (track) {
+        var set = [].slice.call(track.children);
+        if (!set.length) return;
+        var need = Math.max(window.screen.width || 0, window.innerWidth, 1600) * 1.25;
+        for (var guard = 0; track.offsetWidth < need && guard < 30; guard++) {
+            set.forEach(function (s) {
+                track.appendChild(s.cloneNode(true));
+            });
+        }
+        [].slice.call(track.children).forEach(function (s) {
+            track.appendChild(s.cloneNode(true));
+        });
+        track.style.animationDuration = Math.round(track.offsetWidth / 2 / 60) + 's'; // about 60 px per second
+    });
 
     // ---------- audio ----------
     // One Audio object per file, shared by every player that shows it (home rows, portfolio cards,
@@ -120,7 +139,8 @@
 
     // ---------- random clip ("Keine Lust zu suchen?") ----------
     // Plays a random audio demo from the portfolio page, so new portfolio cards join automatically.
-    // It shares the Audio objects above: if the clip is also in the home panel, that row plays along.
+    // The "Hoi!" greetings are never part of the pool: they are not portfolio cards, and hoiN.mp3
+    // files are filtered out as well.
     var shuffle = document.querySelector('.shuffle');
     if (shuffle) {
         var sBtn = shuffle.querySelector('.shuffle-btn');
@@ -139,19 +159,21 @@
                 var h = (d.closest('.card') || d).querySelector('h3');
                 return {src: d.dataset.src, title: h ? h.textContent.trim() : ''};
             }).filter(function (c) {
-                if (!c.src || seen[c.src]) return false;
+                if (!c.src || seen[c.src] || /\/hoi\d*\.mp3$/i.test(c.src)) return false;
                 seen[c.src] = true;
                 return true;
             });
         };
 
-        // load the list up front, so the click can start playback right away (browsers want that)
-        fetch('/louis/portfolio/').then(function (r) {
+        // load the list up front, so a click can usually start playback right away (browsers prefer that)
+        var ready = fetch('/louis/portfolio/').then(function (r) {
             return r.ok ? r.text() : '';
         }).then(function (html) {
             var list = html ? clipsIn(new DOMParser().parseFromString(html, 'text/html')) : [];
-            if (list.length) pool = list;
-        }).catch(function () { /* fall back to the clips on this page */ });
+            pool = list.length ? list : clipsIn(document);
+        }).catch(function () {
+            pool = clipsIn(document);
+        });
 
         var paintNow = function (p) {
             if (!cur) return;
@@ -173,12 +195,11 @@
             });
         };
 
-        sBtn.addEventListener('click', function () {
-            var list = pool || clipsIn(document);
-            if (!list.length) return;
-            var options = list.length > 1 ? list.filter(function (c) {
+        var playRandom = function () {
+            if (!pool || !pool.length) return;
+            var options = pool.length > 1 ? pool.filter(function (c) {
                 return c.src !== last;
-            }) : list;
+            }) : pool;
             var clip = options[Math.floor(Math.random() * options.length)];
             last = clip.src;
 
@@ -191,6 +212,10 @@
             now.hidden = false;
             cur.play().catch(function () {});
             paintNow(0);
+        };
+
+        sBtn.addEventListener('click', function () {
+            if (pool) playRandom(); else ready.then(playRandom);
 
             sBtn.classList.remove('spin');
             void sBtn.offsetWidth; // restart the dice animation
@@ -229,6 +254,35 @@
             e.preventDefault();
             var p = cur.duration ? cur.currentTime / cur.duration : 0;
             seek(cur, p + (e.key === 'ArrowRight' ? .05 : -.05));
+        });
+    }
+
+    // ---------- "Hoi!" bubble ----------
+    // Each click says hoi with one of three recordings, never the same one twice in a row.
+    // These are tiny, so they load up front and answer instantly; they don't stop other audio.
+    var bubble = document.querySelector('.bubble');
+    if (bubble) {
+        var hois = [1, 2, 3].map(function (n) {
+            var a = new Audio('/louis/assets/audio/hoi' + n + '.mp3');
+            a.preload = 'auto';
+            return a;
+        });
+        var lastHoi = -1;
+        bubble.addEventListener('click', function () {
+            var i;
+            do {
+                i = Math.floor(Math.random() * hois.length);
+            } while (i === lastHoi && hois.length > 1);
+            lastHoi = i;
+            hois.forEach(function (a) {
+                a.pause();
+            });
+            hois[i].currentTime = 0;
+            hois[i].play().catch(function () {});
+
+            bubble.classList.remove('say');
+            void bubble.offsetWidth; // restart the wiggle
+            bubble.classList.add('say');
         });
     }
 

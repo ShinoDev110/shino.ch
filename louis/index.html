@@ -55,7 +55,8 @@
                          alt="Louis Kessler mit Kopfhörern am Mikrofon in der Sprecherkabine"
                          data-i18n-attr="alt:home.hero.alt" fetchpriority="high">
                 </div>
-                <div class="bubble" aria-hidden="true" data-i18n="home.hero.bubble">Hoi!</div>
+                <!-- Click plays a random "Hoi!" (assets/audio/hoi1-3.mp3); the random clip button never picks these -->
+                <button class="bubble" type="button" aria-label="Hoi sagen" data-i18n-attr="aria-label:home.hero.hoi">Hoi!</button>
                 <div class="mascot" aria-hidden="true">
                     <svg viewBox="0 0 100 172">
                         <path d="M8 62 q0 50 42 50 q42 0 42 -50" style="fill:none;stroke:var(--ink);stroke-width:6;stroke-linecap:round"/>
@@ -76,62 +77,33 @@
 
     <section class="section" style="padding-top:0">
         <div class="wrap">
-            <div class="panel">
-                <div class="panel-head">
-                    <h2 data-i18n="home.demos.title">Reinhören</h2>
-                    <a class="btn sun" href="/louis/portfolio/" data-i18n="home.demos.all">Ganzes Portfolio</a>
-                </div>
-                <!-- Audio demos: see louis/README.md, "Adding media" -->
-                <div class="demos">
-                    <article class="demo" data-src="/louis/assets/audio/aldi_sample_commercial.mp3">
-                        <button class="play" type="button" aria-label="Aldi-Werbung abspielen" data-i18n-attr="aria-label:demo.aldi.play" aria-pressed="false">
-                            <svg class="i-play" viewBox="0 0 24 24"><path d="M7 4.5v15l12.5-7.5z"/></svg>
-                            <svg class="i-pause" viewBox="0 0 24 24"><path d="M6 4h4.5v16H6zM13.5 4H18v16h-4.5z"/></svg>
-                        </button>
-                        <div class="demo-body">
-                            <div class="demo-title"><h3>Aldi</h3><small data-i18n="demo.tag.commercial">Werbung · Sample</small></div>
-                            <div class="wave" aria-label="Position" data-peaks="25,73,81,42,90,76,90,28,69,54,40,64,85,59,31,51,51,37,38,14,10,19,35,62,88,85,48,36,92,100,48,90,53,11,15,77,46,25,75,64,14,8,8,8,94,41,43,37,32,40,27,58,62,34,76,29"></div>
-                        </div>
-                        <span class="time">0:12</span>
-                    </article>
-                    <article class="demo" data-src="/louis/assets/audio/mcdonalds_sample_commercial.mp3">
-                        <button class="play" type="button" aria-label="McDonald’s-Werbung abspielen" data-i18n-attr="aria-label:demo.mcd.play" aria-pressed="false">
-                            <svg class="i-play" viewBox="0 0 24 24"><path d="M7 4.5v15l12.5-7.5z"/></svg>
-                            <svg class="i-pause" viewBox="0 0 24 24"><path d="M6 4h4.5v16H6zM13.5 4H18v16h-4.5z"/></svg>
-                        </button>
-                        <div class="demo-body">
-                            <div class="demo-title"><h3>McDonald’s</h3><small data-i18n="demo.tag.commercial">Werbung · Sample</small></div>
-                            <div class="wave" aria-label="Position" data-peaks="8,8,8,8,8,8,8,8,8,8,8,8,12,19,25,59,50,49,56,30,47,49,38,12,15,14,17,14,14,58,83,70,40,51,63,45,62,59,48,19,91,62,63,68,52,26,41,100,16,13,10,13,19,19,8,8"></div>
-                        </div>
-                        <span class="time">0:13</span>
-                    </article>
-                </div>
-
-                <!-- Random clip: picks any audio demo from the portfolio page (louis.js, "random clip") -->
-                <div class="shuffle">
-                    <div class="shuffle-head">
-                        <div class="shuffle-q">
-                            <h3 data-i18n="home.shuffle.q">Keine Lust zu suchen?</h3>
-                            <p data-i18n="home.shuffle.sub">Ich spiel dir einfach einen zufälligen Clip vor.</p>
-                        </div>
+            <!-- Random clip: plays any audio demo from the portfolio page (louis.js, "random clip") -->
+            <div class="panel shuffle">
+                <div class="shuffle-head">
+                    <div class="shuffle-q">
+                        <h2 data-i18n="home.shuffle.q">Keine Lust zu suchen?</h2>
+                        <p data-i18n="home.shuffle.sub">Ich spiel dir einfach einen zufälligen Clip vor.</p>
+                    </div>
+                    <div class="shuffle-actions">
                         <button class="btn sun shuffle-btn" type="button">
                             <svg class="dice" viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="8" cy="8" r="1.7"/><circle cx="16" cy="8" r="1.7"/><circle cx="12" cy="12" r="1.7"/><circle cx="8" cy="16" r="1.7"/><circle cx="16" cy="16" r="1.7"/></svg>
                             <span data-i18n="home.shuffle.btn">Überrasch mich!</span>
                         </button>
+                        <a class="btn ghost" href="/louis/portfolio/" data-i18n="home.demos.all">Ganzes Portfolio</a>
                     </div>
-                    <div class="shuffle-now" hidden>
-                        <button class="play" type="button" aria-label="Abspielen oder pausieren" data-i18n-attr="aria-label:home.shuffle.toggle" aria-pressed="false">
-                            <svg class="i-play" viewBox="0 0 24 24"><path d="M7 4.5v15l12.5-7.5z"/></svg>
-                            <svg class="i-pause" viewBox="0 0 24 24"><path d="M6 4h4.5v16H6zM13.5 4H18v16h-4.5z"/></svg>
-                        </button>
-                        <div class="shuffle-body">
-                            <div class="shuffle-title" aria-live="polite"><small data-i18n="home.shuffle.now">Jetzt läuft</small> <strong class="shuffle-name"></strong></div>
-                            <div class="progress" role="slider" tabindex="0" aria-label="Position" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-                                <div class="progress-fill"><span class="progress-knob"></span></div>
-                            </div>
+                </div>
+                <div class="shuffle-now" hidden>
+                    <button class="play" type="button" aria-label="Abspielen oder pausieren" data-i18n-attr="aria-label:home.shuffle.toggle" aria-pressed="false">
+                        <svg class="i-play" viewBox="0 0 24 24"><path d="M7 4.5v15l12.5-7.5z"/></svg>
+                        <svg class="i-pause" viewBox="0 0 24 24"><path d="M6 4h4.5v16H6zM13.5 4H18v16h-4.5z"/></svg>
+                    </button>
+                    <div class="shuffle-body">
+                        <div class="shuffle-title" aria-live="polite"><small data-i18n="home.shuffle.now">Jetzt läuft</small> <strong class="shuffle-name"></strong></div>
+                        <div class="progress" role="slider" tabindex="0" aria-label="Position" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                            <div class="progress-fill"><span class="progress-knob"></span></div>
                         </div>
-                        <span class="time">0:00 / 0:00</span>
                     </div>
+                    <span class="time">0:00 / 0:00</span>
                 </div>
             </div>
         </div>
@@ -139,7 +111,6 @@
 
     <div class="ticker" aria-hidden="true">
         <div class="ticker-track">
-            <span data-i18n="ticker.1">Werbespots</span><span data-i18n="ticker.2">Anime-Synchro</span><span data-i18n="ticker.3">Zeichentrick</span><span data-i18n="ticker.4">Games</span><span data-i18n="ticker.5">Charakterstimmen</span><span data-i18n="ticker.6">Erklärvideos</span>
             <span data-i18n="ticker.1">Werbespots</span><span data-i18n="ticker.2">Anime-Synchro</span><span data-i18n="ticker.3">Zeichentrick</span><span data-i18n="ticker.4">Games</span><span data-i18n="ticker.5">Charakterstimmen</span><span data-i18n="ticker.6">Erklärvideos</span>
         </div>
     </div>
@@ -201,7 +172,7 @@
         <a href="mailto:louis.eggerschwiler@gmail.com">louis.eggerschwiler@gmail.com</a>
     </div>
 </footer>
-<script src="/louis/assets/js/i18n.js"></script>
 <script src="/louis/assets/js/louis.js"></script>
+<script src="/louis/assets/js/i18n.js"></script>
 </body>
 </html>

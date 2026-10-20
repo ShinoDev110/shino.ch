@@ -417,31 +417,70 @@ p {
     }
 }
 
+/* "Hoi!" speech bubble: a button, plays a random hoi clip. The tail is two stacked triangles
+   (ink outline, paper fill) pointing down-right at the photo; drop-shadow outlines bubble and tail as one. */
 .bubble {
     position: absolute;
-    z-index: 2;
+    z-index: 3;
     top: 2%;
     left: -10%;
-    padding: 14px 20px;
+    padding: 12px 22px 14px;
     border: var(--border);
-    border-radius: 28px;
+    border-radius: 999px;
     background: var(--paper);
-    font: 400 22px/1 var(--display);
-    box-shadow: var(--shadow);
+    color: var(--ink);
+    font: 400 24px/1 var(--display);
+    letter-spacing: .02em;
     transform: rotate(-7deg);
+    filter: drop-shadow(4px 4px 0 var(--ink));
+    cursor: pointer;
+    transition: transform .2s cubic-bezier(.3, 1.8, .5, 1);
 }
 
+.bubble::before,
 .bubble::after {
     content: "";
     position: absolute;
-    right: 26px;
-    bottom: -16px;
-    width: 22px;
-    height: 22px;
-    background: var(--paper);
-    border-right: var(--border);
-    border-bottom: var(--border);
-    transform: skewX(30deg) rotate(45deg);
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-color: transparent;
+}
+
+.bubble::before {
+    right: 18px;
+    bottom: -22px;
+    border-width: 22px 0 0 20px;
+    border-top-color: var(--ink);
+}
+
+.bubble::after {
+    right: 21px;
+    bottom: -15px;
+    border-width: 16px 0 0 14px;
+    border-top-color: var(--paper);
+}
+
+.bubble:active {
+    transform: rotate(-7deg) scale(.92);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .bubble.say {
+        animation: hoi .45s cubic-bezier(.3, 1.8, .5, 1);
+    }
+}
+
+@keyframes hoi {
+    40% {
+        transform: rotate(-14deg) scale(1.18);
+    }
+}
+
+@media (hover: hover) {
+    .bubble:hover {
+        transform: rotate(-3deg) scale(1.06);
+    }
 }
 
 /* googly-eyed microphone, pupils follow the cursor */
@@ -485,23 +524,6 @@ p {
     box-shadow: 10px 10px 0 var(--orange);
 }
 
-.panel-head {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: end;
-    justify-content: space-between;
-    gap: 16px;
-}
-
-.panel-head h2 {
-    color: var(--sun);
-}
-
-.demos {
-    display: grid;
-    gap: 14px;
-}
-
 /* ---------- audio player ---------- */
 .demo {
     --c: var(--sun);
@@ -514,18 +536,6 @@ p {
     border-radius: 999px;
     background: var(--paper);
     color: var(--ink);
-}
-
-.demos > .demo:nth-child(4n+2) {
-    --c: var(--pink);
-}
-
-.demos > .demo:nth-child(4n+3) {
-    --c: var(--sky);
-}
-
-.demos > .demo:nth-child(4n+4) {
-    --c: var(--mint);
 }
 
 .demo-body {
@@ -646,10 +656,7 @@ p {
 
 /* ---------- random clip ("Keine Lust zu suchen?") ---------- */
 .shuffle {
-    display: grid;
-    gap: 18px;
-    padding-top: 24px;
-    border-top: 3px dashed rgba(251, 243, 230, .25);
+    gap: 24px;
 }
 
 .shuffle-head {
@@ -665,13 +672,18 @@ p {
     gap: 4px;
 }
 
-.shuffle-q h3 {
-    font-size: clamp(24px, 3vw, 32px);
-    color: var(--cream);
+.shuffle-q h2 {
+    color: var(--sun);
 }
 
 .shuffle-q p {
     color: rgba(251, 243, 230, .72);
+}
+
+.shuffle-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
 }
 
 .shuffle-btn .dice {
@@ -1145,6 +1157,18 @@ p {
     flex-wrap: wrap;
 }
 
+/* film dubbing: its own mint band, so it reads apart from the anime clips */
+.film {
+    background: var(--mint);
+    border-block: var(--border);
+}
+
+/* a lone video (film section) gets one wide column instead of half the grid */
+.videos:has(> .video:only-child) {
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 820px;
+}
+
 /* ---------- contact ---------- */
 .contact-grid {
     display: grid;
@@ -1430,19 +1454,14 @@ p {
         border-radius: 28px;
     }
 
-    /* half the bars so the waveform fits a phone */
-    .demos .wave i:nth-child(even) {
-        display: none;
-    }
-
     .demo > .time {
         grid-column: 2;
         text-align: left;
         margin-top: -10px;
     }
 
-    .shuffle-btn {
-        width: 100%;
+    .shuffle-actions .btn {
+        flex: 1 1 100%;
         justify-content: center;
     }
 

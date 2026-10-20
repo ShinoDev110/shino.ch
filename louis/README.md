@@ -25,8 +25,8 @@ German is the source and lives in the HTML. English lives in `assets/js/i18n.js`
 
 | URL                  | File                   | Content                                          |
 |----------------------|------------------------|--------------------------------------------------|
-| `/louis/`            | `index.html`           | Hero photo, demo panel + random clip, ticker, about, pills, CTA |
-| `/louis/portfolio/`  | `portfolio/index.html` | Audio cards, video grid                          |
+| `/louis/`            | `index.html`           | Hero photo + "Hoi!" bubble, random clip panel, ticker, about, pills, CTA |
+| `/louis/portfolio/`  | `portfolio/index.html` | Audio cards, anime videos, film dubbing (own mint band) |
 | `/louis/contact/`    | `contact/index.html`   | Contact cards, about block with photo            |
 
 All pages carry `noindex, nofollow` while this is a preview. Remove that once it moves to its own domain.
@@ -38,10 +38,13 @@ All pages carry `noindex, nofollow` while this is a preview. Remove that once it
 | Photo | `assets/img/louis-hero-{600,1000}.webp` (from louis1)      | Home hero blob                   |
 | Photo | `assets/img/louis-mic-{480,880}.webp` (from louis2)        | Home about block                 |
 | Photo | `assets/img/louis-booth-{480,880}.webp` (from louis3)      | Contact about block              |
-| Audio | `assets/audio/aldi_sample_commercial.mp3` (0:12)           | Home demo panel, portfolio card  |
-| Audio | `assets/audio/mcdonalds_sample_commercial.mp3` (0:13)      | Home demo panel, portfolio card  |
+| Audio | `assets/audio/aldi_sample_commercial.mp3` (0:12)           | Portfolio card, random clip      |
+| Audio | `assets/audio/mcdonalds_sample_commercial.mp3` (0:13)      | Portfolio card, random clip      |
+| Audio | `assets/audio/lunea.mp3` (0:14, mattress/pillow spot)      | Portfolio card, random clip      |
+| Audio | `assets/audio/hoi1.mp3` to `hoi3.mp3` (under 1 s each)     | Home "Hoi!" bubble only          |
 | Video | `assets/video/edward.mp4` + `edward-poster.webp`           | Portfolio (Fullmetal Alchemist)  |
 | Video | `assets/video/gojo.mp4` + `gojo-poster.webp`               | Portfolio (Gojo & Geto, JJK)     |
+| Video | `assets/video/mein-leben.mp4` + `mein-leben-poster.webp`   | Portfolio film band (Don’t Worry Darling) |
 
 Full-size photo originals live in `assets/_src/` (ignored by `louis/.gitignore`, they contain GPS data).
 
@@ -79,11 +82,12 @@ ImageMagick: `"/c/Program Files/ImageMagick-7.1.2-Q16-HDRI/magick.exe"` (not on 
    e.g. `0:12`). Pick or draw a face SVG that fits the voice. The grid switches from 2 to 3 columns
    by itself once there are three cards. Give the description `<p>` and the play button new i18n
    keys (`data-i18n`, `data-i18n-attr="aria-label:..."`) and add their English to `assets/js/i18n.js`.
-4. **Home (optional, for highlights):** copy one `<article class="demo">` in the `.demos` panel of
-   `index.html`, same fields, `data-peaks` with 56 values. Keep the panel to about 3 rows.
+4. **Home:** nothing to do. The home page has no demo rows, only the "Keine Lust zu suchen?" random
+   clip button. It picks from every `.demo[data-src]` on the portfolio page (it fetches that page),
+   so a new portfolio card joins the shuffle by itself. `hoiN.mp3` files are always excluded.
 
-The "Keine Lust zu suchen?" random clip button on the home page picks from every `.demo[data-src]`
-on the portfolio page (it fetches that page), so a new portfolio card joins the shuffle by itself.
+The "Hoi!" bubble plays `hoi1.mp3` to `hoi3.mp3` at random (list in `louis.js`, "Hoi! bubble").
+Film and other live-action clips go in the mint `#film` band on the portfolio page, not with the anime.
 
 Without `data-peaks` the player still works and draws a made-up waveform. A `.demo` without
 `data-src` is ignored by the script, so never leave one in the page.
@@ -134,7 +138,7 @@ Delete the whole block (`article.card`, `article.demo` or `article.video`) and i
 ## Assets
 
 - `assets/css/louis.css` theme and layout
-- `assets/js/i18n.js` English texts and the DE/EN switch (load before `louis.js`)
+- `assets/js/i18n.js` English texts and the DE/EN switch (load after `louis.js`, which builds the ticker copies)
 - `assets/js/louis.js` audio players, click-to-load videos, googly-eyed mascot
 - `assets/img/favicon.svg` tab icon (the googly-eyed mic), `assets/img/louis-og.jpg` 1200x630 link preview
 - Fonts: Lilita One and Nunito from Google Fonts. Self-host them before going live (Swiss/EU privacy).
